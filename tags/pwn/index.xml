@@ -197,6 +197,15 @@
     </item>
     
     <item>
+      <title>字符串漏洞</title>
+      <link>https://winsun.github.io/fightsec/post/pwn_15_formatstr/</link>
+      <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/pwn_15_formatstr/</guid>
+      <description>任意读 vuln.c #include &amp;lt;stdio.h&amp;gt; int main(void) { char buffer[200]; gets(buffer); printf(buffer); return 0; } 漏洞分析 编译程序 gcc -m32 -no-pie -fno-stack-protector -z execstack vuln.c -o vuln 分析程序 程序保护 └─$ checksec --file=./vuln [*] &amp;#39;/home/kali/exploits/str_arb_read/vuln&amp;#39; Arch: i386-32-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x8048000) RWX: Has RWX segments r2 debug vuln └─$ r2 -d -A ./vuln glibc.fc_offset = 0x00148 experimental analysis. [0xf7fe4450]&amp;gt; s main;pdf ; DATA XREFS from entry0 @ 0x8049086, 0x804908c ┌ 83: int main (char **argv); │ ; var int32_t var_d0h @ ebp-0xd0 │ ; var int32_t var_8h @ ebp-0x8 │ ; arg char **argv @ esp+0xf4 │ 0x08049172 8d4c2404 sub esp, 0xc │ 0x080491a7 8d8530ffffff lea eax, [var_d0h] │ 0x080491ad 50 push eax │ 0x080491ae</description>
+    </item>
+    
+    <item>
       <title>double free</title>
       <link>https://winsun.github.io/fightsec/post/pwn_13_doublefree/</link>
       <pubDate>Mon, 14 Jun 2021 00:00:00 +0000</pubDate>

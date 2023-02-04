@@ -142,21 +142,28 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#31-pop-rsp-gadget">3.1 pop rsp gadget</a></li>
-    <li><a href="#32-xchg-reg-rsp">3.2 xchg <!-- raw HTML omitted -->, rsp</a></li>
-    <li><a href="#33-leaveret">3.3 leave;ret</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#41-vuln脆弱性">4.1 vuln脆弱性</a></li>
-    <li><a href="#42-vuln脆弱性利用目标">4.2 vuln脆弱性利用目标</a></li>
-    <li><a href="#43-vuln利用步骤">4.3 vuln利用步骤</a>
+    <li><a href="#1-what-">1 what ？</a></li>
+    <li><a href="#2-why">2 why</a></li>
+    <li><a href="#3-how">3 how</a>
       <ul>
-        <li><a href="#431-测算rip的偏移">4.3.1 测算rip的偏移</a></li>
-        <li><a href="#432-寻找可用gadget">4.3.2 寻找可用gadget</a></li>
-        <li><a href="#433-规划栈布局">4.3.3 规划栈布局</a></li>
-        <li><a href="#434-pwntools编写利用代码">4.3.4 pwntools编写利用代码</a></li>
-        <li><a href="#exploit-output"><strong>exploit output</strong></a></li>
+        <li><a href="#31-pop-rsp-gadget">3.1 pop rsp gadget</a></li>
+        <li><a href="#32-xchg-reg-rsp">3.2 xchg <!-- raw HTML omitted -->, rsp</a></li>
+        <li><a href="#33-leaveret">3.3 leave;ret</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-漏洞程序-vuln">4 漏洞程序 vuln</a>
+      <ul>
+        <li><a href="#41-vuln脆弱性">4.1 vuln脆弱性</a></li>
+        <li><a href="#42-vuln脆弱性利用目标">4.2 vuln脆弱性利用目标</a></li>
+        <li><a href="#43-vuln利用步骤">4.3 vuln利用步骤</a>
+          <ul>
+            <li><a href="#431-测算rip的偏移">4.3.1 测算rip的偏移</a></li>
+            <li><a href="#432-寻找可用gadget">4.3.2 寻找可用gadget</a></li>
+            <li><a href="#433-规划栈布局">4.3.3 规划栈布局</a></li>
+            <li><a href="#434-pwntools编写利用代码">4.3.4 pwntools编写利用代码</a></li>
+            <li><a href="#exploit-output"><strong>exploit output</strong></a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -483,6 +490,8 @@ print(p.recvline())
                 
                 <li><a href='/fightsec/tags/exploit'>exploit</a></li>
                 
+                <li><a href='/fightsec/tags/x86'>x86</a></li>
+                
             </ul>
             
         </div>
@@ -672,7 +681,7 @@ print(p.recvline())
     
     <li><a href="https://winsun.github.io/fightsec/categories/linux/">linux (15)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (16)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (17)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/reverse/">reverse (2)</a></li>
     
@@ -807,7 +816,11 @@ print(p.recvline())
     
     <a href="https://winsun.github.io/fightsec/tags/vpn/">vpn</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/vuln/">vuln</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/web/">web</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/x86/">x86</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E5%9F%BA%E7%A1%80/">基础</a>
     
@@ -885,12 +898,7 @@ print(p.recvline())
 </section>
 
 
-    <section class="widget">
-        <h3 class="widget-title">其它</h3>
-        <ul class="widget-list">
-            <li><a href="https://winsun.github.io/fightsec/index.xml">文章 RSS</a></li>
-        </ul>
-    </section>
+    
 </div>
             </div>
         </div>
