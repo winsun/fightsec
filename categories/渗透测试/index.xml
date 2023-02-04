@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>渗透测试 on 诚安</title>
-    <link>https://winsun.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</link>
+    <link>https://winsun.github.io/fightsec/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</link>
     <description>Recent content in 渗透测试 on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 12 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ATT&amp;CT</title>
-      <link>https://winsun.github.io/post/p06_pet_01_attct/</link>
+      <link>https://winsun.github.io/fightsec/post/p06_pet_01_attct/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/p06_pet_01_attct/</guid>
+      <guid>https://winsun.github.io/fightsec/post/p06_pet_01_attct/</guid>
       <description>ATT&amp;amp;CT</description>
     </item>
     
     <item>
       <title>PETS框架</title>
-      <link>https://winsun.github.io/post/p06_pet_03_pets/</link>
+      <link>https://winsun.github.io/fightsec/post/p06_pet_03_pets/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/p06_pet_03_pets/</guid>
+      <guid>https://winsun.github.io/fightsec/post/p06_pet_03_pets/</guid>
       <description>PETS</description>
     </item>
     
     <item>
       <title>webgoat靶机配置</title>
-      <link>https://winsun.github.io/post/p06_pet_06_webgoat/</link>
+      <link>https://winsun.github.io/fightsec/post/p06_pet_06_webgoat/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/p06_pet_06_webgoat/</guid>
+      <guid>https://winsun.github.io/fightsec/post/p06_pet_06_webgoat/</guid>
       <description>基本配置 ubuntu winsun@ubuntu:~/webgoat$ uname -a Linux ubuntu 5.13.0-30-generic #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux jdk winsun@ubuntu:~/webgoat$ pwd /home/winsun/webgoat winsun@ubuntu:~/webgoat$ ls -al total 432648 drwxrwxr-x 3 winsun winsun 4096 Apr 6 22:02 . drwxr-xr-x 25 winsun winsun 4096 Apr 6 22:09 .. drwxrwxr-x 2 winsun winsun 4096 Apr 6 20:28 __MACOSX -rwxr--r-- 1 winsun winsun 156374894 Apr 6 22:02 jdk-18_linux-x64_bin.deb -rwxr--r-- 1 winsun winsun 96411569 Apr 6 20:22 webgoat-server-8.2.2.jar -rwxr--r-- 1 winsun winsun 53814896 Apr 6 20:22 webwolf-8.2.2.jar sudo vim /etc/profile.d/jdk.sh source /etc/profile.d/jdk.sh jdk.sh: winsun@ubuntu:~/webgoat$ cat /etc/profile.d/jdk.sh export JAVA_HOME=/usr/lib/jvm/jdk-18/ export PATH=$PATH:$JAVA_HOME/bin webgoat 下载webgoat Download the latest WebGoat and WebWolf release from https://github.com/WebGoat/WebGoat/releases 启动webgoat java -jar webgoat-server-8.1.0.jar [&amp;ndash;server.port=8080] [&amp;ndash;server.address=localhost] java -jar webwolf-8.1.0.jar [&amp;ndash;server.port=9090] [&amp;ndash;server.address=localhost] and browse to</description>
     </item>
     

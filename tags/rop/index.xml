@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rop on 诚安</title>
-    <link>https://winsun.github.io/tags/rop/</link>
+    <link>https://winsun.github.io/fightsec/tags/rop/</link>
     <description>Recent content in rop on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/rop/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/rop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ROP</title>
-      <link>https://winsun.github.io/post/pwn_02_rop/</link>
+      <link>https://winsun.github.io/fightsec/post/pwn_02_rop/</link>
       <pubDate>Sat, 24 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/pwn_02_rop/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pwn_02_rop/</guid>
       <description>ROP Returned-oriented Program,defeats the W⊕X protections recently deployed by Microsoft,Intel, and AMD;in this context, it can be seen as a generalization of traditional return-into-libc attacks. But the threat is more general . gadget what gadget Each gadget is an arrangement of words on the stack, both pointers to instruction sequences and immediate data words, that when invoked accomplishes some well-defined task “W⊕X,” ensures that no memory location in a process image is marked both writable (“W”) and executable (“X”) gadget feature One gadget might: perform a load operation another an xor and another a conditional branch 引用 detetcting rop attacks in application jit-rop rop systems,languages,and applications dark-rop black hat rop ropme write up</description>
     </item>
     

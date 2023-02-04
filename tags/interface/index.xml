@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>interface on 诚安</title>
-    <link>https://winsun.github.io/tags/interface/</link>
+    <link>https://winsun.github.io/fightsec/tags/interface/</link>
     <description>Recent content in interface on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 18 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/interface/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/interface/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>map,slice,byte,string,struct,interface</title>
-      <link>https://winsun.github.io/post/go_05_datastruct/</link>
+      <link>https://winsun.github.io/fightsec/post/go_05_datastruct/</link>
       <pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/go_05_datastruct/</guid>
+      <guid>https://winsun.github.io/fightsec/post/go_05_datastruct/</guid>
       <description>byte string map slice struct interface </description>
     </item>
     

@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>elf on 诚安</title>
-    <link>https://winsun.github.io/tags/elf/</link>
+    <link>https://winsun.github.io/fightsec/tags/elf/</link>
     <description>Recent content in elf on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 24 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/elf/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/elf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GOT&amp;PLT</title>
-      <link>https://winsun.github.io/post/linux_03_got_plt/</link>
+      <link>https://winsun.github.io/fightsec/post/linux_03_got_plt/</link>
       <pubDate>Wed, 24 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/linux_03_got_plt/</guid>
+      <guid>https://winsun.github.io/fightsec/post/linux_03_got_plt/</guid>
       <description>gdb调试overbuffer objdump readelf string symbol table GOT PLT</description>
     </item>
     
     <item>
       <title>ELF格式</title>
-      <link>https://winsun.github.io/post/linux_01_elf/</link>
+      <link>https://winsun.github.io/fightsec/post/linux_01_elf/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/linux_01_elf/</guid>
+      <guid>https://winsun.github.io/fightsec/post/linux_01_elf/</guid>
       <description>elf格式 elf header man elf查看 ELF header (Ehdr) The ELF header is described by the type Elf32_Ehdr or Elf64_Ehdr: #define EI_NIDENT 16 typedef struct { unsigned char e_ident[EI_NIDENT]; uint16_t e_type; uint16_t e_machine; uint32_t e_version; ElfN_Addr e_entry; ElfN_Off e_phoff; ElfN_Off e_shoff; uint32_t e_flags; uint16_t e_ehsize; uint16_t e_phentsize; uint16_t e_phnum; uint16_t e_shentsize; uint16_t e_shnum; uint16_t e_shstrndx; } ElfN_Ehdr; $ readelf -h vuln ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2&amp;#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: DYN (Position-Independent Executable file) Machine: Advanced Micro Devices X86-64 Version: 0x1 Entry point address: 0x11a0 Start of program headers: 64 (bytes into file) Start of section headers: 15344 (bytes into file) Flags: 0x0 Size</description>
     </item>
     

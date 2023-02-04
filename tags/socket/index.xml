@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>socket on 诚安</title>
-    <link>https://winsun.github.io/tags/socket/</link>
+    <link>https://winsun.github.io/fightsec/tags/socket/</link>
     <description>Recent content in socket on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 29 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/socket/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/socket/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>网络编程</title>
-      <link>https://winsun.github.io/post/linux_13_network/</link>
+      <link>https://winsun.github.io/fightsec/post/linux_13_network/</link>
       <pubDate>Mon, 29 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/linux_13_network/</guid>
+      <guid>https://winsun.github.io/fightsec/post/linux_13_network/</guid>
       <description></description>
     </item>
     

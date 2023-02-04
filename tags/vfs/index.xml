@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vfs on 诚安</title>
-    <link>https://winsun.github.io/tags/vfs/</link>
+    <link>https://winsun.github.io/fightsec/tags/vfs/</link>
     <description>Recent content in vfs on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 04 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/vfs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/vfs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>vfs重要数据结构</title>
-      <link>https://winsun.github.io/post/linux_14_filesystem/</link>
+      <link>https://winsun.github.io/fightsec/post/linux_14_filesystem/</link>
       <pubDate>Sun, 04 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/linux_14_filesystem/</guid>
+      <guid>https://winsun.github.io/fightsec/post/linux_14_filesystem/</guid>
       <description></description>
     </item>
     

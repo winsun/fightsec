@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AI on 诚安</title>
-    <link>https://winsun.github.io/categories/AI/</link>
+    <link>https://winsun.github.io/fightsec/categories/AI/</link>
     <description>Recent content in AI on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 12 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/categories/AI/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/categories/AI/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>预期效用</title>
-      <link>https://winsun.github.io/post/ml_03_random_variable/</link>
+      <link>https://winsun.github.io/fightsec/post/ml_03_random_variable/</link>
       <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/ml_03_random_variable/</guid>
+      <guid>https://winsun.github.io/fightsec/post/ml_03_random_variable/</guid>
       <description>概率空间 期望 预期效用 方差 协方差 马尔可夫 chebyshev chernoff murphy&amp;rsquo;s law random walk</description>
     </item>
     
     <item>
       <title>贝叶斯</title>
-      <link>https://winsun.github.io/post/ml_02_bayes/</link>
+      <link>https://winsun.github.io/fightsec/post/ml_02_bayes/</link>
       <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/ml_02_bayes/</guid>
+      <guid>https://winsun.github.io/fightsec/post/ml_02_bayes/</guid>
       <description>LSTM python预测基金净值 latex $\int_a^b f(x)\mathrm{d}x$</description>
     </item>
     
     <item>
       <title>confuse matrix</title>
-      <link>https://winsun.github.io/post/ml_01_confuse_matrix/</link>
+      <link>https://winsun.github.io/fightsec/post/ml_01_confuse_matrix/</link>
       <pubDate>Wed, 09 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/ml_01_confuse_matrix/</guid>
+      <guid>https://winsun.github.io/fightsec/post/ml_01_confuse_matrix/</guid>
       <description>matrix</description>
     </item>
     

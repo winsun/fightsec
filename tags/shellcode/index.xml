@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>shellcode on 诚安</title>
-    <link>https://winsun.github.io/tags/shellcode/</link>
+    <link>https://winsun.github.io/fightsec/tags/shellcode/</link>
     <description>Recent content in shellcode on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 29 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/shellcode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/shellcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>shellcode</title>
-      <link>https://winsun.github.io/post/pwn_03_shellcode/</link>
+      <link>https://winsun.github.io/fightsec/post/pwn_03_shellcode/</link>
       <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/pwn_03_shellcode/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pwn_03_shellcode/</guid>
       <description></description>
     </item>
     

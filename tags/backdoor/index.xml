@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>backdoor on 诚安</title>
-    <link>https://winsun.github.io/tags/backdoor/</link>
+    <link>https://winsun.github.io/fightsec/tags/backdoor/</link>
     <description>Recent content in backdoor on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 15 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/backdoor/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/backdoor/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>后门程序</title>
-      <link>https://winsun.github.io/post/cyber_11_backdoor/</link>
+      <link>https://winsun.github.io/fightsec/post/cyber_11_backdoor/</link>
       <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/cyber_11_backdoor/</guid>
+      <guid>https://winsun.github.io/fightsec/post/cyber_11_backdoor/</guid>
       <description>c&amp;amp;c go实现后门程序</description>
     </item>
     

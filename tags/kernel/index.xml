@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kernel on 诚安</title>
-    <link>https://winsun.github.io/tags/kernel/</link>
+    <link>https://winsun.github.io/fightsec/tags/kernel/</link>
     <description>Recent content in kernel on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 03 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>linux kernel : system call</title>
-      <link>https://winsun.github.io/post/knl_02_syscall/</link>
+      <link>https://winsun.github.io/fightsec/post/knl_02_syscall/</link>
       <pubDate>Fri, 03 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/knl_02_syscall/</guid>
+      <guid>https://winsun.github.io/fightsec/post/knl_02_syscall/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux kernel : process</title>
-      <link>https://winsun.github.io/post/knl_01_process/</link>
+      <link>https://winsun.github.io/fightsec/post/knl_01_process/</link>
       <pubDate>Thu, 02 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/knl_01_process/</guid>
+      <guid>https://winsun.github.io/fightsec/post/knl_01_process/</guid>
       <description>task_struct task_struct &amp;amp; thread_info process state zombie fork &amp;amp; exec process</description>
     </item>
     
     <item>
       <title>Linux Kernel Exploitation Technique: Overwriting: modprobe_path</title>
-      <link>https://winsun.github.io/post/p02_pwn_04_exp_kernel/</link>
+      <link>https://winsun.github.io/fightsec/post/p02_pwn_04_exp_kernel/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/post/p02_pwn_04_exp_kernel/</guid>
+      <guid>https://winsun.github.io/fightsec/post/p02_pwn_04_exp_kernel/</guid>
       <description>引用 Overwriting modprobe_path Linux Kernel Exploitation</description>
     </item>
     
