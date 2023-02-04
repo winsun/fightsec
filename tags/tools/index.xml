@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tools on 诚安</title>
+    <link>https://winsun.github.io/tags/tools/</link>
+    <description>Recent content in tools on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 19 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux环境和相关工具</title>
+      <link>https://winsun.github.io/post/linux_02_elf_tools/</link>
+      <pubDate>Fri, 19 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_02_elf_tools/</guid>
+      <description>工具列表 GDB objdump objcopy strace system call trace ltrace library trace ftrace function trace readelf 有用的设备和文件 /proc/&amp;lt;pid&amp;gt;/maps ls /proc/1234/maps /proc/kcore /boot/System.map /proc/kallsyms /proc/iomem ECFS Extended core file snapshotECFS 环境变量 LD_PRELOAD LD_SHOW_AUXV</description>
+    </item>
+    
+  </channel>
+</rss>

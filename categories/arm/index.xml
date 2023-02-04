@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>arm on 诚安</title>
+    <link>https://winsun.github.io/categories/arm/</link>
+    <description>Recent content in arm on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 24 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/categories/arm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ios内核堆梳理</title>
+      <link>https://winsun.github.io/post/arm_20_grooming_ios_kernel_heap/</link>
+      <pubDate>Fri, 24 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_20_grooming_ios_kernel_heap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ios kernel和堆溢出</title>
+      <link>https://winsun.github.io/post/arm_19_ios_kernel_heap_overflow/</link>
+      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_19_ios_kernel_heap_overflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 堆溢出</title>
+      <link>https://winsun.github.io/post/arm_18_heap_overflow_dev/</link>
+      <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_18_heap_overflow_dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm glibc heap free</title>
+      <link>https://winsun.github.io/post/arm_17_glibc_heap_free/</link>
+      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_17_glibc_heap_free/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm glibc heap malloc</title>
+      <link>https://winsun.github.io/post/arm_16_glibc_heap_malloc/</link>
+      <pubDate>Wed, 25 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_16_glibc_heap_malloc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm shellcode 持久化</title>
+      <link>https://winsun.github.io/post/arm_15_process_continue_shellcode/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_15_process_continue_shellcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 栈溢出挑战</title>
+      <link>https://winsun.github.io/post/arm_14_stack_overflow_chg/</link>
+      <pubDate>Sun, 15 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_14_stack_overflow_chg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 栈溢出</title>
+      <link>https://winsun.github.io/post/arm_13_rop/</link>
+      <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_13_rop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 栈溢出</title>
+      <link>https://winsun.github.io/post/arm_12_stack_overflow/</link>
+      <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_12_stack_overflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 进程内存及崩溃分析</title>
+      <link>https://winsun.github.io/post/arm_11_procee_memory/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_11_procee_memory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm tcp反弹shell</title>
+      <link>https://winsun.github.io/post/arm_10_reverse_shell/</link>
+      <pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_10_reverse_shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm tcp绑定shell</title>
+      <link>https://winsun.github.io/post/arm_09_tcp_bind_shell/</link>
+      <pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_09_tcp_bind_shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 堆栈和函数</title>
+      <link>https://winsun.github.io/post/arm_07_stack_function/</link>
+      <pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_07_stack_function/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm shellcode编写</title>
+      <link>https://winsun.github.io/post/arm_08_shellcode/</link>
+      <pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_08_shellcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 条件执行和分支指令</title>
+      <link>https://winsun.github.io/post/arm_06_condition_branch/</link>
+      <pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_06_condition_branch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 多次加载和存储</title>
+      <link>https://winsun.github.io/post/arm_05_load_store/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_05_load_store/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 加载和存储指令</title>
+      <link>https://winsun.github.io/post/arm_04_mem_ins/</link>
+      <pubDate>Sun, 27 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_04_mem_ins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm指令集</title>
+      <link>https://winsun.github.io/post/arm_03_ins_set/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_03_ins_set/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm数据类型和寄存器</title>
+      <link>https://winsun.github.io/post/arm_02_data_reg/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_02_data_reg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm汇编</title>
+      <link>https://winsun.github.io/post/arm_01_asm/</link>
+      <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_01_asm/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

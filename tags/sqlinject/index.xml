@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sqlinject on 诚安</title>
+    <link>https://winsun.github.io/tags/sqlinject/</link>
+    <description>Recent content in sqlinject on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 25 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/sqlinject/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>web sql inject</title>
+      <link>https://winsun.github.io/post/web_01_sqlinject/</link>
+      <pubDate>Mon, 25 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/web_01_sqlinject/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>overflow on 诚安</title>
+    <link>https://winsun.github.io/tags/overflow/</link>
+    <description>Recent content in overflow on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 09 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/overflow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>缓冲区溢出01-溢出漏洞</title>
+      <link>https://winsun.github.io/post/p04_vul_01_overflow/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p04_vul_01_overflow/</guid>
+      <description>缓冲区溢出 一个自带缓冲区溢出bug的代码 greeting函数存在buffer overflow $ gdb -q meet warning: ~/gef/gef.py: No such file or directory warning: ~/gef/scripts/helpme.py: No such file or directory Reading symbols from meet... (gdb) list 1 // meet.c 2 #include &amp;lt;stdio.h&amp;gt; // needed for screen printing 3 #include &amp;lt;string.h&amp;gt; // needed for strcpy 4 void greeting(char *temp1,char *temp2){ // greeting function to say hello 5 char name[400]; // string variable to hold the name 6 strcpy(name, temp2); // copy argument to name with the infamous strcpy 7 printf(&amp;#34;Hello %s %s\n&amp;#34;, temp1, name); // print out the greeting 8 } 9 int main(int argc, char * argv[]){ // note the format for arguments</description>
+    </item>
+    
+    <item>
+      <title>缓冲区溢出02-shellcode</title>
+      <link>https://winsun.github.io/post/p04_vul_02_overflow/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p04_vul_02_overflow/</guid>
+      <description>weekness programe // meet.c #include &amp;lt;stdio.h&amp;gt; // needed for screen printing #include &amp;lt;string.h&amp;gt; // needed for strcpy void greeting(char *temp1,char *temp2){ // greeting function to say hello char name[400]; // string variable to hold the name strcpy(name, temp2); // copy argument to name with the infamous strcpy printf(&amp;#34;Hello %s %s\n&amp;#34;, temp1, name); // print out the greeting } int main(int argc, char * argv[]){ // note the format for arguments greeting(argv[1], argv[2]); // call function, pass title &amp;amp; name printf(&amp;#34;Bye %s %s\n&amp;#34;, argv[1], argv[2]); // say &amp;#34;bye&amp;#34; } // exit program stack frame | name[400] | ebp | eip | temp1 | temp2 | disassemble greeting (gdb) disass greeting Dump of assembler code for function greeting: 0x56556201 &amp;lt;+0&amp;gt;: push %ebp 0x56556202 &amp;lt;+1&amp;gt;: mov %esp,%ebp 0x56556204 &amp;lt;+3&amp;gt;: push %ebx 0x56556205 &amp;lt;+4&amp;gt;: sub $0x190,%esp 0x5655620b &amp;lt;+10&amp;gt;: call 0x565560c0 &amp;lt;__x86.get_pc_thunk.bx&amp;gt; 0x56556210 &amp;lt;+15&amp;gt;: add</description>
+    </item>
+    
+  </channel>
+</rss>

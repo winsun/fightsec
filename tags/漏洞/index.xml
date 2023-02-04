@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>漏洞 on 诚安</title>
+    <link>https://winsun.github.io/tags/%E6%BC%8F%E6%B4%9E/</link>
+    <description>Recent content in 漏洞 on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 09 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/%E6%BC%8F%E6%B4%9E/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>java反序列化漏洞</title>
+      <link>https://winsun.github.io/post/p04_vul_03_serial/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p04_vul_03_serial/</guid>
+      <description>引用 从0开始学习java反序列化漏洞</description>
+    </item>
+    
+    <item>
+      <title>log4j</title>
+      <link>https://winsun.github.io/post/p04_vul_04_log4j/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p04_vul_04_log4j/</guid>
+      <description>引用 checking log4j dep</description>
+    </item>
+    
+    <item>
+      <title>springshell</title>
+      <link>https://winsun.github.io/post/p04_vul_springshell_05/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p04_vul_springshell_05/</guid>
+      <description>引用 CVE-2022-22965</description>
+    </item>
+    
+  </channel>
+</rss>

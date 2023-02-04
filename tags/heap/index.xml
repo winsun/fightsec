@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>heap on 诚安</title>
+    <link>https://winsun.github.io/tags/heap/</link>
+    <description>Recent content in heap on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 24 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/heap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ios内核堆梳理</title>
+      <link>https://winsun.github.io/post/arm_20_grooming_ios_kernel_heap/</link>
+      <pubDate>Fri, 24 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_20_grooming_ios_kernel_heap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ios kernel和堆溢出</title>
+      <link>https://winsun.github.io/post/arm_19_ios_kernel_heap_overflow/</link>
+      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_19_ios_kernel_heap_overflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 堆溢出</title>
+      <link>https://winsun.github.io/post/arm_18_heap_overflow_dev/</link>
+      <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_18_heap_overflow_dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm glibc heap free</title>
+      <link>https://winsun.github.io/post/arm_17_glibc_heap_free/</link>
+      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_17_glibc_heap_free/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm glibc heap malloc</title>
+      <link>https://winsun.github.io/post/arm_16_glibc_heap_malloc/</link>
+      <pubDate>Wed, 25 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_16_glibc_heap_malloc/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

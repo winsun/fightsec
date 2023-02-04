@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gdb on 诚安</title>
+    <link>https://winsun.github.io/tags/gdb/</link>
+    <description>Recent content in gdb on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language><atom:link href="https://winsun.github.io/tags/gdb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GDB及扩展</title>
+      <link>https://winsun.github.io/post/linux_05_gdb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_05_gdb/</guid>
+      <description>gdb gdbinit配置 可以从网上或自己编写 .gdbinit 配置文件, 从网上找到一份配置 config one 地址 https://github.com/gdbinit/Gdbinit 安装: git clone git@github.com:gdbinit/Gdbinit.git cp Gdbinit/gdbinit ~/.gdbinit config two wget https://raw.githubusercontent.com/gdbinit/Gdbinit/master/gdbinit cp gdbinit ~/.gdbinit gef gef A few of GEF features include: 1、One single GDB script Entirely OS Agnostic, NO dependencies: GEF is battery-included and is installable instantly Fast limiting the number of dependencies and optimizing code to make the commands as fast as possible 2、Provides a great variety of commands to drastically change your experience in GDB. Easily extensible to create other commands by providing more comprehensible layout to GDB Python API. 3、</description>
+    </item>
+    
+  </channel>
+</rss>

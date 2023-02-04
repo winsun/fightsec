@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>reverse on 诚安</title>
+    <link>https://winsun.github.io/tags/reverse/</link>
+    <description>Recent content in reverse on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 12 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/tags/reverse/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>decrypt fireware by binwalk</title>
+      <link>https://winsun.github.io/post/p02_re_04_binwalk/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p02_re_04_binwalk/</guid>
+      <description>binwalk binwalk 提取固件 $ binwalk -Me DAP-1320_FIRMWARE_1.11B10.zip Scan Time: 2022-03-26 03:08:51 Target File: /home/kali/DAP-1320_FIRMWARE_1.11B10.zip MD5 Checksum: ebd3a01c9e2079de403cf336741e1870 Signatures: 411 ... Scan Time: 2022-03-26 03:08:55 Target File: /home/kali/_DAP-1320_FIRMWARE_1.11B10.zip.extracted/_DAP1320_fw_1_11b10.bin.extracted/40 MD5 Checksum: a741e8176a2f160957382396824e2620 Signatures: 411 DECIMAL HEXADECIMAL DESCRIPTION -------------------------------------------------------------------------------- 78808 0x133D8 Certificate in DER format (x509 v3), header length: 4, sequence length: 30 79160 0x13538 Certificate in DER format (x509 v3), header length: 4, sequence length: 30 79604 0x136F4 Certificate in DER format (x509 v3), header length: 4, sequence length: 30 1769504 0x1B0020 Linux kernel version 2.6.31 1790640 0x1B52B0 CRC32 polynomial table, little endian 2009280 0x1EA8C0 Neighborly text, &amp;#34;NeighborSolicitstunnel6 init(): can&amp;#39;t add protocol&amp;#34; 2009300 0x1EA8D4 Neighborly text, &amp;#34;NeighborAdvertisementst add protocol&amp;#34; 2011043 0x1EAFA3 Neighborly text, &amp;#34;neighbor %.2x%.2x.%.2x:%.2x:%.2x:%.2x:%.2x:%.2x lost on port %d(%s)(%s)&amp;#34; fireware</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>reverse on 诚安</title>
+    <link>https://winsun.github.io/categories/reverse/</link>
+    <description>Recent content in reverse on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 12 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/categories/reverse/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ghidra</title>
+      <link>https://winsun.github.io/post/p02_re_01_ghidra/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p02_re_01_ghidra/</guid>
+      <description>ghidrz</description>
+    </item>
+    
+    <item>
+      <title>randomize</title>
+      <link>https://winsun.github.io/post/p02_re_02_idapro/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p02_re_02_idapro/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

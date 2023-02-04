@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on 诚安</title>
+    <link>https://winsun.github.io/categories/golang/</link>
+    <description>Recent content in golang on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 25 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>go 设计模式</title>
+      <link>https://winsun.github.io/post/go_13_design_pattern/</link>
+      <pubDate>Thu, 25 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_13_design_pattern/</guid>
+      <description>装饰器模式</description>
+    </item>
+    
+    <item>
+      <title>go system program</title>
+      <link>https://winsun.github.io/post/go_12_system_program/</link>
+      <pubDate>Thu, 18 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_12_system_program/</guid>
+      <description>process file cpu memory </description>
+    </item>
+    
+    <item>
+      <title>go web program</title>
+      <link>https://winsun.github.io/post/go_11_web_program/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_11_web_program/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go reflect</title>
+      <link>https://winsun.github.io/post/go_10_reflect/</link>
+      <pubDate>Fri, 05 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_10_reflect/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go gorm package</title>
+      <link>https://winsun.github.io/post/go_09_gorm/</link>
+      <pubDate>Sat, 30 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_09_gorm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go elastic package</title>
+      <link>https://winsun.github.io/post/go_08_elastic/</link>
+      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_08_elastic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go panic &amp; recover</title>
+      <link>https://winsun.github.io/post/go_07_defer_panic_recover/</link>
+      <pubDate>Thu, 21 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_07_defer_panic_recover/</guid>
+      <description>panic defer recover </description>
+    </item>
+    
+    <item>
+      <title>go循环控制</title>
+      <link>https://winsun.github.io/post/go_06_loop/</link>
+      <pubDate>Thu, 21 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_06_loop/</guid>
+      <description>for in range while</description>
+    </item>
+    
+    <item>
+      <title>go logger</title>
+      <link>https://winsun.github.io/post/go_04_logger/</link>
+      <pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_04_logger/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>map,slice,byte,string,struct,interface</title>
+      <link>https://winsun.github.io/post/go_05_datastruct/</link>
+      <pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_05_datastruct/</guid>
+      <description>byte string map slice struct interface </description>
+    </item>
+    
+    <item>
+      <title>go cron源码</title>
+      <link>https://winsun.github.io/post/go_03_cron/</link>
+      <pubDate>Fri, 15 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_03_cron/</guid>
+      <description>cron源码 cron在线表达式 推荐使用在线工具来看自己写的 cron 对不对，简单的表达式直接写一般问题不大。这里推荐 crontab.guru，可以通过可视化的方式来查看你编写的定时规则。 cron源码包 创建任务 import &amp;#34;github.com/robfig/cron/v3&amp;#34; job := cron.new() job.AddFunc(&amp;#34;*/1 * * * * *&amp;#34;,func(){ fmt.println(&amp;#34;hello&amp;#34;) }) job.Start() 核心数据结构 // Cron keeps track of any number of entries, invoking the associated func as // specified by the schedule. It</description>
+    </item>
+    
+    <item>
+      <title>go routine</title>
+      <link>https://winsun.github.io/post/go_02_routine/</link>
+      <pubDate>Tue, 05 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_02_routine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go context</title>
+      <link>https://winsun.github.io/post/go_01_context/</link>
+      <pubDate>Wed, 29 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_01_context/</guid>
+      <description>context</description>
+    </item>
+    
+    <item>
+      <title>go基础</title>
+      <link>https://winsun.github.io/post/go_00_install_config/</link>
+      <pubDate>Sun, 26 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_00_install_config/</guid>
+      <description>install download go: https://go.dev/dl/ ubuntu install go: https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-20-04 $ tar -C /usr/local -xvf goxxxx $ vim ~/.profile 行末尾添加 : export PATH=$PATH:/usr/local/go/bin $ source ~/.profile $ go version</description>
+    </item>
+    
+  </channel>
+</rss>

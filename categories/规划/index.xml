@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>规划 on 诚安</title>
+    <link>https://gitee.com/hacksrc/secfordigit/categories/%E8%A7%84%E5%88%92/</link>
+    <description>Recent content in 规划 on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 12 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gitee.com/hacksrc/secfordigit/categories/%E8%A7%84%E5%88%92/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023规划</title>
+      <link>https://gitee.com/hacksrc/secfordigit/post/plan202202/</link>
+      <pubDate>Sat, 12 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://gitee.com/hacksrc/secfordigit/post/plan202202/</guid>
+      <description>2月份规划 新型edr 安全的本质 解决方案的变化对设计的影响是什么？ 零信任架构，隐私保护等 未来的细分场景是什么？ 核心竞争力是什么？ 基于机器学习感知入侵 阻断入侵 回溯入侵 反制入侵 数据保护插件，感知并阻断数据泄露 轻、敏、准，怎么衡量</description>
+    </item>
+    
+  </channel>
+</rss>

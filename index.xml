@@ -1,0 +1,942 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>诚安</title>
+    <link>https://winsun.github.io/</link>
+    <description>Recent content on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 03 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux kernel : system call</title>
+      <link>https://winsun.github.io/post/knl_02_syscall/</link>
+      <pubDate>Fri, 03 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/knl_02_syscall/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux kernel : process</title>
+      <link>https://winsun.github.io/post/knl_01_process/</link>
+      <pubDate>Thu, 02 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/knl_01_process/</guid>
+      <description>task_struct task_struct &amp;amp; thread_info process state zombie fork &amp;amp; exec process</description>
+    </item>
+    
+    <item>
+      <title>web sql inject</title>
+      <link>https://winsun.github.io/post/web_01_sqlinject/</link>
+      <pubDate>Mon, 25 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/web_01_sqlinject/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>蜜罐主动防御</title>
+      <link>https://winsun.github.io/post/cyber_12_honeypot/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/cyber_12_honeypot/</guid>
+      <description>开源honeypot go实现honeypot</description>
+    </item>
+    
+    <item>
+      <title>后门程序</title>
+      <link>https://winsun.github.io/post/cyber_11_backdoor/</link>
+      <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/cyber_11_backdoor/</guid>
+      <description>c&amp;amp;c go实现后门程序</description>
+    </item>
+    
+    <item>
+      <title>预期效用</title>
+      <link>https://winsun.github.io/post/ml_03_random_variable/</link>
+      <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/ml_03_random_variable/</guid>
+      <description>概率空间 期望 预期效用 方差 协方差 马尔可夫 chebyshev chernoff murphy&amp;rsquo;s law random walk</description>
+    </item>
+    
+    <item>
+      <title>网络扫描</title>
+      <link>https://winsun.github.io/post/cyber_10_scanner/</link>
+      <pubDate>Sun, 10 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/cyber_10_scanner/</guid>
+      <description>nmap masscan go实现扫描器</description>
+    </item>
+    
+    <item>
+      <title>贝叶斯</title>
+      <link>https://winsun.github.io/post/ml_02_bayes/</link>
+      <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/ml_02_bayes/</guid>
+      <description>LSTM python预测基金净值 latex $\int_a^b f(x)\mathrm{d}x$</description>
+    </item>
+    
+    <item>
+      <title>零信任架构</title>
+      <link>https://winsun.github.io/post/cyber_09_zero_trust/</link>
+      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/cyber_09_zero_trust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>堡垒机及安全</title>
+      <link>https://winsun.github.io/post/cyber_08_bastion/</link>
+      <pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/cyber_08_bastion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vpn原理及安全</title>
+      <link>https://winsun.github.io/post/cyber_07_vpn/</link>
+      <pubDate>Thu, 17 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/cyber_07_vpn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dns及安全</title>
+      <link>https://winsun.github.io/post/cyber_06_dns/</link>
+      <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/cyber_06_dns/</guid>
+      <description>dns dga tunneling</description>
+    </item>
+    
+    <item>
+      <title>confuse matrix</title>
+      <link>https://winsun.github.io/post/ml_01_confuse_matrix/</link>
+      <pubDate>Wed, 09 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/ml_01_confuse_matrix/</guid>
+      <description>matrix</description>
+    </item>
+    
+    <item>
+      <title>api 网关及安全</title>
+      <link>https://winsun.github.io/post/cyber_05_gateway/</link>
+      <pubDate>Thu, 03 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/cyber_05_gateway/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>正向代理和反向代理</title>
+      <link>https://winsun.github.io/post/cyber_04_proxy/</link>
+      <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/cyber_04_proxy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>负载均衡</title>
+      <link>https://winsun.github.io/post/cyber_03_load_balance/</link>
+      <pubDate>Thu, 17 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/cyber_03_load_balance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>port forward &amp; nat</title>
+      <link>https://winsun.github.io/post/cyber_02_nat/</link>
+      <pubDate>Tue, 15 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/cyber_02_nat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>路由和交换机原理</title>
+      <link>https://winsun.github.io/post/cyber_01_router_switch/</link>
+      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/cyber_01_router_switch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go 设计模式</title>
+      <link>https://winsun.github.io/post/go_13_design_pattern/</link>
+      <pubDate>Thu, 25 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_13_design_pattern/</guid>
+      <description>装饰器模式</description>
+    </item>
+    
+    <item>
+      <title>go system program</title>
+      <link>https://winsun.github.io/post/go_12_system_program/</link>
+      <pubDate>Thu, 18 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_12_system_program/</guid>
+      <description>process file cpu memory </description>
+    </item>
+    
+    <item>
+      <title>go web program</title>
+      <link>https://winsun.github.io/post/go_11_web_program/</link>
+      <pubDate>Wed, 10 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_11_web_program/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go reflect</title>
+      <link>https://winsun.github.io/post/go_10_reflect/</link>
+      <pubDate>Fri, 05 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_10_reflect/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go gorm package</title>
+      <link>https://winsun.github.io/post/go_09_gorm/</link>
+      <pubDate>Sat, 30 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_09_gorm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go elastic package</title>
+      <link>https://winsun.github.io/post/go_08_elastic/</link>
+      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_08_elastic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go panic &amp; recover</title>
+      <link>https://winsun.github.io/post/go_07_defer_panic_recover/</link>
+      <pubDate>Thu, 21 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_07_defer_panic_recover/</guid>
+      <description>panic defer recover </description>
+    </item>
+    
+    <item>
+      <title>go循环控制</title>
+      <link>https://winsun.github.io/post/go_06_loop/</link>
+      <pubDate>Thu, 21 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_06_loop/</guid>
+      <description>for in range while</description>
+    </item>
+    
+    <item>
+      <title>go logger</title>
+      <link>https://winsun.github.io/post/go_04_logger/</link>
+      <pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_04_logger/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>map,slice,byte,string,struct,interface</title>
+      <link>https://winsun.github.io/post/go_05_datastruct/</link>
+      <pubDate>Mon, 18 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_05_datastruct/</guid>
+      <description>byte string map slice struct interface </description>
+    </item>
+    
+    <item>
+      <title>go cron源码</title>
+      <link>https://winsun.github.io/post/go_03_cron/</link>
+      <pubDate>Fri, 15 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_03_cron/</guid>
+      <description>cron源码 cron在线表达式 推荐使用在线工具来看自己写的 cron 对不对，简单的表达式直接写一般问题不大。这里推荐 crontab.guru，可以通过可视化的方式来查看你编写的定时规则。 cron源码包 创建任务 import &amp;#34;github.com/robfig/cron/v3&amp;#34; job := cron.new() job.AddFunc(&amp;#34;*/1 * * * * *&amp;#34;,func(){ fmt.println(&amp;#34;hello&amp;#34;) }) job.Start() 核心数据结构 // Cron keeps track of any number of entries, invoking the associated func as // specified by the schedule. It</description>
+    </item>
+    
+    <item>
+      <title>go routine</title>
+      <link>https://winsun.github.io/post/go_02_routine/</link>
+      <pubDate>Tue, 05 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_02_routine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go context</title>
+      <link>https://winsun.github.io/post/go_01_context/</link>
+      <pubDate>Wed, 29 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_01_context/</guid>
+      <description>context</description>
+    </item>
+    
+    <item>
+      <title>go基础</title>
+      <link>https://winsun.github.io/post/go_00_install_config/</link>
+      <pubDate>Sun, 26 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/go_00_install_config/</guid>
+      <description>install download go: https://go.dev/dl/ ubuntu install go: https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-20-04 $ tar -C /usr/local -xvf goxxxx $ vim ~/.profile 行末尾添加 : export PATH=$PATH:/usr/local/go/bin $ source ~/.profile $ go version</description>
+    </item>
+    
+    <item>
+      <title>ios内核堆梳理</title>
+      <link>https://winsun.github.io/post/arm_20_grooming_ios_kernel_heap/</link>
+      <pubDate>Fri, 24 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_20_grooming_ios_kernel_heap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ios kernel和堆溢出</title>
+      <link>https://winsun.github.io/post/arm_19_ios_kernel_heap_overflow/</link>
+      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_19_ios_kernel_heap_overflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 堆溢出</title>
+      <link>https://winsun.github.io/post/arm_18_heap_overflow_dev/</link>
+      <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_18_heap_overflow_dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm glibc heap free</title>
+      <link>https://winsun.github.io/post/arm_17_glibc_heap_free/</link>
+      <pubDate>Fri, 03 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_17_glibc_heap_free/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm glibc heap malloc</title>
+      <link>https://winsun.github.io/post/arm_16_glibc_heap_malloc/</link>
+      <pubDate>Wed, 25 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_16_glibc_heap_malloc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm shellcode 持久化</title>
+      <link>https://winsun.github.io/post/arm_15_process_continue_shellcode/</link>
+      <pubDate>Fri, 20 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_15_process_continue_shellcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 栈溢出挑战</title>
+      <link>https://winsun.github.io/post/arm_14_stack_overflow_chg/</link>
+      <pubDate>Sun, 15 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_14_stack_overflow_chg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 栈溢出</title>
+      <link>https://winsun.github.io/post/arm_13_rop/</link>
+      <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_13_rop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 栈溢出</title>
+      <link>https://winsun.github.io/post/arm_12_stack_overflow/</link>
+      <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_12_stack_overflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 进程内存及崩溃分析</title>
+      <link>https://winsun.github.io/post/arm_11_procee_memory/</link>
+      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_11_procee_memory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm tcp反弹shell</title>
+      <link>https://winsun.github.io/post/arm_10_reverse_shell/</link>
+      <pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_10_reverse_shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm tcp绑定shell</title>
+      <link>https://winsun.github.io/post/arm_09_tcp_bind_shell/</link>
+      <pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_09_tcp_bind_shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 堆栈和函数</title>
+      <link>https://winsun.github.io/post/arm_07_stack_function/</link>
+      <pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_07_stack_function/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm shellcode编写</title>
+      <link>https://winsun.github.io/post/arm_08_shellcode/</link>
+      <pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_08_shellcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 条件执行和分支指令</title>
+      <link>https://winsun.github.io/post/arm_06_condition_branch/</link>
+      <pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_06_condition_branch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 多次加载和存储</title>
+      <link>https://winsun.github.io/post/arm_05_load_store/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_05_load_store/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm 加载和存储指令</title>
+      <link>https://winsun.github.io/post/arm_04_mem_ins/</link>
+      <pubDate>Sun, 27 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_04_mem_ins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm指令集</title>
+      <link>https://winsun.github.io/post/arm_03_ins_set/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_03_ins_set/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm数据类型和寄存器</title>
+      <link>https://winsun.github.io/post/arm_02_data_reg/</link>
+      <pubDate>Wed, 23 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_02_data_reg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm汇编</title>
+      <link>https://winsun.github.io/post/arm_01_asm/</link>
+      <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/arm_01_asm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>unlink exploit</title>
+      <link>https://winsun.github.io/post/pwn_14_unlinkexp/</link>
+      <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_14_unlinkexp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>double free</title>
+      <link>https://winsun.github.io/post/pwn_13_doublefree/</link>
+      <pubDate>Mon, 14 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_13_doublefree/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ret2csu</title>
+      <link>https://winsun.github.io/post/pwn_12_uaf/</link>
+      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_12_uaf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>use after free</title>
+      <link>https://winsun.github.io/post/pwn_11_heap_overflow/</link>
+      <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_11_heap_overflow/</guid>
+      <description>配置docker环境 ### pull ubuntu 16.04 image sudo docker pull ubuntu:16.04 ### 进入终端 sudo docker run -ti --rm ubuntu:16.04 /bin/bash ### 安装gcc apt update &amp;amp;&amp;amp; apt install gcc ### gcc 版本 root@687e398bdbdb:/# gcc --version gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609 Copyright (C) 2015 Free Software Foundation, Inc. This is free software; see the source for copying conditions. There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. ### 安装 radare2 apt install radare2 漏洞程序 #include &amp;lt;err.h&amp;gt; #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;string.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; struct data { char name[64]; }; struct fp { void (*fp)(); char __pad[64 - sizeof(unsigned long)]; }; void winner() { printf(&amp;#34;Congratulations, you have passed this level\n&amp;#34;); } void nowinner() { printf( &amp;#34;level has</description>
+    </item>
+    
+    <item>
+      <title>stack pivoiting</title>
+      <link>https://winsun.github.io/post/pwn_10_stack_pivoiting/</link>
+      <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_10_stack_pivoiting/</guid>
+      <description>1 what ？ stack pivoiting是一种栈空间转移技术 2 why 有时候缓冲区有长度限制，不利于在栈上配置rop gadget(空间不够)！ 3 how 3.1 pop rsp gadget 这种情形比较少见，遇到了相当幸运～ 3.2 xchg , rsp pop &amp;lt;reg&amp;gt; &amp;lt;=== return pointer &amp;lt;reg value&amp;gt; xchg &amp;lt;rag&amp;gt;, rsp 3.3 leave;ret leave相当于： mov rsp,rbp pop rbp 加上ret就等于： mov rsp,rbp pop rbp pop rip 覆盖rbp，然后栈中的r</description>
+    </item>
+    
+    <item>
+      <title>ret2csu</title>
+      <link>https://winsun.github.io/post/pwn_09_ret2csu/</link>
+      <pubDate>Mon, 24 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_09_ret2csu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ret2reg</title>
+      <link>https://winsun.github.io/post/pwn_08_ret2reg/</link>
+      <pubDate>Wed, 19 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_08_ret2reg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ret2dlresolve</title>
+      <link>https://winsun.github.io/post/pwn_07_ret2dlresolve/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_07_ret2dlresolve/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SROP</title>
+      <link>https://winsun.github.io/post/pwn_06_srop/</link>
+      <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_06_srop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ret2plt</title>
+      <link>https://winsun.github.io/post/pwn_05_ret2plt/</link>
+      <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_05_ret2plt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ret2libc</title>
+      <link>https://winsun.github.io/post/pwn_04_ret2libc/</link>
+      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_04_ret2libc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shellcode</title>
+      <link>https://winsun.github.io/post/pwn_03_shellcode/</link>
+      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_03_shellcode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ROP</title>
+      <link>https://winsun.github.io/post/pwn_02_rop/</link>
+      <pubDate>Sat, 24 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_02_rop/</guid>
+      <description>ROP Returned-oriented Program,defeats the W⊕X protections recently deployed by Microsoft,Intel, and AMD;in this context, it can be seen as a generalization of traditional return-into-libc attacks. But the threat is more general . gadget what gadget Each gadget is an arrangement of words on the stack, both pointers to instruction sequences and immediate data words, that when invoked accomplishes some well-defined task “W⊕X,” ensures that no memory location in a process image is marked both writable (“W”) and executable (“X”) gadget feature One gadget might: perform a load operation another an xor and another a conditional branch 引用 detetcting rop attacks in application jit-rop rop systems,languages,and applications dark-rop black hat rop ropme write up</description>
+    </item>
+    
+    <item>
+      <title>pwn</title>
+      <link>https://winsun.github.io/post/pwn_01_pwntools/</link>
+      <pubDate>Mon, 19 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/pwn_01_pwntools/</guid>
+      <description>python pwn pwntools github
+pwntools doc
+Writing Exploits with pwntools</description>
+    </item>
+    
+    <item>
+      <title>linux shell and makefile</title>
+      <link>https://winsun.github.io/post/linux_16_shell/</link>
+      <pubDate>Wed, 14 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_16_shell/</guid>
+      <description>shell Bash脚本编程 makefile learn makefiles</description>
+    </item>
+    
+    <item>
+      <title>gcc</title>
+      <link>https://winsun.github.io/post/linux_15_gcc/</link>
+      <pubDate>Fri, 09 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_15_gcc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vfs重要数据结构</title>
+      <link>https://winsun.github.io/post/linux_14_filesystem/</link>
+      <pubDate>Sun, 04 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_14_filesystem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>网络编程</title>
+      <link>https://winsun.github.io/post/linux_13_network/</link>
+      <pubDate>Mon, 29 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_13_network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>system call</title>
+      <link>https://winsun.github.io/post/linux_12_syscall/</link>
+      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_12_syscall/</guid>
+      <description>linux linux windows windows 引用 system call syscall under-the-hood</description>
+    </item>
+    
+    <item>
+      <title>aslr保护机制</title>
+      <link>https://winsun.github.io/post/linux_09_ASLR/</link>
+      <pubDate>Fri, 19 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_09_ASLR/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>canary保护机制</title>
+      <link>https://winsun.github.io/post/linux_08_stack_canary/</link>
+      <pubDate>Sun, 14 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_08_stack_canary/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>java反序列化漏洞</title>
+      <link>https://winsun.github.io/post/p04_vul_03_serial/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p04_vul_03_serial/</guid>
+      <description>引用 从0开始学习java反序列化漏洞</description>
+    </item>
+    
+    <item>
+      <title>log4j</title>
+      <link>https://winsun.github.io/post/p04_vul_04_log4j/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p04_vul_04_log4j/</guid>
+      <description>引用 checking log4j dep</description>
+    </item>
+    
+    <item>
+      <title>NX保护机制</title>
+      <link>https://winsun.github.io/post/linux_07_NX/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_07_NX/</guid>
+      <description>NX开启状态 $ checksec vuln [*] &amp;#39;~/vuln&amp;#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX enabled PIE: No PIE (0x400000) the NX bit. The NX bit has the effect of preventing memory areas not supposed to contain code (typically, the stack) from being executed ROP mprotect sigreturn</description>
+    </item>
+    
+    <item>
+      <title>springshell</title>
+      <link>https://winsun.github.io/post/p04_vul_springshell_05/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p04_vul_springshell_05/</guid>
+      <description>引用 CVE-2022-22965</description>
+    </item>
+    
+    <item>
+      <title>xposed</title>
+      <link>https://winsun.github.io/tools/xposed/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/tools/xposed/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>缓冲区溢出01-溢出漏洞</title>
+      <link>https://winsun.github.io/post/p04_vul_01_overflow/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p04_vul_01_overflow/</guid>
+      <description>缓冲区溢出 一个自带缓冲区溢出bug的代码 greeting函数存在buffer overflow $ gdb -q meet warning: ~/gef/gef.py: No such file or directory warning: ~/gef/scripts/helpme.py: No such file or directory Reading symbols from meet... (gdb) list 1 // meet.c 2 #include &amp;lt;stdio.h&amp;gt; // needed for screen printing 3 #include &amp;lt;string.h&amp;gt; // needed for strcpy 4 void greeting(char *temp1,char *temp2){ // greeting function to say hello 5 char name[400]; // string variable to hold the name 6 strcpy(name, temp2); // copy argument to name with the infamous strcpy 7 printf(&amp;#34;Hello %s %s\n&amp;#34;, temp1, name); // print out the greeting 8 } 9 int main(int argc, char * argv[]){ // note the format for arguments</description>
+    </item>
+    
+    <item>
+      <title>缓冲区溢出02-shellcode</title>
+      <link>https://winsun.github.io/post/p04_vul_02_overflow/</link>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p04_vul_02_overflow/</guid>
+      <description>weekness programe // meet.c #include &amp;lt;stdio.h&amp;gt; // needed for screen printing #include &amp;lt;string.h&amp;gt; // needed for strcpy void greeting(char *temp1,char *temp2){ // greeting function to say hello char name[400]; // string variable to hold the name strcpy(name, temp2); // copy argument to name with the infamous strcpy printf(&amp;#34;Hello %s %s\n&amp;#34;, temp1, name); // print out the greeting } int main(int argc, char * argv[]){ // note the format for arguments greeting(argv[1], argv[2]); // call function, pass title &amp;amp; name printf(&amp;#34;Bye %s %s\n&amp;#34;, argv[1], argv[2]); // say &amp;#34;bye&amp;#34; } // exit program stack frame | name[400] | ebp | eip | temp1 | temp2 | disassemble greeting (gdb) disass greeting Dump of assembler code for function greeting: 0x56556201 &amp;lt;+0&amp;gt;: push %ebp 0x56556202 &amp;lt;+1&amp;gt;: mov %esp,%ebp 0x56556204 &amp;lt;+3&amp;gt;: push %ebx 0x56556205 &amp;lt;+4&amp;gt;: sub $0x190,%esp 0x5655620b &amp;lt;+10&amp;gt;: call 0x565560c0 &amp;lt;__x86.get_pc_thunk.bx&amp;gt; 0x56556210 &amp;lt;+15&amp;gt;: add</description>
+    </item>
+    
+    <item>
+      <title>pie&amp;pic</title>
+      <link>https://winsun.github.io/post/linux_06_PIE_PIC/</link>
+      <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_06_PIE_PIC/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GOT&amp;PLT</title>
+      <link>https://winsun.github.io/post/linux_03_got_plt/</link>
+      <pubDate>Wed, 24 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_03_got_plt/</guid>
+      <description>gdb调试overbuffer objdump readelf string symbol table GOT PLT</description>
+    </item>
+    
+    <item>
+      <title>linux环境和相关工具</title>
+      <link>https://winsun.github.io/post/linux_02_elf_tools/</link>
+      <pubDate>Fri, 19 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_02_elf_tools/</guid>
+      <description>工具列表 GDB objdump objcopy strace system call trace ltrace library trace ftrace function trace readelf 有用的设备和文件 /proc/&amp;lt;pid&amp;gt;/maps ls /proc/1234/maps /proc/kcore /boot/System.map /proc/kallsyms /proc/iomem ECFS Extended core file snapshotECFS 环境变量 LD_PRELOAD LD_SHOW_AUXV</description>
+    </item>
+    
+    <item>
+      <title>ATT&amp;CT</title>
+      <link>https://winsun.github.io/post/p06_pet_01_attct/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p06_pet_01_attct/</guid>
+      <description>ATT&amp;amp;CT</description>
+    </item>
+    
+    <item>
+      <title>C2</title>
+      <link>https://winsun.github.io/post/p06_pet_02_c2/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p06_pet_02_c2/</guid>
+      <description>C2
+merlin </description>
+    </item>
+    
+    <item>
+      <title>decrypt fireware by binwalk</title>
+      <link>https://winsun.github.io/post/p02_re_04_binwalk/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p02_re_04_binwalk/</guid>
+      <description>binwalk binwalk 提取固件 $ binwalk -Me DAP-1320_FIRMWARE_1.11B10.zip Scan Time: 2022-03-26 03:08:51 Target File: /home/kali/DAP-1320_FIRMWARE_1.11B10.zip MD5 Checksum: ebd3a01c9e2079de403cf336741e1870 Signatures: 411 ... Scan Time: 2022-03-26 03:08:55 Target File: /home/kali/_DAP-1320_FIRMWARE_1.11B10.zip.extracted/_DAP1320_fw_1_11b10.bin.extracted/40 MD5 Checksum: a741e8176a2f160957382396824e2620 Signatures: 411 DECIMAL HEXADECIMAL DESCRIPTION -------------------------------------------------------------------------------- 78808 0x133D8 Certificate in DER format (x509 v3), header length: 4, sequence length: 30 79160 0x13538 Certificate in DER format (x509 v3), header length: 4, sequence length: 30 79604 0x136F4 Certificate in DER format (x509 v3), header length: 4, sequence length: 30 1769504 0x1B0020 Linux kernel version 2.6.31 1790640 0x1B52B0 CRC32 polynomial table, little endian 2009280 0x1EA8C0 Neighborly text, &amp;#34;NeighborSolicitstunnel6 init(): can&amp;#39;t add protocol&amp;#34; 2009300 0x1EA8D4 Neighborly text, &amp;#34;NeighborAdvertisementst add protocol&amp;#34; 2011043 0x1EAFA3 Neighborly text, &amp;#34;neighbor %.2x%.2x.%.2x:%.2x:%.2x:%.2x:%.2x:%.2x lost on port %d(%s)(%s)&amp;#34; fireware</description>
+    </item>
+    
+    <item>
+      <title>ELF格式</title>
+      <link>https://winsun.github.io/post/linux_01_elf/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_01_elf/</guid>
+      <description>elf格式 elf header man elf查看 ELF header (Ehdr) The ELF header is described by the type Elf32_Ehdr or Elf64_Ehdr: #define EI_NIDENT 16 typedef struct { unsigned char e_ident[EI_NIDENT]; uint16_t e_type; uint16_t e_machine; uint32_t e_version; ElfN_Addr e_entry; ElfN_Off e_phoff; ElfN_Off e_shoff; uint32_t e_flags; uint16_t e_ehsize; uint16_t e_phentsize; uint16_t e_phnum; uint16_t e_shentsize; uint16_t e_shnum; uint16_t e_shstrndx; } ElfN_Ehdr; $ readelf -h vuln ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2&amp;#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: DYN (Position-Independent Executable file) Machine: Advanced Micro Devices X86-64 Version: 0x1 Entry point address: 0x11a0 Start of program headers: 64 (bytes into file) Start of section headers: 15344 (bytes into file) Flags: 0x0 Size</description>
+    </item>
+    
+    <item>
+      <title>fuzz</title>
+      <link>https://winsun.github.io/post/p02_pwn_06_fuzz/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p02_pwn_06_fuzz/</guid>
+      <description> fuzz security AFL using </description>
+    </item>
+    
+    <item>
+      <title>Ghidra</title>
+      <link>https://winsun.github.io/post/p02_re_01_ghidra/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p02_re_01_ghidra/</guid>
+      <description>ghidrz</description>
+    </item>
+    
+    <item>
+      <title>Linux Kernel Exploitation Technique: Overwriting: modprobe_path</title>
+      <link>https://winsun.github.io/post/p02_pwn_04_exp_kernel/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p02_pwn_04_exp_kernel/</guid>
+      <description>引用 Overwriting modprobe_path Linux Kernel Exploitation</description>
+    </item>
+    
+    <item>
+      <title>morden encrypt algorithm</title>
+      <link>https://winsun.github.io/post/p02_crack_01.algorithm/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p02_crack_01.algorithm/</guid>
+      <description>random hash aes des rsa pki </description>
+    </item>
+    
+    <item>
+      <title>PETS框架</title>
+      <link>https://winsun.github.io/post/p06_pet_03_pets/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p06_pet_03_pets/</guid>
+      <description>PETS</description>
+    </item>
+    
+    <item>
+      <title>randomize</title>
+      <link>https://winsun.github.io/post/p02_re_02_idapro/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p02_re_02_idapro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webgoat靶机配置</title>
+      <link>https://winsun.github.io/post/p06_pet_06_webgoat/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p06_pet_06_webgoat/</guid>
+      <description>基本配置 ubuntu winsun@ubuntu:~/webgoat$ uname -a Linux ubuntu 5.13.0-30-generic #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux jdk winsun@ubuntu:~/webgoat$ pwd /home/winsun/webgoat winsun@ubuntu:~/webgoat$ ls -al total 432648 drwxrwxr-x 3 winsun winsun 4096 Apr 6 22:02 . drwxr-xr-x 25 winsun winsun 4096 Apr 6 22:09 .. drwxrwxr-x 2 winsun winsun 4096 Apr 6 20:28 __MACOSX -rwxr--r-- 1 winsun winsun 156374894 Apr 6 22:02 jdk-18_linux-x64_bin.deb -rwxr--r-- 1 winsun winsun 96411569 Apr 6 20:22 webgoat-server-8.2.2.jar -rwxr--r-- 1 winsun winsun 53814896 Apr 6 20:22 webwolf-8.2.2.jar sudo vim /etc/profile.d/jdk.sh source /etc/profile.d/jdk.sh jdk.sh: winsun@ubuntu:~/webgoat$ cat /etc/profile.d/jdk.sh export JAVA_HOME=/usr/lib/jvm/jdk-18/ export PATH=$PATH:$JAVA_HOME/bin webgoat 下载webgoat Download the latest WebGoat and WebWolf release from https://github.com/WebGoat/WebGoat/releases 启动webgoat java -jar webgoat-server-8.1.0.jar [&amp;ndash;server.port=8080] [&amp;ndash;server.address=localhost] java -jar webwolf-8.1.0.jar [&amp;ndash;server.port=9090] [&amp;ndash;server.address=localhost] and browse to</description>
+    </item>
+    
+    <item>
+      <title>虚拟化研究框架</title>
+      <link>https://winsun.github.io/post/p02_pwn_05_hypervisor/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p02_pwn_05_hypervisor/</guid>
+      <description>kali install kvm kali install kvm</description>
+    </item>
+    
+    <item>
+      <title>关于我</title>
+      <link>https://winsun.github.io/about/</link>
+      <pubDate>Thu, 10 Mar 2011 00:13:27 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/about/</guid>
+      <description>游戏外挂攻防艺术 公众号，扫码关注</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://winsun.github.io/post/p04_vul_05_heartblood/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p04_vul_05_heartblood/</guid>
+      <description>引用 The Heartbleed Bug, explained</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://winsun.github.io/post/p06_pet_04_honeypot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p06_pet_04_honeypot/</guid>
+      <description>shodan搜索 ICS:industry controll system port:502,102,20000,1911,4911,47808,448,18,18245,18246,5094,1962,5006,5007,9600,789,2455,2404,20547 -ssh -http -html -ident https://www.shodan.io/search?query=port%3A502%2C102%2C20000%2C1911%2C4911%2C47808%2C448%2C18%2C18245%2C18246%2C5094%2C1962%2C5006%2C5007%2C9600%2C789%2C2455%2C2404%2C20547++-ssh+-http+-html+country%3A%22CN%22 └─$ shodan honeyscore 106.14.13.128 Not a honeypot Score: 0.3 引用 aliyun在线蜜罐 Shodan新手入坑指南 Shodan api shoran 用法</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://winsun.github.io/post/p06_pet_05_webshell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p06_pet_05_webshell/</guid>
+      <description>引用 webshell owasp top 10</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://winsun.github.io/post/p08_security_project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/p08_security_project/</guid>
+      <description>Attack vul&amp;rsquo;s db fuzz project zero AFL AFL EXP01 hongfuzz symbolic execute KLEE KLEE EXP01 pwn pwntools []
+fireware binwalk defense packer llvm vmp FW WAF NIDS HIDS EDR UEBA VPN Bastion host soc seim soar pki pet </description>
+    </item>
+    
+    <item>
+      <title>GDB及扩展</title>
+      <link>https://winsun.github.io/post/linux_05_gdb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/post/linux_05_gdb/</guid>
+      <description>gdb gdbinit配置 可以从网上或自己编写 .gdbinit 配置文件, 从网上找到一份配置 config one 地址 https://github.com/gdbinit/Gdbinit 安装: git clone git@github.com:gdbinit/Gdbinit.git cp Gdbinit/gdbinit ~/.gdbinit config two wget https://raw.githubusercontent.com/gdbinit/Gdbinit/master/gdbinit cp gdbinit ~/.gdbinit gef gef A few of GEF features include: 1、One single GDB script Entirely OS Agnostic, NO dependencies: GEF is battery-included and is installable instantly Fast limiting the number of dependencies and optimizing code to make the commands as fast as possible 2、Provides a great variety of commands to drastically change your experience in GDB. Easily extensible to create other commands by providing more comprehensible layout to GDB Python API. 3、</description>
+    </item>
+    
+    <item>
+      <title>归档</title>
+      <link>https://winsun.github.io/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/archives/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>搜索</title>
+      <link>https://winsun.github.io/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/search/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
