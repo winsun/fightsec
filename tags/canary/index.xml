@@ -6,7 +6,16 @@
     <description>Recent content in canary on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 14 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/canary/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 18 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/canary/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>stack canary泄露方法</title>
+      <link>https://winsun.github.io/fightsec/post/pwn_17_stack_canary/</link>
+      <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/pwn_17_stack_canary/</guid>
+      <description>什么是canary security cookies，Assume that at the beginning of a function call (e.g. during its prologue) we are saving a value in the function’s stack frame, we would expect (! if everything went well !) to read the same value just before the function exits or namely at its epilogue. If the value has changed, then the execution of the program will be terminated and an error message will be displayed. [1] Obviously, this protection mechanism is added by the compiler during the compilation process. For the GNU Compiler Collection (gcc), it is implemented via the StackGuard extension which was added to gcc 2.7.2.2 [1] Bypass stack canary 漏洞程</description>
+    </item>
+    
     <item>
       <title>canary保护机制</title>
       <link>https://winsun.github.io/fightsec/post/linux_08_stack_canary/</link>

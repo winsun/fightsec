@@ -85,6 +85,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_17_stack_canary/">stack canary泄露方法</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年6月18日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='/fightsec/categories/pwn'>pwn</a>
+            
+        </div>
+        
+        <div class="post-content">
+            什么是canary security cookies，Assume that at the beginning of a function call (e.g. during its prologue) we are saving a value in the function’s stack frame, we would expect (! if everything went well !) to read the same value just before the function exits or namely at its epilogue. If the value has changed, then the execution of the program will be terminated and an error message will be displayed. [1] Obviously, this protection mechanism is added by the compiler during the compilation process. For the GNU Compiler Collection (gcc), it is implemented via the StackGuard extension which was added to gcc 2.7.2.2 [1] Bypass stack canary 漏洞程……
+            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_17_stack_canary/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_16_wformatstr/">字符串漏洞：任意写</a>
             </h1>
         </header>
@@ -187,10 +210,6 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/pwn_17_stack_canary/" title="Pwn_17_stack_canary">Pwn_17_stack_canary</a>
-    </li>
-    
-    <li>
         <a href="https://winsun.github.io/fightsec/post/knl_02_syscall/" title="linux kernel : system call">linux kernel : system call</a>
     </li>
     
@@ -226,6 +245,10 @@
         <a href="https://winsun.github.io/fightsec/post/cyber_09_zero_trust/" title="零信任架构">零信任架构</a>
     </li>
     
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/cyber_08_bastion/" title="堡垒机及安全">堡垒机及安全</a>
+    </li>
+    
 </ul>
     </section>
 
@@ -253,7 +276,7 @@
     
     <li><a href="https://winsun.github.io/fightsec/categories/linux/">linux (15)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (18)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (19)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/reverse/">reverse (2)</a></li>
     
