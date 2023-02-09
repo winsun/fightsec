@@ -76,6 +76,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_10_stack_pivoiting/" title="stack pivoiting">stack pivoiting</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年5月29日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            1 what stack pivoiting是一种栈空间转移技术 2 why 有时候缓冲区有长度限制，不利于在栈上配置rop gadget(空间不够)！ 3 how 3.1 pop rsp gadget 这种情形比较少见，遇到了相当幸运～ 3.2 xchg , rsp pop &lt;reg&gt; &lt;=== return pointer &lt;reg value&gt; xchg &lt;rag&gt;, rsp 3.3 leave;ret leave相当于： mov rsp,rbp pop rbp 加上ret就等于： mov rsp,rbp pop rbp pop rip 覆盖rbp，然后栈中的ri……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_10_stack_pivoiting/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_09_ret2csu/" title="ret2csu">ret2csu</a>
             </h1>
         </header>
@@ -280,29 +303,6 @@ pwntools doc
 Writing Exploits with pwntools……
         </div>
         <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_01_pwntools/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/linux_16_shell/" title="linux shell and makefile">linux shell and makefile</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年4月14日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/linux'>linux</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            shell Bash脚本编程 makefile learn makefiles……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/linux_16_shell/">阅读全文</a></p>
     </article>
     
     
@@ -517,7 +517,7 @@ Writing Exploits with pwntools……
     
     <li><a href="https://winsun.github.io/fightsec/categories/linux/">linux (15)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (19)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (20)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/reverse/">reverse (2)</a></li>
     

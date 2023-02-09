@@ -122,6 +122,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_18_bypass_pie/" title="pie绕过">pie绕过</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年6月20日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            pie PIE（Position Independent Executable，可移植执行码）是一种特殊的执行文件格式，常用于保护程序执行空间的受限和安全性。使用 PIE 能够让加载到内存的代码不会固定地映射到特定的地址，每次加载时都能让其他程序更难预测它想要加载到哪里。 代码重定位的例子有：加载时技术（load-ti……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_18_bypass_pie/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_17_stack_canary/" title="stack canary泄露方法">stack canary泄露方法</a>
             </h1>
         </header>
@@ -278,29 +301,6 @@
             配置docker环境 ### pull ubuntu 16.04 image sudo docker pull ubuntu:16.04 ### 进入终端 sudo docker run -ti --rm ubuntu:16.04 /bin/bash ### 安装gcc apt update &amp;&amp; apt install gcc ### gcc 版本 root@687e398bdbdb:/# gcc --version gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609 Copyright (C) 2015 Free Software Foundation, Inc. This is free software; see the source for copying conditions. There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. ### 安装 radare2 apt install radare2 漏洞程序 #include &lt;err.h&gt; #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;string.h&gt; #include &lt;unistd.h&gt; struct data { char name[64]; }; struct fp { void (*fp)(); char __pad[64 - sizeof(unsigned long)]; }; void winner() { printf(&#34;Congratulations, you have passed this level\n&#34;); } void nowinner() { printf( &#34;level has……
         </div>
         <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_11_heap_overflow/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_10_stack_pivoiting/" title="stack pivoiting">stack pivoiting</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年5月29日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            1 what stack pivoiting是一种栈空间转移技术 2 why 有时候缓冲区有长度限制，不利于在栈上配置rop gadget(空间不够)！ 3 how 3.1 pop rsp gadget 这种情形比较少见，遇到了相当幸运～ 3.2 xchg , rsp pop &lt;reg&gt; &lt;=== return pointer &lt;reg value&gt; xchg &lt;rag&gt;, rsp 3.3 leave;ret leave相当于： mov rsp,rbp pop rbp 加上ret就等于： mov rsp,rbp pop rbp pop rip 覆盖rbp，然后栈中的ri……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_10_stack_pivoiting/">阅读全文</a></p>
     </article>
     
     
@@ -515,7 +515,7 @@
     
     <li><a href="https://winsun.github.io/fightsec/categories/linux/">linux (15)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (19)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (20)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/reverse/">reverse (2)</a></li>
     
