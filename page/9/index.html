@@ -76,6 +76,52 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/p04_vul_01_overflow/" title="缓冲区溢出01-溢出漏洞">缓冲区溢出01-溢出漏洞</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年3月9日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/%E6%BC%8F%E6%B4%9E'>漏洞</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            缓冲区溢出 一个自带缓冲区溢出bug的代码 greeting函数存在buffer overflow $ gdb -q meet warning: ~/gef/gef.py: No such file or directory warning: ~/gef/scripts/helpme.py: No such file or directory Reading symbols from meet... (gdb) list 1 // meet.c 2 #include &lt;stdio.h&gt; // needed for screen printing 3 #include &lt;string.h&gt; // needed for strcpy 4 void greeting(char *temp1,char *temp2){ // greeting function to say hello 5 char name[400]; // string variable to hold the name 6 strcpy(name, temp2); // copy argument to name with the infamous strcpy 7 printf(&#34;Hello %s %s\n&#34;, temp1, name); // print out the greeting 8 } 9 int main(int argc, char * argv[]){ // note the format for arguments……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p04_vul_01_overflow/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/p04_vul_02_overflow/" title="缓冲区溢出02-shellcode">缓冲区溢出02-shellcode</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年3月9日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/%E6%BC%8F%E6%B4%9E'>漏洞</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            weekness programe // meet.c #include &lt;stdio.h&gt; // needed for screen printing #include &lt;string.h&gt; // needed for strcpy void greeting(char *temp1,char *temp2){ // greeting function to say hello char name[400]; // string variable to hold the name strcpy(name, temp2); // copy argument to name with the infamous strcpy printf(&#34;Hello %s %s\n&#34;, temp1, name); // print out the greeting } int main(int argc, char * argv[]){ // note the format for arguments greeting(argv[1], argv[2]); // call function, pass title &amp; name printf(&#34;Bye %s %s\n&#34;, argv[1], argv[2]); // say &#34;bye&#34; } // exit program stack frame | name[400] | ebp | eip | temp1 | temp2 | disassemble greeting (gdb) disass greeting Dump of assembler code for function greeting: 0x56556201 &lt;+0&gt;: push %ebp 0x56556202 &lt;+1&gt;: mov %esp,%ebp 0x56556204 &lt;+3&gt;: push %ebx 0x56556205 &lt;+4&gt;: sub $0x190,%esp 0x5655620b &lt;+10&gt;: call 0x565560c0 &lt;__x86.get_pc_thunk.bx&gt; 0x56556210 &lt;+15&gt;: add……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p04_vul_02_overflow/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/linux_06_PIE_PIC/" title="pie&amp;pic">pie&amp;pic</a>
             </h1>
         </header>
@@ -258,52 +304,6 @@ merlin ……
         <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p02_pwn_06_fuzz/">阅读全文</a></p>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p02_re_01_ghidra/" title="Ghidra">Ghidra</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年2月12日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/reverse'>reverse</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            ghidrz……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p02_re_01_ghidra/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p02_pwn_04_exp_kernel/" title="Linux Kernel Exploitation Technique: Overwriting: modprobe_path">Linux Kernel Exploitation Technique: Overwriting: modprobe_path</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年2月12日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            引用 Overwriting modprobe_path Linux Kernel Exploitation……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p02_pwn_04_exp_kernel/">阅读全文</a></p>
-    </article>
-    
     
 
 
@@ -316,53 +316,72 @@ merlin ……
     
 
     
-    <li >
-        <a href="https://winsun.github.io/fightsec/">1</a>
-    </li>
+
     
-    <li >
-        <a href="https://winsun.github.io/fightsec/page/2/">2</a>
-    </li>
+        
+        
     
-    <li >
-        <a href="https://winsun.github.io/fightsec/page/3/">3</a>
-    </li>
-    
-    <li >
-        <a href="https://winsun.github.io/fightsec/page/4/">4</a>
-    </li>
-    
-    <li >
-        <a href="https://winsun.github.io/fightsec/page/5/">5</a>
-    </li>
-    
-    <li >
-        <a href="https://winsun.github.io/fightsec/page/6/">6</a>
-    </li>
-    
-    <li >
-        <a href="https://winsun.github.io/fightsec/page/7/">7</a>
-    </li>
-    
-    <li >
-        <a href="https://winsun.github.io/fightsec/page/8/">8</a>
-    </li>
-    
-    <li  class="current">
-        <a href="https://winsun.github.io/fightsec/page/9/">9</a>
-    </li>
-    
-    <li >
-        <a href="https://winsun.github.io/fightsec/page/10/">10</a>
-    </li>
     
 
     
+        
+        
+        <li >
+            <a href="https://winsun.github.io/fightsec/">1</a>
+        </li>
+        
+    
+        
+        <li>
+            <span>...</span>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://winsun.github.io/fightsec/page/7/">7</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://winsun.github.io/fightsec/page/8/">8</a>
+        </li>
+        
+    
+        
+        
+        <li  class="current">
+            <a href="https://winsun.github.io/fightsec/page/9/">9</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://winsun.github.io/fightsec/page/10/">10</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://winsun.github.io/fightsec/page/11/">11</a>
+        </li>
+        
+    
+
+    
+    
+
     <li class="next">
         <a href="https://winsun.github.io/fightsec/page/10/">下一页</a>
     </li>
     
 </ol>
+
 
 
 
@@ -418,6 +437,10 @@ merlin ……
 <ul class="widget-list">
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_17_stack_canary/" title="Pwn_17_stack_canary">Pwn_17_stack_canary</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/knl_02_syscall/" title="linux kernel : system call">linux kernel : system call</a>
     </li>
     
@@ -453,10 +476,6 @@ merlin ……
         <a href="https://winsun.github.io/fightsec/post/cyber_09_zero_trust/" title="零信任架构">零信任架构</a>
     </li>
     
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_08_bastion/" title="堡垒机及安全">堡垒机及安全</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -484,7 +503,7 @@ merlin ……
     
     <li><a href="https://winsun.github.io/fightsec/categories/linux/">linux (15)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (17)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (18)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/reverse/">reverse (2)</a></li>
     

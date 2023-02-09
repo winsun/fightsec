@@ -13,7 +13,7 @@
       <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/pwn_10_stack_pivoiting/</guid>
-      <description>1 what ？ stack pivoiting是一种栈空间转移技术 2 why 有时候缓冲区有长度限制，不利于在栈上配置rop gadget(空间不够)！ 3 how 3.1 pop rsp gadget 这种情形比较少见，遇到了相当幸运～ 3.2 xchg , rsp pop &amp;lt;reg&amp;gt; &amp;lt;=== return pointer &amp;lt;reg value&amp;gt; xchg &amp;lt;rag&amp;gt;, rsp 3.3 leave;ret leave相当于： mov rsp,rbp pop rbp 加上ret就等于： mov rsp,rbp pop rbp pop rip 覆盖rbp，然后栈中的r</description>
+      <description>1 what stack pivoiting是一种栈空间转移技术 2 why 有时候缓冲区有长度限制，不利于在栈上配置rop gadget(空间不够)！ 3 how 3.1 pop rsp gadget 这种情形比较少见，遇到了相当幸运～ 3.2 xchg , rsp pop &amp;lt;reg&amp;gt; &amp;lt;=== return pointer &amp;lt;reg value&amp;gt; xchg &amp;lt;rag&amp;gt;, rsp 3.3 leave;ret leave相当于： mov rsp,rbp pop rbp 加上ret就等于： mov rsp,rbp pop rbp pop rip 覆盖rbp，然后栈中的ri</description>
     </item>
     
   </channel>

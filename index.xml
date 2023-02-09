@@ -6,7 +6,16 @@
     <description>Recent content on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 03 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Feb 2023 09:40:33 +0800</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pwn_17_stack_canary</title>
+      <link>https://winsun.github.io/fightsec/post/pwn_17_stack_canary/</link>
+      <pubDate>Thu, 09 Feb 2023 09:40:33 +0800</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/pwn_17_stack_canary/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>linux kernel : system call</title>
       <link>https://winsun.github.io/fightsec/post/knl_02_syscall/</link>
@@ -476,6 +485,15 @@
     </item>
     
     <item>
+      <title>字符串漏洞：任意写</title>
+      <link>https://winsun.github.io/fightsec/post/pwn_16_wformatstr/</link>
+      <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/pwn_16_wformatstr/</guid>
+      <description>vuln.c #include &amp;lt;stdio.h&amp;gt; int auth = 0; int main() { char password[100]; puts(&amp;#34;Password: &amp;#34;); fgets(password, sizeof password, stdin); printf(password); printf(&amp;#34;Auth is %i\n&amp;#34;, auth); if(auth == 10) { puts(&amp;#34;Authenticated!&amp;#34;); } } 程序分析 程序保护 gcc -m32 -no-pie -fno-stack-protector -z execstack vuln.c -o vuln $ checksec --file=./vuln [*] &amp;#39;/home/kali/exploits/str_arb_write/vuln&amp;#39; Arch: i386-32-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x8048000) RWX: Has RWX segments 栈布局 $ ./vuln Password: %p %p %p %p %p %p %p %p %p %p %p 0x64 0xf7e1d620 0x804918d 0xf7ffdbac 0x1 0xf7fc17c0 0x25207025 0x70252070 0x20702520 0x25207025 0x70252070 Auth is 0 ascii hex % 0x25 &amp;quot; &amp;quot; 0x20 p 0x70 第7个dword存放格式化字符串 3. 构建利用栈 栈偏移 栈内容</description>
+    </item>
+    
+    <item>
       <title>unlink exploit</title>
       <link>https://winsun.github.io/fightsec/post/pwn_14_unlinkexp/</link>
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
@@ -485,7 +503,7 @@
     </item>
     
     <item>
-      <title>字符串漏洞</title>
+      <title>字符串漏洞: 任意读</title>
       <link>https://winsun.github.io/fightsec/post/pwn_15_formatstr/</link>
       <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -526,7 +544,7 @@
       <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/pwn_10_stack_pivoiting/</guid>
-      <description>1 what ？ stack pivoiting是一种栈空间转移技术 2 why 有时候缓冲区有长度限制，不利于在栈上配置rop gadget(空间不够)！ 3 how 3.1 pop rsp gadget 这种情形比较少见，遇到了相当幸运～ 3.2 xchg , rsp pop &amp;lt;reg&amp;gt; &amp;lt;=== return pointer &amp;lt;reg value&amp;gt; xchg &amp;lt;rag&amp;gt;, rsp 3.3 leave;ret leave相当于： mov rsp,rbp pop rbp 加上ret就等于： mov rsp,rbp pop rbp pop rip 覆盖rbp，然后栈中的r</description>
+      <description>1 what stack pivoiting是一种栈空间转移技术 2 why 有时候缓冲区有长度限制，不利于在栈上配置rop gadget(空间不够)！ 3 how 3.1 pop rsp gadget 这种情形比较少见，遇到了相当幸运～ 3.2 xchg , rsp pop &amp;lt;reg&amp;gt; &amp;lt;=== return pointer &amp;lt;reg value&amp;gt; xchg &amp;lt;rag&amp;gt;, rsp 3.3 leave;ret leave相当于： mov rsp,rbp pop rbp 加上ret就等于： mov rsp,rbp pop rbp pop rip 覆盖rbp，然后栈中的ri</description>
     </item>
     
     <item>

