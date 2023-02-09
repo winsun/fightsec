@@ -85,6 +85,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_04_ret2libc/">ret2libc</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2023年1月27日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='/fightsec/categories/pwn'>pwn</a>
+            
+        </div>
+        
+        <div class="post-content">
+            ret2libc 程序开启nx保护时候，传统的shellcode在栈上不可执行，无法获取 执行shell程序，可以用ret2libc技术。 漏洞程序 #include &lt;stdio.h&gt; void vuln() { char buffer[64]; puts(&#34;Overflow me&#34;); gets(buffer); } int main() { vuln(); } gcc vuln.c -o -m32 -fno-stack-protector -no-pie vuln-32 └─$ checksec --file=./vuln-32 [*] &#39;/home/kali/exploits/ret2libc/vuln-32&#39; Arch: i386-32-little RELRO: Partial RELRO Stack: No canary found NX: NX enabled PIE: No PIE (0x8048000) 利用方案 eip直接指向system(&rsquo;/bin/……
+            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_04_ret2libc/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/arm_20_grooming_ios_kernel_heap/">ios内核堆梳理</a>
             </h1>
         </header>
@@ -289,29 +312,6 @@
         </div>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/arm_11_procee_memory/">arm 进程内存及崩溃分析</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年7月24日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='/fightsec/categories/arm'>arm</a>
-            
-        </div>
-        
-        <div class="post-content">
-            ……
-            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/arm_11_procee_memory/">阅读全文</a></p>
-        </div>
-    </article>
-    
 
     
 
@@ -407,6 +407,10 @@
     </li>
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_04_ret2libc/" title="ret2libc">ret2libc</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/web_01_sqlinject/" title="web sql inject">web sql inject</a>
     </li>
     
@@ -432,10 +436,6 @@
     
     <li>
         <a href="https://winsun.github.io/fightsec/post/cyber_09_zero_trust/" title="零信任架构">零信任架构</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_08_bastion/" title="堡垒机及安全">堡垒机及安全</a>
     </li>
     
 </ul>

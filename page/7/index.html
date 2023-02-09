@@ -76,6 +76,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_11_heap_overflow/" title="use after free">use after free</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年6月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            配置docker环境 ### pull ubuntu 16.04 image sudo docker pull ubuntu:16.04 ### 进入终端 sudo docker run -ti --rm ubuntu:16.04 /bin/bash ### 安装gcc apt update &amp;&amp; apt install gcc ### gcc 版本 root@687e398bdbdb:/# gcc --version gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609 Copyright (C) 2015 Free Software Foundation, Inc. This is free software; see the source for copying conditions. There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. ### 安装 radare2 apt install radare2 漏洞程序 #include &lt;err.h&gt; #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;string.h&gt; #include &lt;unistd.h&gt; struct data { char name[64]; }; struct fp { void (*fp)(); char __pad[64 - sizeof(unsigned long)]; }; void winner() { printf(&#34;Congratulations, you have passed this level\n&#34;); } void nowinner() { printf( &#34;level has……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_11_heap_overflow/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_10_stack_pivoiting/" title="stack pivoiting">stack pivoiting</a>
             </h1>
         </header>
@@ -209,29 +232,6 @@
             ……
         </div>
         <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_05_ret2plt/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_04_ret2libc/" title="ret2libc">ret2libc</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年4月29日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_04_ret2libc/">阅读全文</a></p>
     </article>
     
     <article class="post">
@@ -459,6 +459,10 @@ Writing Exploits with pwntools……
     </li>
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_04_ret2libc/" title="ret2libc">ret2libc</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/web_01_sqlinject/" title="web sql inject">web sql inject</a>
     </li>
     
@@ -484,10 +488,6 @@ Writing Exploits with pwntools……
     
     <li>
         <a href="https://winsun.github.io/fightsec/post/cyber_09_zero_trust/" title="零信任架构">零信任架构</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_08_bastion/" title="堡垒机及安全">堡垒机及安全</a>
     </li>
     
 </ul>
