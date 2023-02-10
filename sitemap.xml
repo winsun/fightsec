@@ -362,6 +362,9 @@
     <loc>https://winsun.github.io/fightsec/post/pwn_06_srop/</loc>
     <lastmod>2021-05-09T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://winsun.github.io/fightsec/tags/plt/</loc>
+    <lastmod>2021-05-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://winsun.github.io/fightsec/post/pwn_05_ret2plt/</loc>
     <lastmod>2021-05-04T00:00:00+00:00</lastmod>
   </url><url>
@@ -474,9 +477,6 @@
     <lastmod>2021-02-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/linux_03_got_plt/</loc>
-    <lastmod>2021-02-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://winsun.github.io/fightsec/tags/plt/</loc>
     <lastmod>2021-02-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/linux_02_elf_tools/</loc>
