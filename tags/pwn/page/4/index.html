@@ -85,6 +85,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_11_heap_overflow/">use after free</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年6月4日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='/fightsec/categories/pwn'>pwn</a>
+            
+        </div>
+        
+        <div class="post-content">
+            配置docker环境 ### pull ubuntu 16.04 image sudo docker pull ubuntu:16.04 ### 进入终端 sudo docker run -ti --rm ubuntu:16.04 /bin/bash ### 安装gcc apt update &amp;&amp; apt install gcc ### gcc 版本 root@687e398bdbdb:/# gcc --version gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609 Copyright (C) 2015 Free Software Foundation, Inc. This is free software; see the source for copying conditions. There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. ### 安装 radare2 apt install radare2 漏洞程序 #include &lt;err.h&gt; #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;string.h&gt; #include &lt;unistd.h&gt; struct data { char name[64]; }; struct fp { void (*fp)(); char __pad[64 - sizeof(unsigned long)]; }; void winner() { printf(&#34;Congratulations, you have passed this level\n&#34;); } void nowinner() { printf( &#34;level has……
+            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_11_heap_overflow/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_10_stack_pivoiting/">stack pivoiting</a>
             </h1>
         </header>
@@ -353,6 +376,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_19_exp_socket/" title="socket exploitation">socket exploitation</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_06_srop/" title="SROP">SROP</a>
     </li>
     
@@ -388,10 +415,6 @@
         <a href="https://winsun.github.io/fightsec/post/cyber_12_honeypot/" title="蜜罐主动防御">蜜罐主动防御</a>
     </li>
     
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_11_backdoor/" title="后门程序">后门程序</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -419,7 +442,7 @@
     
     <li><a href="https://winsun.github.io/fightsec/categories/linux/">linux (15)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (22)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (23)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/reverse/">reverse (2)</a></li>
     

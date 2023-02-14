@@ -6,7 +6,16 @@
     <description>Recent content in pwn on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 11 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/categories/pwn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/categories/pwn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>socket exploitation</title>
+      <link>https://winsun.github.io/fightsec/post/pwn_19_exp_socket/</link>
+      <pubDate>Tue, 14 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/pwn_19_exp_socket/</guid>
+      <description>socket vuln #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;unistd.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;string.h&amp;gt; #include &amp;lt;netdb.h&amp;gt; #include &amp;lt;sys/types.h&amp;gt; #include &amp;lt;sys/socket.h&amp;gt; #include &amp;lt;netinet/in.h&amp;gt; #include &amp;lt;arpa/inet.h&amp;gt; void vuln(int childfd) { char buffer[30]; read(childfd, buffer, 500); write(childfd, &amp;#34;Thanks!&amp;#34;, 8); } void win() { system(&amp;#34;/bin/sh&amp;#34;); } ////////////////////// Socket Stuff /* * error - wrapper for perror */ void error(char *msg) { perror(msg); exit(1); } int main(int argc, char **argv) { int parentfd; /* parent socket */ int childfd; /* child socket */ int portno; /* port to listen on */ int clientlen; /* byte size of client&amp;#39;s address */ struct sockaddr_in serveraddr; /* server&amp;#39;s addr */ struct sockaddr_in clientaddr; /* client addr */ struct hostent *hostp; /* client host info */ char *hostaddrp; /* dotted decimal host addr string */ int optval; /* flag value for setsockopt */ int n; /* message byte size */ /* * check</description>
+    </item>
+    
     <item>
       <title>SROP</title>
       <link>https://winsun.github.io/fightsec/post/pwn_06_srop/</link>

@@ -85,6 +85,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_19_exp_socket/">socket exploitation</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2023年2月14日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='/fightsec/categories/pwn'>pwn</a>
+            
+        </div>
+        
+        <div class="post-content">
+            socket vuln #include &lt;stdio.h&gt; #include &lt;unistd.h&gt; #include &lt;stdlib.h&gt; #include &lt;string.h&gt; #include &lt;netdb.h&gt; #include &lt;sys/types.h&gt; #include &lt;sys/socket.h&gt; #include &lt;netinet/in.h&gt; #include &lt;arpa/inet.h&gt; void vuln(int childfd) { char buffer[30]; read(childfd, buffer, 500); write(childfd, &#34;Thanks!&#34;, 8); } void win() { system(&#34;/bin/sh&#34;); } ////////////////////// Socket Stuff /* * error - wrapper for perror */ void error(char *msg) { perror(msg); exit(1); } int main(int argc, char **argv) { int parentfd; /* parent socket */ int childfd; /* child socket */ int portno; /* port to listen on */ int clientlen; /* byte size of client&#39;s address */ struct sockaddr_in serveraddr; /* server&#39;s addr */ struct sockaddr_in clientaddr; /* client addr */ struct hostent *hostp; /* client host info */ char *hostaddrp; /* dotted decimal host addr string */ int optval; /* flag value for setsockopt */ int n; /* message byte size */ /* * check……
+            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_19_exp_socket/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/linux_13_network/">网络编程</a>
             </h1>
         </header>
@@ -164,6 +187,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_19_exp_socket/" title="socket exploitation">socket exploitation</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_06_srop/" title="SROP">SROP</a>
     </li>
     
@@ -199,10 +226,6 @@
         <a href="https://winsun.github.io/fightsec/post/cyber_12_honeypot/" title="蜜罐主动防御">蜜罐主动防御</a>
     </li>
     
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_11_backdoor/" title="后门程序">后门程序</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -230,7 +253,7 @@
     
     <li><a href="https://winsun.github.io/fightsec/categories/linux/">linux (15)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (22)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (23)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/reverse/">reverse (2)</a></li>
     
