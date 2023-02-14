@@ -78,11 +78,11 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_02_rop/" title="ROP">ROP</a>
+                <a href="https://winsun.github.io/fightsec/post/pwn_03_got_overwrite/" title="利用got覆盖执行shellcode">利用got覆盖执行shellcode</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年4月24日
+            2021年4月29日
         </date>
         
         <div class="post-meta">
@@ -93,9 +93,9 @@
         </div>
         
         <div class="post-content">
-            ROP Returned-oriented Program,defeats the W⊕X protections recently deployed by Microsoft,Intel, and AMD;in this context, it can be seen as a generalization of traditional return-into-libc attacks. But the threat is more general . gadget what gadget Each gadget is an arrangement of words on the stack, both pointers to instruction sequences and immediate data words, that when invoked accomplishes some well-defined task “W⊕X,” ensures that no memory location in a process image is marked both writable (“W”) and executable (“X”) gadget feature One gadget might: perform a load operation another an xor and another a conditional branch 引用 detetcting rop attacks in application jit-rop rop systems,languages,and applications dark-rop black hat rop ropme write up……
+            漏洞程序 // gcc source.c -o vuln -no-pie -fno-stack-protector -z execstack -m32 #include &lt;stdio.h&gt; void vuln() { char buffer[20]; puts(&#34;Give me the input&#34;); gets(buffer); } int main() { vuln(); return 0; }……
         </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_02_rop/">阅读全文</a></p>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_03_got_overwrite/">阅读全文</a></p>
     </article>
     
     
@@ -103,7 +103,7 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_01_pwntools/" title="pwn">pwn</a>
+                <a href="https://winsun.github.io/fightsec/post/pwn_01_pwntools/" title="pwntools基本用法">pwntools基本用法</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -118,9 +118,7 @@
         </div>
         
         <div class="post-content">
-            python pwn pwntools github
-pwntools doc
-Writing Exploits with pwntools……
+            elf process remote rop 参考 pwntools github pwntools doc Writing Exploits with pwntools……
         </div>
         <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_01_pwntools/">阅读全文</a></p>
     </article>
@@ -472,7 +470,15 @@ Writing Exploits with pwntools……
 <ul class="widget-list">
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/p04_vul_springshell_05/" title="springshell">springshell</a>
+        <a href="https://winsun.github.io/fightsec/post/pwn_06_srop/" title="SROP">SROP</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_02_rop/" title="ROP">ROP</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/p04_vul_06_springshell/" title="springshell">springshell</a>
     </li>
     
     <li>
@@ -501,14 +507,6 @@ Writing Exploits with pwntools……
     
     <li>
         <a href="https://winsun.github.io/fightsec/post/cyber_11_backdoor/" title="后门程序">后门程序</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/ml_03_random_variable/" title="预期效用">预期效用</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_10_scanner/" title="网络扫描">网络扫描</a>
     </li>
     
 </ul>

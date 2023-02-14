@@ -76,6 +76,52 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_14_unlinkexp/" title="unlink exploit">unlink exploit</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年6月17日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_14_unlinkexp/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_15_formatstr/" title="字符串漏洞: 任意读">字符串漏洞: 任意读</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年6月17日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            任意读 vuln.c #include &lt;stdio.h&gt; int main(void) { char buffer[200]; gets(buffer); printf(buffer); return 0; } 漏洞分析 编译程序 gcc -m32 -no-pie -fno-stack-protector -z execstack vuln.c -o vuln 分析程序 程序保护 └─$ checksec --file=./vuln [*] &#39;/home/kali/exploits/str_arb_read/vuln&#39; Arch: i386-32-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x8048000) RWX: Has RWX segments r2 debug vuln └─$ r2 -d -A ./vuln glibc.fc_offset = 0x00148 experimental analysis. [0xf7fe4450]&gt; s main;pdf ; DATA XREFS from entry0 @ 0x8049086, 0x804908c ┌ 83: int main (char **argv); │ ; var int32_t var_d0h @ ebp-0xd0 │ ; var int32_t var_8h @ ebp-0x8 │ ; arg char **argv @ esp+0xf4 │ 0x08049172 8d4c2404 sub esp, 0xc │ 0x080491a7 8d8530ffffff lea eax, [var_d0h] │ 0x080491ad 50 push eax │ 0x080491ae……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_15_formatstr/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_13_doublefree/" title="double free">double free</a>
             </h1>
         </header>
@@ -237,29 +283,6 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_06_srop/" title="SROP">SROP</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年5月9日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_06_srop/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_05_ret2plt/" title="ret2plt">ret2plt</a>
             </h1>
         </header>
@@ -278,29 +301,6 @@
             PLT, or Procedure Linkage Table. These are stubs that look up the addresses in the .got.plt section, and either jump to the right address, or trigger the code in the linker to look up the address. (If the address has not been filled in to .got.plt yet.) 漏洞程序 #include &lt;stdio.h&gt; void vuln() { puts(&#34;Come get me&#34;); char buffer[20]; gets(buffer); } int main() { vuln(); return 0; } 32位ret2plt plt分析 程序保护 //gcc source.c -o vuln-32 -no-pie -fno-stack-protector -z execstack -m32 └─$ checksec --file=./vuln-32 [*] &#39;/home/kali/exploits/ret2plt/vuln-32&#39; Arch: i386-32-little RELRO: Partial RELRO Stack: No canary found NX: NX enabled PIE: No PIE (0x8048000) plt节 .plt节可执行 [0xf7fe4450]&gt; iS~.plt 10 0x000002f0 0x18 0x080482f0 0x18……
         </div>
         <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_05_ret2plt/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_03_shellcode/" title="shellcode">shellcode</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年4月29日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_03_shellcode/">阅读全文</a></p>
     </article>
     
     
@@ -449,7 +449,15 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/p04_vul_springshell_05/" title="springshell">springshell</a>
+        <a href="https://winsun.github.io/fightsec/post/pwn_06_srop/" title="SROP">SROP</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_02_rop/" title="ROP">ROP</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/p04_vul_06_springshell/" title="springshell">springshell</a>
     </li>
     
     <li>
@@ -478,14 +486,6 @@
     
     <li>
         <a href="https://winsun.github.io/fightsec/post/cyber_11_backdoor/" title="后门程序">后门程序</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/ml_03_random_variable/" title="预期效用">预期效用</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_10_scanner/" title="网络扫描">网络扫描</a>
     </li>
     
 </ul>

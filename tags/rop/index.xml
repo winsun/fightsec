@@ -6,14 +6,14 @@
     <description>Recent content in rop on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/rop/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/rop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ROP</title>
       <link>https://winsun.github.io/fightsec/post/pwn_02_rop/</link>
-      <pubDate>Sat, 24 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 10 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/pwn_02_rop/</guid>
-      <description>ROP Returned-oriented Program,defeats the W⊕X protections recently deployed by Microsoft,Intel, and AMD;in this context, it can be seen as a generalization of traditional return-into-libc attacks. But the threat is more general . gadget what gadget Each gadget is an arrangement of words on the stack, both pointers to instruction sequences and immediate data words, that when invoked accomplishes some well-defined task “W⊕X,” ensures that no memory location in a process image is marked both writable (“W”) and executable (“X”) gadget feature One gadget might: perform a load operation another an xor and another a conditional branch 引用 detetcting rop attacks in application jit-rop rop systems,languages,and applications dark-rop black hat rop ropme write up</description>
+      <description>ROP Returned-oriented Program,defeats the W⊕X protections recently deployed by Microsoft,Intel, and AMD;in this context, it can be seen as a generalization of traditional return-into-libc attacks. But the threat is more general . gadget what gadget Each gadget is an arrangement of words on the stack, both pointers to instruction sequences and immediate data words, that when invoked accomplishes some well-defined task “W⊕X,” ensures that no memory location in a process image is marked both writable (“W”) and executable (“X”) gadget feature One gadget might: perform a load operation another an xor and another a conditional branch 案例程序 from pwn import * context.arch = &amp;#39;amd64&amp;#39; context.os = &amp;#39;linux&amp;#39; elf = ELF.from_assembly( &amp;#39;&amp;#39;&amp;#39; mov rdi, 0; mov rsi, rsp; sub rsi, 8; mov rdx,</description>
     </item>
     
   </channel>

@@ -85,6 +85,52 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_11_heap_overflow/">use after free</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年6月4日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='/fightsec/categories/pwn'>pwn</a>
+            
+        </div>
+        
+        <div class="post-content">
+            配置docker环境 ### pull ubuntu 16.04 image sudo docker pull ubuntu:16.04 ### 进入终端 sudo docker run -ti --rm ubuntu:16.04 /bin/bash ### 安装gcc apt update &amp;&amp; apt install gcc ### gcc 版本 root@687e398bdbdb:/# gcc --version gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609 Copyright (C) 2015 Free Software Foundation, Inc. This is free software; see the source for copying conditions. There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. ### 安装 radare2 apt install radare2 漏洞程序 #include &lt;err.h&gt; #include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include &lt;string.h&gt; #include &lt;unistd.h&gt; struct data { char name[64]; }; struct fp { void (*fp)(); char __pad[64 - sizeof(unsigned long)]; }; void winner() { printf(&#34;Congratulations, you have passed this level\n&#34;); } void nowinner() { printf( &#34;level has……
+            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_11_heap_overflow/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_10_stack_pivoiting/">stack pivoiting</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年5月29日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='/fightsec/categories/pwn'>pwn</a>
+            
+        </div>
+        
+        <div class="post-content">
+            1 what stack pivoiting是一种栈空间转移技术 2 why 有时候缓冲区有长度限制，不利于在栈上配置rop gadget(空间不够)！ 3 how 3.1 pop rsp gadget 这种情形比较少见，遇到了相当幸运～ 3.2 xchg , rsp pop &lt;reg&gt; &lt;=== return pointer &lt;reg value&gt; xchg &lt;rag&gt;, rsp 3.3 leave;ret leave相当于： mov rsp,rbp pop rbp 加上ret就等于： mov rsp,rbp pop rbp pop rip 覆盖rbp，然后栈中的ri……
+            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_10_stack_pivoiting/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_09_ret2csu/">ret2csu</a>
             </h1>
         </header>
@@ -154,29 +200,6 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_06_srop/">SROP</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年5月9日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='/fightsec/categories/pwn'>pwn</a>
-            
-        </div>
-        
-        <div class="post-content">
-            ……
-            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_06_srop/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_05_ret2plt/">ret2plt</a>
             </h1>
         </header>
@@ -200,7 +223,7 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_03_shellcode/">shellcode</a>
+                <a href="https://winsun.github.io/fightsec/post/pwn_03_got_overwrite/">利用got覆盖执行shellcode</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -215,38 +238,15 @@
         </div>
         
         <div class="post-content">
-            ……
-            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_03_shellcode/">阅读全文</a></p>
+            漏洞程序 // gcc source.c -o vuln -no-pie -fno-stack-protector -z execstack -m32 #include &lt;stdio.h&gt; void vuln() { char buffer[20]; puts(&#34;Give me the input&#34;); gets(buffer); } int main() { vuln(); return 0; }……
+            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_03_got_overwrite/">阅读全文</a></p>
         </div>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_02_rop/">ROP</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年4月24日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='/fightsec/categories/pwn'>pwn</a>
-            
-        </div>
-        
-        <div class="post-content">
-            ROP Returned-oriented Program,defeats the W⊕X protections recently deployed by Microsoft,Intel, and AMD;in this context, it can be seen as a generalization of traditional return-into-libc attacks. But the threat is more general . gadget what gadget Each gadget is an arrangement of words on the stack, both pointers to instruction sequences and immediate data words, that when invoked accomplishes some well-defined task “W⊕X,” ensures that no memory location in a process image is marked both writable (“W”) and executable (“X”) gadget feature One gadget might: perform a load operation another an xor and another a conditional branch 引用 detetcting rop attacks in application jit-rop rop systems,languages,and applications dark-rop black hat rop ropme write up……
-            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_02_rop/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_01_pwntools/">pwn</a>
+                <a href="https://winsun.github.io/fightsec/post/pwn_01_pwntools/">pwntools基本用法</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -261,9 +261,7 @@
         </div>
         
         <div class="post-content">
-            python pwn pwntools github
-pwntools doc
-Writing Exploits with pwntools……
+            elf process remote rop 参考 pwntools github pwntools doc Writing Exploits with pwntools……
             <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_01_pwntools/">阅读全文</a></p>
         </div>
     </article>
@@ -401,7 +399,15 @@ Writing Exploits with pwntools……
 <ul class="widget-list">
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/p04_vul_springshell_05/" title="springshell">springshell</a>
+        <a href="https://winsun.github.io/fightsec/post/pwn_06_srop/" title="SROP">SROP</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_02_rop/" title="ROP">ROP</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/p04_vul_06_springshell/" title="springshell">springshell</a>
     </li>
     
     <li>
@@ -430,14 +436,6 @@ Writing Exploits with pwntools……
     
     <li>
         <a href="https://winsun.github.io/fightsec/post/cyber_11_backdoor/" title="后门程序">后门程序</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/ml_03_random_variable/" title="预期效用">预期效用</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_10_scanner/" title="网络扫描">网络扫描</a>
     </li>
     
 </ul>

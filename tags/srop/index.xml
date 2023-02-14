@@ -6,14 +6,14 @@
     <description>Recent content in srop on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 09 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/srop/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/srop/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SROP</title>
       <link>https://winsun.github.io/fightsec/post/pwn_06_srop/</link>
-      <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 11 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/pwn_06_srop/</guid>
-      <description></description>
+      <description>SROP Sigreturn Oriented Programming (SROP), a novel technique for exploits and backdoors in UNIX-like systems. 具体见[1]。 漏洞程序 vuln程序 from pwn import * context.arch = &amp;#39;amd64&amp;#39; context.os = &amp;#39;linux&amp;#39; elf = ELF.from_assembly( &amp;#39;&amp;#39;&amp;#39; mov rdi, 0; mov rsi, rsp; sub rsi, 8; mov rdx, 500; syscall; ret; pop rax; ret; &amp;#39;&amp;#39;&amp;#39;, vma=0x41000 ) elf.save(&amp;#39;vuln&amp;#39;) └─$ cat /usr/include/asm/unistd_64.h | grep -i sigreturn -A2 #define __NR_rt_sigreturn 15 #define __NR_ioctl 16 #define __NR_pread64 17 嵌入shell地址 ┌──(kali㉿kali)-[~/exploits/srop] └─$ echo -en &amp;#34;/bin/sh\x00&amp;#34; &amp;gt;&amp;gt; vuln ┌──(k</description>
     </item>
     
   </channel>

@@ -8,12 +8,12 @@
     <language>zh-CN</language>
     <lastBuildDate>Thu, 29 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/shellcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>shellcode</title>
-      <link>https://winsun.github.io/fightsec/post/pwn_03_shellcode/</link>
+      <title>利用got覆盖执行shellcode</title>
+      <link>https://winsun.github.io/fightsec/post/pwn_03_got_overwrite/</link>
       <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/pwn_03_shellcode/</guid>
-      <description></description>
+      <guid>https://winsun.github.io/fightsec/post/pwn_03_got_overwrite/</guid>
+      <description>漏洞程序 // gcc source.c -o vuln -no-pie -fno-stack-protector -z execstack -m32 #include &amp;lt;stdio.h&amp;gt; void vuln() { char buffer[20]; puts(&amp;#34;Give me the input&amp;#34;); gets(buffer); } int main() { vuln(); return 0; }</description>
     </item>
     
   </channel>
