@@ -706,7 +706,7 @@
       <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/linux_12_syscall/</guid>
-      <description>linux linux windows windows 引用 system call syscall under-the-hood</description>
+      <description>linux linux windows windows 引用 system call syscall under-the-hood 上下文切换</description>
     </item>
     
     <item>
