@@ -151,6 +151,7 @@
     <li><a href="#dentry-object">dentry object</a></li>
     <li><a href="#file-object">file object</a></li>
     <li><a href="#files_struct">files_struct</a></li>
+    <li><a href="#参考">参考</a></li>
   </ul>
 </nav>
     </div>
@@ -216,7 +217,7 @@
         
         <div class="post-content">
             <p>
-        <img class="mx-auto" alt="文件关系图" src="/static/image/files_struct.png" />   
+        <img class="mx-auto" alt="文件关系图" src="https://linux-kernel-labs.github.io/refs/heads/master/_images/ditaa-e3a27a84dde42de58bcc5c360e1c4b15062507c2.png" />   
     </p>
 <h2 id="superblock-object">superblock object</h2>
 <pre tabindex="0"><code>struct super_block {
@@ -1036,7 +1037,9 @@ struct files_struct {
 		 */
         struct file * fd_array[NR_OPEN_DEFAULT];
 };
-</code></pre>
+</code></pre><h2 id="参考">参考</h2>
+<p><a href="https://linux-kernel-labs.github.io/refs/heads/master/lectures/fs.html">filesystem manager</a></p>
+
         </div>
 
         
