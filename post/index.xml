@@ -80,6 +80,42 @@
     </item>
     
     <item>
+      <title>相似度方法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_09_similarity/</link>
+      <pubDate>Fri, 03 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_09_similarity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>matplotlib用法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_08_matplotlib/</link>
+      <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_08_matplotlib/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scipy用法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_07_scipy/</link>
+      <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_07_scipy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pandas用法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_06_pandas/</link>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_06_pandas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>web sql inject</title>
       <link>https://winsun.github.io/fightsec/post/web_01_sqlinject/</link>
       <pubDate>Mon, 25 Apr 2022 00:00:00 +0000</pubDate>
@@ -98,6 +134,15 @@
     </item>
     
     <item>
+      <title>numpy用法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_05_numpy/</link>
+      <pubDate>Mon, 18 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_05_numpy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>后门程序</title>
       <link>https://winsun.github.io/fightsec/post/cyber_11_backdoor/</link>
       <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
@@ -107,12 +152,21 @@
     </item>
     
     <item>
-      <title>预期效用</title>
+      <title>概率分布</title>
+      <link>https://winsun.github.io/fightsec/post/ml_04_prob_dist/</link>
+      <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_04_prob_dist/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>随机变量及性质</title>
       <link>https://winsun.github.io/fightsec/post/ml_03_random_variable/</link>
       <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/ml_03_random_variable/</guid>
-      <description>概率空间 期望 预期效用 方差 协方差 马尔可夫 chebyshev chernoff murphy&amp;rsquo;s law random walk</description>
+      <description>概率空间 Probability Space == 样本空间(sample space) + 概率函数(probability function) 概率函数 $ P: S \mapsto R $, 其满足： $ P[\omega] \geq 0, \forall\omega \in S $ $ \sum_{\omega\in S} P[\omega] = 1 $ 期望 方差 协方差 马尔可夫 chebyshev chernoff murphy&amp;rsquo;s law random walk eut mvp emh 参考 最全Markdown公式 通用 LaTeX 数学公式语法手册</description>
     </item>
     
     <item>
@@ -634,7 +688,7 @@
       <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/</guid>
-      <description></description>
+      <description>概要 利用ret2dlresolve，攻击者可以诱导二进制程序解析一个所选择的函数(比如system)为plt。 动态链接的ELF对象在第一次使用PLT和GOT调用时导入libc函数。在重定位runtime symbol，RIP将跳转到PLT并尝试解析该符号。在这个过程中，一个&amp;quo</description>
     </item>
     
     <item>
@@ -833,7 +887,7 @@ merlin </description>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/linux_01_elf/</guid>
-      <description>elf格式 elf header man elf查看 ELF header (Ehdr) The ELF header is described by the type Elf32_Ehdr or Elf64_Ehdr: #define EI_NIDENT 16 typedef struct { unsigned char e_ident[EI_NIDENT]; uint16_t e_type; uint16_t e_machine; uint32_t e_version; ElfN_Addr e_entry; ElfN_Off e_phoff; ElfN_Off e_shoff; uint32_t e_flags; uint16_t e_ehsize; uint16_t e_phentsize; uint16_t e_phnum; uint16_t e_shentsize; uint16_t e_shnum; uint16_t e_shstrndx; } ElfN_Ehdr; $ readelf -h vuln ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2&amp;#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: DYN (Position-Independent Executable file) Machine: Advanced Micro Devices X86-64 Version: 0x1 Entry point address: 0x11a0 Start of program headers: 64 (bytes into file) Start of section headers: 15344 (bytes into file) Flags: 0x0 Size</description>
+      <description>elf格式 Elf64_Ehdr文件头 man elf 查看ELF header (Ehdr)，The ELF header is described by the type Elf32_Ehdr or Elf64_Ehdr : #define EI_NIDENT 16 typedef struct { unsigned char e_ident[EI_NIDENT]; uint16_t e_type; uint16_t e_machine; uint32_t e_version; ElfN_Addr e_entry; ElfN_Off e_phoff; ElfN_Off e_shoff; uint32_t e_flags; uint16_t e_ehsize; uint16_t e_phentsize; uint16_t e_phnum; uint16_t e_shentsize; uint16_t e_shnum; uint16_t e_shstrndx; } ElfN_Ehdr; $ readelf -h vuln ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2&amp;#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: DYN (Position-Independent Executable file) Machine: Advanced Micro Devices X86-64 Version: 0x1 Entry point address:</description>
     </item>
     
     <item>

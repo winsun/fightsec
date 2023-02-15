@@ -140,7 +140,16 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概要">概要</a></li>
+    <li><a href="#漏洞程序">漏洞程序</a></li>
+    <li><a href="#symtab">symtab</a></li>
+    <li><a href="#strtab">strtab</a></li>
+    <li><a href="#jmprel">jmprel</a></li>
+    <li><a href="#参考">参考</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -203,7 +212,38 @@
         </div>
         
         <div class="post-content">
-            
+            <h2 id="概要">概要</h2>
+<p>利用ret2dlresolve，攻击者可以诱导二进制程序解析一个所选择的函数(比如system)为plt。
+动态链接的ELF对象在第一次使用PLT和GOT调用时导入libc函数。在重定位runtime symbol，RIP将跳转到PLT并尝试解析该符号。在这个过程中，一个&quot;resolver&quot;被调用。</p>
+<p>ret2dlresolve 是一种基于动态链接库 (Dynamic Linking) 的攻击技术，可以用于绕过 NX 或 ASLR 等防护机制。</p>
+<p>在一个程序中，如果使用了动态链接库，在程序启动时，动态链接器会自动将需要的库加载到进程的虚拟地址空间中。攻击者可以构造恶意输入，使得程序在运行过程中调用动态链接库中的函数，从而利用该函数实现攻击。</p>
+<p>具体来说，攻击者可以通过覆盖某个全局变量（如 DT_INIT 或 DT_FINI_ARRAY）的值为动态链接库中某个函数的地址，从而在程序运行过程中自动加载该动态链接库。然后，攻击者再构造一个伪造的 ELF 结构，包含需要调用的函数名和参数等信息，然后将该结构放在动态链接库中，使得程序调用该函数时就会进入到攻击者构造的伪造的 ELF 结构中。</p>
+<p>总的来说，ret2dlresolve 攻击技术利用了动态链接器和 ELF 结构的机制，在程序运行过程中构造伪造的 ELF 结构，从而实现对程序的控制和攻击。由于该攻击技术利用了动态链接库的机制，因此可以绕过 NX 或 ASLR 等防护机制。为了防范该攻击技术，可以采取一些防范措施，如限制动态链接库的加载、使用可执行栈保护技术等。</p>
+<h2 id="漏洞程序">漏洞程序</h2>
+<pre tabindex="0"><code>#include &lt;unistd.h&gt;
+void vuln(void){
+    char buf[64];
+    read(STDIN_FILENO, buf, 200);
+}
+int main(int argc, char** argv){
+    vuln();
+}
+</code></pre><p>开启nx保护和pie</p>
+<pre tabindex="0"><code>└─$ checksec --file=./vuln
+[*] &#39;/home/kali/exploits/ret2dlresolve/vuln&#39;
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+</code></pre><h2 id="symtab">symtab</h2>
+<h2 id="strtab">strtab</h2>
+<h2 id="jmprel">jmprel</h2>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://wzt.ac.cn/2019/05/02/Ret2runtime_dlresolve/">Ret2 runtime_dlresolve</a></li>
+</ul>
+
         </div>
 
         
@@ -401,11 +441,11 @@
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/web_01_sqlinject/" title="web sql inject">web sql inject</a>
+        <a href="https://winsun.github.io/fightsec/post/ml_09_similarity/" title="相似度方法">相似度方法</a>
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_12_honeypot/" title="蜜罐主动防御">蜜罐主动防御</a>
+        <a href="https://winsun.github.io/fightsec/post/ml_08_matplotlib/" title="matplotlib用法">matplotlib用法</a>
     </li>
     
 </ul>
@@ -417,7 +457,7 @@
         <h3 class="widget-title"><a href='/fightsec/categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li><a href="https://winsun.github.io/fightsec/categories/AI/">AI (3)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/AI/">AI (9)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/C2/">C2 (1)</a></li>
     
@@ -455,6 +495,8 @@
     <section class="widget">
         <h3 class="widget-title"><a href='/fightsec/tags/'>标签</a></h3>
 <div class="tagcloud">
+    
+    <a href="https://winsun.github.io/fightsec/tags/AI/">AI</a>
     
     <a href="https://winsun.github.io/fightsec/tags/ATTCT/">ATT&amp;CT</a>
     
@@ -518,9 +560,15 @@
     
     <a href="https://winsun.github.io/fightsec/tags/logger/">logger</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/matplotlib/">matplotlib</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/nat/">nat</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/numpy/">numpy</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/overflow/">overflow</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/pandas/">pandas</a>
     
     <a href="https://winsun.github.io/fightsec/tags/pets/">pets</a>
     
@@ -547,6 +595,8 @@
     <a href="https://winsun.github.io/fightsec/tags/routine/">routine</a>
     
     <a href="https://winsun.github.io/fightsec/tags/scanner/">scanner</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/scipy/">scipy</a>
     
     <a href="https://winsun.github.io/fightsec/tags/shell/">shell</a>
     
@@ -580,11 +630,15 @@
     
     <a href="https://winsun.github.io/fightsec/tags/%E5%A0%A1%E5%9E%92%E6%9C%BA/">堡垒机</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/">概率分布</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/">概率统计</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5/">混淆矩阵</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%BC%8F%E6%B4%9E/">漏洞</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E7%9B%B8%E4%BC%BC%E5%BA%A6/">相似度</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/">虚拟化</a>
     

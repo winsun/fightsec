@@ -8,12 +8,12 @@
     <language>zh-CN</language>
     <lastBuildDate>Tue, 12 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>预期效用</title>
+      <title>随机变量及性质</title>
       <link>https://winsun.github.io/fightsec/post/ml_03_random_variable/</link>
       <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/ml_03_random_variable/</guid>
-      <description>概率空间 期望 预期效用 方差 协方差 马尔可夫 chebyshev chernoff murphy&amp;rsquo;s law random walk</description>
+      <description>概率空间 Probability Space == 样本空间(sample space) + 概率函数(probability function) 概率函数 $ P: S \mapsto R $, 其满足： $ P[\omega] \geq 0, \forall\omega \in S $ $ \sum_{\omega\in S} P[\omega] = 1 $ 期望 方差 协方差 马尔可夫 chebyshev chernoff murphy&amp;rsquo;s law random walk eut mvp emh 参考 最全Markdown公式 通用 LaTeX 数学公式语法手册</description>
     </item>
     
   </channel>

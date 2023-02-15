@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>预期效用 | 诚安</title>
-    <meta property="og:title" content="预期效用 - 诚安">
+    <title>随机变量及性质 | 诚安</title>
+    <meta property="og:title" content="随机变量及性质 - 诚安">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2022-04-12T00:00:00&#43;08:00'>
@@ -19,7 +19,7 @@
     <meta property="article:modified_time" content='2022-04-12T00:00:00&#43;08:00'>
         
     <meta name="Keywords" content="信息安全、主机安全、网络安全、二进制、数据安全">
-    <meta name="description" content="预期效用">
+    <meta name="description" content="随机变量及性质">
         
     <meta name="author" content="winsun">
     <meta property="og:url" content="https://winsun.github.io/fightsec/post/ml_03_random_variable/">
@@ -142,7 +142,20 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#预期效用">预期效用</a></li>
+    <li><a href="#方差">方差</a></li>
+    <li><a href="#协方差">协方差</a></li>
+    <li><a href="#马尔可夫">马尔可夫</a></li>
+    <li><a href="#chebyshev">chebyshev</a></li>
+    <li><a href="#chernoff">chernoff</a></li>
+    <li><a href="#murphys-law">murphy&rsquo;s law</a></li>
+    <li><a href="#random-walk">random walk</a>
+      <ul>
+        <li><a href="#eut">eut</a></li>
+        <li><a href="#mvp">mvp</a></li>
+        <li><a href="#emh">emh</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -180,7 +193,7 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title">预期效用</h1>
+            <h1 class="post-title">随机变量及性质</h1>
         </header>
         <date class="post-meta meta-date">
             2022年4月12日
@@ -208,15 +221,32 @@
         
         <div class="post-content">
             <h1 id="概率空间">概率空间</h1>
+<p>Probability Space == 样本空间(sample space) + 概率函数(probability function)<br>
+概率函数  $ P: S \mapsto R $, 其满足：</p>
+<ul>
+<li>
+<p>$ P[\omega] \geq 0, \forall\omega \in S $</p>
+</li>
+<li>
+<p>$ \sum_{\omega\in S} P[\omega] = 1 $</p>
+</li>
+</ul>
 <h1 id="期望">期望</h1>
-<h2 id="预期效用">预期效用</h2>
-<h1 id="方差">方差</h1>
-<h1 id="协方差">协方差</h1>
-<h1 id="马尔可夫">马尔可夫</h1>
-<h1 id="chebyshev">chebyshev</h1>
-<h1 id="chernoff">chernoff</h1>
-<h1 id="murphys-law">murphy&rsquo;s law</h1>
-<h1 id="random-walk">random walk</h1>
+<h2 id="方差">方差</h2>
+<h2 id="协方差">协方差</h2>
+<h2 id="马尔可夫">马尔可夫</h2>
+<h2 id="chebyshev">chebyshev</h2>
+<h2 id="chernoff">chernoff</h2>
+<h2 id="murphys-law">murphy&rsquo;s law</h2>
+<h2 id="random-walk">random walk</h2>
+<h3 id="eut">eut</h3>
+<h3 id="mvp">mvp</h3>
+<h3 id="emh">emh</h3>
+<h3 id="参考">参考</h3>
+<ul>
+<li><a href="https://blog.csdn.net/weixin_42782150/article/details/104878759">最全Markdown公式</a></li>
+<li><a href="http://www.uinio.com/Math/LaTex/">通用 LaTeX 数学公式语法手册</a></li>
+</ul>
 
         </div>
 
@@ -240,13 +270,13 @@
         
         <li><a href="/fightsec/post/ml_02_bayes/">贝叶斯</a></li>
         
+        <li><a href="/fightsec/post/ml_01_confuse_matrix/">confuse matrix</a></li>
+        
+        <li><a href="/fightsec/post/ml_04_prob_dist/">概率分布</a></li>
+        
         <li><a href="/fightsec/post/cyber_10_scanner/">网络扫描</a></li>
         
         <li><a href="/fightsec/post/cyber_09_zero_trust/">零信任架构</a></li>
-        
-        <li><a href="/fightsec/post/cyber_08_bastion/">堡垒机及安全</a></li>
-        
-        <li><a href="/fightsec/post/cyber_07_vpn/">vpn原理及安全</a></li>
         
     </ul>
 </div>
@@ -256,7 +286,7 @@
             
             <ul class="clearfix">
                 
-                <li><a href='/fightsec/tags/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1'>概率统计</a></li>
+                <li><a href='/fightsec/tags/AI'>AI</a></li>
                 
                 <li><a href='/fightsec/tags/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F'>随机变量</a></li>
                 
@@ -415,11 +445,11 @@
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/web_01_sqlinject/" title="web sql inject">web sql inject</a>
+        <a href="https://winsun.github.io/fightsec/post/ml_09_similarity/" title="相似度方法">相似度方法</a>
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_12_honeypot/" title="蜜罐主动防御">蜜罐主动防御</a>
+        <a href="https://winsun.github.io/fightsec/post/ml_08_matplotlib/" title="matplotlib用法">matplotlib用法</a>
     </li>
     
 </ul>
@@ -431,7 +461,7 @@
         <h3 class="widget-title"><a href='/fightsec/categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li><a href="https://winsun.github.io/fightsec/categories/AI/">AI (3)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/AI/">AI (9)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/C2/">C2 (1)</a></li>
     
@@ -469,6 +499,8 @@
     <section class="widget">
         <h3 class="widget-title"><a href='/fightsec/tags/'>标签</a></h3>
 <div class="tagcloud">
+    
+    <a href="https://winsun.github.io/fightsec/tags/AI/">AI</a>
     
     <a href="https://winsun.github.io/fightsec/tags/ATTCT/">ATT&amp;CT</a>
     
@@ -532,9 +564,15 @@
     
     <a href="https://winsun.github.io/fightsec/tags/logger/">logger</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/matplotlib/">matplotlib</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/nat/">nat</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/numpy/">numpy</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/overflow/">overflow</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/pandas/">pandas</a>
     
     <a href="https://winsun.github.io/fightsec/tags/pets/">pets</a>
     
@@ -561,6 +599,8 @@
     <a href="https://winsun.github.io/fightsec/tags/routine/">routine</a>
     
     <a href="https://winsun.github.io/fightsec/tags/scanner/">scanner</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/scipy/">scipy</a>
     
     <a href="https://winsun.github.io/fightsec/tags/shell/">shell</a>
     
@@ -594,11 +634,15 @@
     
     <a href="https://winsun.github.io/fightsec/tags/%E5%A0%A1%E5%9E%92%E6%9C%BA/">堡垒机</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/">概率分布</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/">概率统计</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5/">混淆矩阵</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%BC%8F%E6%B4%9E/">漏洞</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E7%9B%B8%E4%BC%BC%E5%BA%A6/">相似度</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/">虚拟化</a>
     

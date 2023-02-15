@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>numpy on 诚安</title>
+    <link>https://winsun.github.io/fightsec/tags/numpy/</link>
+    <description>Recent content in numpy on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 18 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/numpy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>numpy用法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_05_numpy/</link>
+      <pubDate>Mon, 18 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_05_numpy/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

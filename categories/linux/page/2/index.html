@@ -169,7 +169,7 @@
         </div>
         
         <div class="post-content">
-            elf格式 elf header man elf查看 ELF header (Ehdr) The ELF header is described by the type Elf32_Ehdr or Elf64_Ehdr: #define EI_NIDENT 16 typedef struct { unsigned char e_ident[EI_NIDENT]; uint16_t e_type; uint16_t e_machine; uint32_t e_version; ElfN_Addr e_entry; ElfN_Off e_phoff; ElfN_Off e_shoff; uint32_t e_flags; uint16_t e_ehsize; uint16_t e_phentsize; uint16_t e_phnum; uint16_t e_shentsize; uint16_t e_shnum; uint16_t e_shstrndx; } ElfN_Ehdr; $ readelf -h vuln ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2&#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: DYN (Position-Independent Executable file) Machine: Advanced Micro Devices X86-64 Version: 0x1 Entry point address: 0x11a0 Start of program headers: 64 (bytes into file) Start of section headers: 15344 (bytes into file) Flags: 0x0 Size……
+            elf格式 Elf64_Ehdr文件头 man elf 查看ELF header (Ehdr)，The ELF header is described by the type Elf32_Ehdr or Elf64_Ehdr : #define EI_NIDENT 16 typedef struct { unsigned char e_ident[EI_NIDENT]; uint16_t e_type; uint16_t e_machine; uint32_t e_version; ElfN_Addr e_entry; ElfN_Off e_phoff; ElfN_Off e_shoff; uint32_t e_flags; uint16_t e_ehsize; uint16_t e_phentsize; uint16_t e_phnum; uint16_t e_shentsize; uint16_t e_shnum; uint16_t e_shstrndx; } ElfN_Ehdr; $ readelf -h vuln ELF Header: Magic: 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 Class: ELF64 Data: 2&#39;s complement, little endian Version: 1 (current) OS/ABI: UNIX - System V ABI Version: 0 Type: DYN (Position-Independent Executable file) Machine: Advanced Micro Devices X86-64 Version: 0x1 Entry point address:……
             <p class="readmore"><a href="https://winsun.github.io/fightsec/post/linux_01_elf/">阅读全文</a></p>
         </div>
     </article>
@@ -308,11 +308,11 @@
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/web_01_sqlinject/" title="web sql inject">web sql inject</a>
+        <a href="https://winsun.github.io/fightsec/post/ml_09_similarity/" title="相似度方法">相似度方法</a>
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_12_honeypot/" title="蜜罐主动防御">蜜罐主动防御</a>
+        <a href="https://winsun.github.io/fightsec/post/ml_08_matplotlib/" title="matplotlib用法">matplotlib用法</a>
     </li>
     
 </ul>
@@ -324,7 +324,7 @@
         <h3 class="widget-title"><a href='/fightsec/categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li><a href="https://winsun.github.io/fightsec/categories/AI/">AI (3)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/AI/">AI (9)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/C2/">C2 (1)</a></li>
     
@@ -362,6 +362,8 @@
     <section class="widget">
         <h3 class="widget-title"><a href='/fightsec/tags/'>标签</a></h3>
 <div class="tagcloud">
+    
+    <a href="https://winsun.github.io/fightsec/tags/AI/">AI</a>
     
     <a href="https://winsun.github.io/fightsec/tags/ATTCT/">ATT&amp;CT</a>
     
@@ -425,9 +427,15 @@
     
     <a href="https://winsun.github.io/fightsec/tags/logger/">logger</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/matplotlib/">matplotlib</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/nat/">nat</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/numpy/">numpy</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/overflow/">overflow</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/pandas/">pandas</a>
     
     <a href="https://winsun.github.io/fightsec/tags/pets/">pets</a>
     
@@ -454,6 +462,8 @@
     <a href="https://winsun.github.io/fightsec/tags/routine/">routine</a>
     
     <a href="https://winsun.github.io/fightsec/tags/scanner/">scanner</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/scipy/">scipy</a>
     
     <a href="https://winsun.github.io/fightsec/tags/shell/">shell</a>
     
@@ -487,11 +497,15 @@
     
     <a href="https://winsun.github.io/fightsec/tags/%E5%A0%A1%E5%9E%92%E6%9C%BA/">堡垒机</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/">概率分布</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/">概率统计</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5/">混淆矩阵</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%BC%8F%E6%B4%9E/">漏洞</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E7%9B%B8%E4%BC%BC%E5%BA%A6/">相似度</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/">虚拟化</a>
     

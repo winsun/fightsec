@@ -142,15 +142,32 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#elf格式">elf格式</a>
+    <li><a href="#elf64_ehdr文件头">Elf64_Ehdr文件头</a></li>
+    <li><a href="#elf文件类型">elf文件类型</a></li>
+    <li><a href="#program-headers">program headers</a></li>
+    <li><a href="#elf64_shdr节头表">Elf64_Shdr节头表</a>
       <ul>
-        <li><a href="#elf-header">elf header</a></li>
-        <li><a href="#elf文件类型">elf文件类型</a></li>
-        <li><a href="#program-headers">program headers</a></li>
-        <li><a href="#section-headers">section headers</a></li>
-        <li><a href="#gotplt-section">.got.plt section</a></li>
+        <li><a href="#节类型sh_type">节类型(sh_type)</a></li>
+        <li><a href="#节标志位sh_flag">节标志位(sh_flag)</a></li>
       </ul>
     </li>
+    <li><a href="#节链接信息sh_linksh_info">节链接信息(sh_link,sh_info)</a></li>
+    <li><a href="#text节">.text节</a></li>
+    <li><a href="#rodata节">.rodata节</a></li>
+    <li><a href="#plt节">.plt节</a></li>
+    <li><a href="#data节">.data节</a></li>
+    <li><a href="#bss节">.bss节</a></li>
+    <li><a href="#gotplt节">.got.plt节</a></li>
+    <li><a href="#dynamic">.dynamic</a></li>
+    <li><a href="#elf64_dyn">Elf64_Dyn</a></li>
+    <li><a href="#symtab节符号表">.symtab节（符号表）</a></li>
+    <li><a href="#strtab节字符串表">.strtab节（字符串表）</a></li>
+    <li><a href="#dynsym节">.dynsym节</a></li>
+    <li><a href="#dynstr节">.dynstr节</a></li>
+    <li><a href="#rel节重定位表">.rel.*节（重定位表）</a></li>
+    <li><a href="#ctors节和dtors节">.ctors节和.dtors节</a></li>
+    <li><a href="#symtab和dynsym区别">.symtab和.dynsym区别</a></li>
+    <li><a href="#重定位表">重定位表</a></li>
     <li><a href="#引用">引用</a></li>
   </ul>
 </nav>
@@ -216,30 +233,29 @@
         </div>
         
         <div class="post-content">
-            <h2 id="elf格式">elf格式</h2>
-<h3 id="elf-header">elf header</h3>
-<p>man elf查看</p>
-<pre tabindex="0"><code>ELF header (Ehdr)
-       The ELF header is described by the type Elf32_Ehdr or Elf64_Ehdr:
-
-           #define EI_NIDENT 16
-
-           typedef struct {
-               unsigned char e_ident[EI_NIDENT];
-               uint16_t      e_type;
-               uint16_t      e_machine;
-               uint32_t      e_version;
-               ElfN_Addr     e_entry;
-               ElfN_Off      e_phoff;
-               ElfN_Off      e_shoff;
-               uint32_t      e_flags;
-               uint16_t      e_ehsize;
-               uint16_t      e_phentsize;
-               uint16_t      e_phnum;
-               uint16_t      e_shentsize;
-               uint16_t      e_shnum;
-               uint16_t      e_shstrndx;
-           } ElfN_Ehdr;
+            <p>
+        <img class="mx-auto" alt="ELF文件结构" src="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/elf-file-format.png?x-oss-process=image/resize,w_800" />   
+    </p>
+<h1 id="elf格式">elf格式</h1>
+<h2 id="elf64_ehdr文件头">Elf64_Ehdr文件头</h2>
+<p>man elf  查看ELF header (Ehdr)，The ELF header is described by the type Elf32_Ehdr or Elf64_Ehdr :</p>
+<pre tabindex="0"><code>    #define EI_NIDENT 16
+    typedef struct {
+        unsigned char e_ident[EI_NIDENT];
+        uint16_t      e_type;
+        uint16_t      e_machine;
+        uint32_t      e_version;
+        ElfN_Addr     e_entry;
+        ElfN_Off      e_phoff;
+        ElfN_Off      e_shoff;
+        uint32_t      e_flags;
+        uint16_t      e_ehsize;
+        uint16_t      e_phentsize;
+        uint16_t      e_phnum;
+        uint16_t      e_shentsize;
+        uint16_t      e_shnum;
+        uint16_t      e_shstrndx;
+    } ElfN_Ehdr;
 </code></pre><pre tabindex="0"><code>$ readelf -h vuln
 ELF Header:
   Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00
@@ -261,120 +277,233 @@ ELF Header:
   Size of section headers:           64 (bytes)
   Number of section headers:         31
   Section header string table index: 30
-</code></pre><h3 id="elf文件类型">elf文件类型</h3>
+</code></pre><pre tabindex="0"><code>每种可执行文件的格式的开头几个字节都是很特殊的，特别是开头4个字节，通常被称为魔数（Magic Number）。通过对魔数的判断可以确定文件的格式和类型。如：ELF的可执行文件格式的头4个字节为0x7F、e、l、f；Java的可执行文件格式的头4个字节为c、a、f、e；如果被执行的是Shell脚本或perl、python等解释型语言的脚本，那么它的第一行往往是#!/bin/sh或#!/usr/bin/perl或#!/usr/bin/python，此时前两个字节#和!就构成了魔数，系统一旦判断到这两个字节，就对后面的字符串进行解析，以确定具体的解释程序路径。
+</code></pre><h2 id="elf文件类型">elf文件类型</h2>
 <p>ElfN_Ehdr.e_type</p>
-<blockquote>
-<p>ET_NONE:</p>
-<blockquote>
-<p>未知类型，文件类型未知或者没有定义。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>ET_REL:</p>
-<blockquote>
-<p>relocatable file，可重定位文件</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>ET_EXEC:</p>
-<blockquote>
-<p>exectuable file，可执行文件</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>ET_DYN:</p>
-<blockquote>
-<p>shared object，共享库</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>ET_CORE:</p>
-<blockquote>
-<p>core file，进程崩溃或接受到sigsegv信号后，保存的进程image内容，便于gdb进行调试分析</p>
-</blockquote>
-</blockquote>
-<h3 id="program-headers">program headers</h3>
-<h3 id="section-headers">section headers</h3>
-<p>从readelf -h vuln的输出中：</p>
-<pre tabindex="0"><code>...
-Start of section headers:          15344 (bytes into file)
-...
-Size of section headers:           64 (bytes)
-Number of section headers:         31
-...
-</code></pre><p>section header的文件偏移15232 bytes，总共有30个sections，每个section的长度是64 bytes。</p>
-<p>section header定义：</p>
-<pre tabindex="0"><code>The section header has the following structure:
+<ul>
+<li>
+<p>ET_NONE:
+未知类型，文件类型未知或者没有定义。</p>
+</li>
+<li>
+<p><em><strong>ET_REL</strong></em>:
+relocatable file，可重定位文件</p>
+</li>
+<li>
+<p><em><strong>ET_EXEC</strong></em>:
+exectuable file，可执行文件</p>
+</li>
+<li>
+<p><em><strong>ET_DYN</strong></em>:
+shared object，共享库</p>
+</li>
+<li>
+<p>ET_CORE:
+core file，进程崩溃或接受到sigsegv信号后，保存的进程image内容，便于gdb进行调试分析</p>
+</li>
+</ul>
+<h2 id="program-headers">program headers</h2>
+<h2 id="elf64_shdr节头表">Elf64_Shdr节头表</h2>
+<p>ELF 节头表是一个节头数组。每一个节头都描述了其所对应的节的信息，如节名、节大小、在文件中的偏移、读写权限等。编译器、链接器、装载器都是通过节头表来定位和访问各个节的属性的。</p>
+<p><em><strong>section header定义：</strong></em>
+The section header has the following structure:</p>
+<pre tabindex="0"><code>  typedef struct {
+      /*
+      节名是一个字符串，保存在一个名为.shstrtab的字符串表（可通过Section Header索引到）。sh_name的值实际上是其节名字符串在.shstrtab中的偏移值
+      */
+      uint32_t   sh_name;
+      //节类型
+      uint32_t   sh_type;
+      //节标志位
+      uint64_t   sh_flags;
+      /*
+      节的虚拟地址，如果该节可以被加载，则sh_addr为该节被加载后在进程地址空间中的虚拟地址；否则sh_addr为0
+      */
+      Elf64_Addr sh_addr;
+      /*
+      节偏移
+      如果该节存在于文件中，则表示该节在文件中的偏移；否则无意义，如sh_offset对于BSS 节来说是没有意义的
+      */
+      Elf64_Off  sh_offset;
+      //节大小
+      uint64_t   sh_size;
+      //节链接信息
+      uint32_t   sh_link;
+      uint32_t   sh_info;
+      //节地址对齐方式
+      uint64_t   sh_addralign;
+      /*
+      节项大小
+      有些节包含了一些固定大小的项，如符号表，其包含的每个符号所在的大小都一样的，对于这种节，sh_entsize表示每个项的大小。如果为0，则表示该节不包含固定大小的项。
+      */
+      uint64_t   sh_entsize;
+  } Elf64_Shdr;
+</code></pre><p>用readelf -S 读取节头表</p>
+<pre tabindex="0"><code>└─$ readelf -S /usr/bin/ls
+There are 30 section headers, starting at offset 0x23768:
 
-           typedef struct {
-               uint32_t   sh_name;
-               uint32_t   sh_type;
-               uint32_t   sh_flags;
-               Elf32_Addr sh_addr;
-               Elf32_Off  sh_offset;
-               uint32_t   sh_size;
-               uint32_t   sh_link;
-               uint32_t   sh_info;
-               uint32_t   sh_addralign;
-               uint32_t   sh_entsize;
-           } Elf32_Shdr;
-
-           typedef struct {
-               uint32_t   sh_name;
-               uint32_t   sh_type;
-               uint64_t   sh_flags;
-               Elf64_Addr sh_addr;
-               Elf64_Off  sh_offset;
-               uint64_t   sh_size;
-               uint32_t   sh_link;
-               uint32_t   sh_info;
-               uint64_t   sh_addralign;
-               uint64_t   sh_entsize;
-           } Elf64_Shdr;
-</code></pre><pre tabindex="0"><code>─$ readelf -S vuln(gef&gt; elf-info)
-There are 30 section headers, starting at offset 0x3b80:
-
-──────────────────────────────────────────────────────── Section Header ─────────────────────────────────────────────────────────
-  [ #] Name                            Type    Address   Offset     Size   EntSiz Flags Link Info    Align
-  [ 0]                                 UNKN        0x0      0x0      0x0      0x0 UNKNOWN_FLAG  0x0  0x0      0x0
-  [ 1] .interp                 SHT_PROGBITS      0x318    0x318     0x1c      0x0 ALLOC  0x0  0x0      0x1
-  [ 2] .note.gnu.property          SHT_NOTE      0x338    0x338     0x20      0x0 ALLOC  0x0  0x0      0x8
-  [ 3] .note.gnu.build-id          SHT_NOTE      0x358    0x358     0x24      0x0 ALLOC  0x0  0x0      0x4
-  [ 4] .note.ABI-tag               SHT_NOTE      0x37c    0x37c     0x20      0x0 ALLOC  0x0  0x0      0x4
-  [ 5] .gnu.hash               SHT_GNU_HASH      0x3a0    0x3a0     0x24      0x0 ALLOC  0x6  0x0      0x8
-  [ 6] .dynsym                   SHT_DYNSYM      0x3c8    0x3c8    0x288     0x18 ALLOC  0x7  0x1      0x8
-  [ 7] .dynstr                   SHT_STRTAB      0x650    0x650    0x12c      0x0 ALLOC  0x0  0x0      0x1
-  [ 8] .gnu.version          SHT_GNU_versym      0x77c    0x77c     0x36      0x2 ALLOC  0x6  0x0      0x2
-  [ 9] .gnu.version_r       SHT_GNU_verneed      0x7b8    0x7b8     0x30      0x0 ALLOC  0x7  0x1      0x8
-  [10] .rela.dyn                   SHT_RELA      0x7e8    0x7e8     0x90     0x18 ALLOC  0x6  0x0      0x8
-  [11] .rela.plt                   SHT_RELA      0x878    0x878    0x1f8     0x18 UNKNOWN_FLAG  0x6 0x18      0x8
-  [12] .init                   SHT_PROGBITS     0x1000   0x1000     0x21      0x0 UNKNOWN_FLAG  0x0  0x0      0x4
-  [13] .plt                    SHT_PROGBITS     0x1030   0x1030    0x160     0x10 UNKNOWN_FLAG  0x0  0x0     0x10
-  [14] .plt.got                SHT_PROGBITS     0x1190   0x1190      0x8      0x8 UNKNOWN_FLAG  0x0  0x0      0x8
-  [15] .text                   SHT_PROGBITS     0x11a0   0x11a0    0x5d1      0x0 UNKNOWN_FLAG  0x0  0x0     0x10
-  [16] .fini                   SHT_PROGBITS     0x1774   0x1774      0xe      0x0 UNKNOWN_FLAG  0x0  0x0      0x4
-  [17] .rodata                 SHT_PROGBITS     0x2000   0x2000     0xa2      0x0 ALLOC  0x0  0x0     0x10
-  [18] .eh_frame_hdr           SHT_PROGBITS     0x20a4   0x20a4     0x44      0x0 ALLOC  0x0  0x0      0x4
-  [19] .eh_frame               SHT_PROGBITS     0x20e8   0x20e8    0x128      0x0 ALLOC  0x0  0x0      0x8
-  [20] .ctors                  SHT_PROGBITS     0x3e18   0x2e18     0x10      0x0 UNKNOWN_FLAG  0x0  0x0      0x8
-  [21] .dtors                  SHT_PROGBITS     0x3e28   0x2e28     0x10      0x0 UNKNOWN_FLAG  0x0  0x0      0x8
-  [22] .dynamic                 SHT_DYNAMIC     0x3e38   0x2e38    0x1a0     0x10 UNKNOWN_FLAG  0x7  0x0      0x8
-  [23] .got                    SHT_PROGBITS     0x3fd8   0x2fd8     0x28      0x8 UNKNOWN_FLAG  0x0  0x0      0x8
-  [24] .got.plt                SHT_PROGBITS     0x4000   0x3000     0xc0      0x8 UNKNOWN_FLAG  0x0  0x0      0x8
-  [25] .data                   SHT_PROGBITS     0x40c0   0x30c0     0x10      0x0 UNKNOWN_FLAG  0x0  0x0      0x8
-  [26] .bss                      SHT_NOBITS     0x40d0   0x30d0     0x10      0x0 UNKNOWN_FLAG  0x0  0x0      0x8
-  [27] .comment                SHT_PROGBITS        0x0   0x30d0     0x1f      0x1 UNKNOWN_FLAG  0x0  0x0      0x1
-  [28] .symtab                   SHT_SYMTAB        0x0   0x30f0    0x630     0x18 UNKNOWN_FLAG 0x1d 0x18      0x8
-  [29] .strtab                   SHT_STRTAB        0x0   0x3720    0x3be      0x0 UNKNOWN_FLAG  0x0  0x0      0x1
-  [30] .shstrtab                 SHT_STRTAB        0x0   0x3ade    0x110      0x0 UNKNOWN_FLAG  0x0  0x0      0x1
-</code></pre><h4 id="text-section">.text section</h4>
-<p>[15] 存放代码，反汇编结果如下：</p>
+Section Headers:
+  [Nr] Name              Type             Address           Offset
+       Size              EntSize          Flags  Link  Info  Align
+  [ 0]                   NULL             0000000000000000  00000000
+       0000000000000000  0000000000000000           0     0     0
+  [ 1] .interp           PROGBITS         00000000000002a8  000002a8
+       000000000000001c  0000000000000000   A       0     0     1
+  [ 2] .note.gnu.bu[...] NOTE             00000000000002c4  000002c4
+       0000000000000024  0000000000000000   A       0     0     4
+  [ 3] .note.ABI-tag     NOTE             00000000000002e8  000002e8
+       0000000000000020  0000000000000000   A       0     0     4
+  [ 4] .gnu.hash         GNU_HASH         0000000000000308  00000308
+       00000000000000ac  0000000000000000   A       5     0     8
+  [ 5] .dynsym           DYNSYM           00000000000003b8  000003b8
+       0000000000000c00  0000000000000018   A       6     1     8
+  [ 6] .dynstr           STRTAB           0000000000000fb8  00000fb8
+       00000000000005c5  0000000000000000   A       0     0     1
+  [ 7] .gnu.version      VERSYM           000000000000157e  0000157e
+       0000000000000100  0000000000000002   A       5     0     2
+  [ 8] .gnu.version_r    VERNEED          0000000000001680  00001680
+       00000000000000a0  0000000000000000   A       6     2     8
+  [ 9] .rela.dyn         RELA             0000000000001720  00001720
+       0000000000001440  0000000000000018   A       5     0     8
+  [10] .rela.plt         RELA             0000000000002b60  00002b60
+       00000000000009d8  0000000000000018  AI       5    24     8
+  [11] .init             PROGBITS         0000000000004000  00004000
+       0000000000000017  0000000000000000  AX       0     0     4
+  [12] .plt              PROGBITS         0000000000004020  00004020
+       00000000000006a0  0000000000000010  AX       0     0     16
+  [13] .plt.got          PROGBITS         00000000000046c0  000046c0
+       0000000000000018  0000000000000008  AX       0     0     8
+  [14] .text             PROGBITS         00000000000046e0  000046e0
+       0000000000013cde  0000000000000000  AX       0     0     16
+  [15] .fini             PROGBITS         00000000000183c0  000183c0
+       0000000000000009  0000000000000000  AX       0     0     4
+  [16] .rodata           PROGBITS         0000000000019000  00019000
+       0000000000004f09  0000000000000000   A       0     0     32
+  [17] .eh_frame_hdr     PROGBITS         000000000001df0c  0001df0c
+       0000000000000944  0000000000000000   A       0     0     4
+  [18] .eh_frame         PROGBITS         000000000001e850  0001e850
+       0000000000003268  0000000000000000   A       0     0     8
+  [19] .init_array       INIT_ARRAY       0000000000023350  00022350
+       0000000000000008  0000000000000008  WA       0     0     8
+  [20] .fini_array       FINI_ARRAY       0000000000023358  00022358
+       0000000000000008  0000000000000008  WA       0     0     8
+  [21] .data.rel.ro      PROGBITS         0000000000023360  00022360
+       0000000000000a78  0000000000000000  WA       0     0     32
+  [22] .dynamic          DYNAMIC          0000000000023dd8  00022dd8
+       00000000000001f0  0000000000000010  WA       6     0     8
+  [23] .got              PROGBITS         0000000000023fc8  00022fc8
+       0000000000000038  0000000000000008  WA       0     0     8
+  [24] .got.plt          PROGBITS         0000000000024000  00023000
+       0000000000000360  0000000000000008  WA       0     0     8
+  [25] .data             PROGBITS         0000000000024360  00023360
+       0000000000000268  0000000000000000  WA       0     0     32
+  [26] .bss              NOBITS           00000000000245e0  000235c8
+       00000000000012d8  0000000000000000  WA       0     0     32
+  [27] .gnu_debugaltlink PROGBITS         0000000000000000  000235c8
+       0000000000000049  0000000000000000           0     0     1
+  [28] .gnu_debuglink    PROGBITS         0000000000000000  00023614
+       0000000000000034  0000000000000000           0     0     4
+  [29] .shstrtab         STRTAB           0000000000000000  00023648
+       000000000000011c  0000000000000000           0     0     1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  D (mbind), l (large), p (processor specific)
+</code></pre><h3 id="节类型sh_type">节类型(sh_type)</h3>
+<p>节名是一个字符串，只是在链接和编译过程中有意义，但它并不能真正地表示节的类型。对于编译器和链接器来说，主要决定节的属性是节的类型（sh_type）和节的标志位（sh_flags）。<br>
+节的类型相关常量以SHT_开头，上述readelf -S命令执行的结果省略了该前缀。
+常见的节类型如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常量</th>
+<th style="text-align:center">值</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">是否重点关注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SHT_NULL</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">无效节</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:center">SHT_PROGBITS</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">程序节。代码节、数据节都是这种类型。</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:center">SHT_SYMTAB</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">符号表</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:center">SHT_STRTAB</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">字符串表</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:center">SHT_RELA</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">重定位表。该节包含了重定位信息。</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:center">SHT_HASH</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">符号表的哈希表</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:center">SHT_DYNAMIC</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">动态链接信息</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:center">SHT_NOTE</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">提示性信息</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:center">SHT_NOBITS</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">表示该节在文件中没有内容。如.bss节</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:center">SHT_REL</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">该节包含了重定位信息</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:center">SHT_SHLIB</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">保留</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:center">SHT_DNYSYM</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">动态链接的符号表</td>
+<td style="text-align:center">yes</td>
+</tr>
+</tbody>
+</table>
+<p><em><strong>.text section</strong></em>
+[15] <!-- raw HTML omitted -->存放代码，反汇编结果如下：<!-- raw HTML omitted --></p>
 <pre tabindex="0"><code>[15] .text                   SHT_PROGBITS     0x11a0   0x11a0    0x5d1      0x0 UNKNOWN_FLAG  0x0  0x0     0x10
 ─$ objdump -M intel -d -j .text vuln
 
 vuln:     file format elf64-x86-64
-
-
 00000000000011a0 &lt;_start&gt;:
     11a0:	31 ed                	xor    ebp,ebp
     11a2:	49 89 d1             	mov    r9,rdx
@@ -389,8 +518,8 @@ vuln:     file format elf64-x86-64
     11c4:	ff 15 16 2e 00 00    	call   QWORD PTR [rip+0x2e16]        # 3fe0 &lt;__libc_start_main@GLIBC_2.2.5&gt;
     11ca:	f4                   	hlt
     11cb:	0f 1f 44 00 00       	nop    DWORD PTR [rax+rax*1+0x0]
-</code></pre><h4 id="data-section">.data section</h4>
-<p>[25] 存放全局或静态初始化变量。</p>
+</code></pre><p><em><strong>.data section</strong></em>
+[25] 存放全局或静态初始化变量。</p>
 <pre tabindex="0"><code>[25] .data                   SHT_PROGBITS     0x40c0   0x30c0     0x10      0x0 UNKNOWN_FLAG  0x0  0x0      0x8
 </code></pre><pre tabindex="0"><code>gef&gt; xinfo 0x00555555554000+0x40c0
 ───────────────────────────────────────────────────── xinfo: 0x5555555580c0 ─────────────────────────────────────────────────────
@@ -405,8 +534,8 @@ Symbol: data_start
 </code></pre><pre tabindex="0"><code>gef&gt; x /16c 0x00555555554000+0x40c0
 0x5555555580c0:	0x0	0x0	0x0	0x0	0x0	0x0	0x0	0x0
 0x5555555580c8:	0xc8	0x80	0x55	0x55	0x55	0x55	0x0	0x0
-</code></pre><h4 id="bss">.bss</h4>
-<p>[26] 未初始化的全局或静态变量。</p>
+</code></pre><p><em><strong>.bss</strong></em>
+[26] 未初始化的全局或静态变量。</p>
 <pre tabindex="0"><code>[26] .bss                      SHT_NOBITS     0x40d0   0x30d0     0x10      0x0 UNKNOWN_FLAG  0x0  0x0      0x8
 </code></pre><pre tabindex="0"><code>gef&gt; xinfo 0x00555555554000+0x40d0
 ───────────────────────────────────────────────────── xinfo: 0x5555555580d0 ─────────────────────────────────────────────────────
@@ -421,83 +550,196 @@ Symbol: completed
 </code></pre><pre tabindex="0"><code>gef&gt; x /16c 0x00555555554000+0x40d0
 0x5555555580d0 &lt;completed.1&gt;:	0x0	0x0	0x0	0x0	0x0	0x0	0x0	0x0
 0x5555555580d8 &lt;dtor_idx.0&gt;:	0x0	0x0	0x0	0x0	0x0	0x0	0x0	0x0
-</code></pre><h4 id="rodata-section">.rodata section</h4>
-<p>存放常量，例如printf(&ldquo;hello,world!\n&rdquo;);</p>
-<h4 id="plt-section">.plt section</h4>
-<p>procedure link table,</p>
-<h3 id="gotplt-section">.got.plt section</h3>
-<p>global offset table,</p>
-<h4 id="dynamic">.dynamic</h4>
-<h4 id="dynsym--dynstr-section">.dynsym &amp; .dynstr section</h4>
-<pre tabindex="0"><code>String and symbol tables
-       String table sections hold null-terminated character sequences, commonly called strings.  The object  file  uses  these
-       strings to represent symbol and section names.  One references a string as an index into the string table section.  The
-       first byte, which is index zero, is defined to hold a null byte (&#39;\0&#39;).  Similarly, a string table&#39;s last byte  is  de-
-       fined to hold a null byte, ensuring null termination for all strings.
+</code></pre><p><em><strong>.rodata section</strong></em>
+存放常量，例如printf(&ldquo;hello,world!\n&rdquo;);</p>
+<h3 id="节标志位sh_flag">节标志位(sh_flag)</h3>
+<p>节标志位表示该节在进程虚拟地址空间中的属性。如是否可写、是否可执行等。相关常量以SHF_开头。常见的节标志位如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常量</th>
+<th style="text-align:center">值</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SHF_WRITE</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">表示该节在进程空间中可写</td>
+</tr>
+<tr>
+<td style="text-align:center">SHF_ALLOC</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">表示该节在进程空间中需要分配空间。有些包含指示或控制信息的节不需要在进程空间中分配空间，就不会有这个标志。</td>
+</tr>
+<tr>
+<td style="text-align:center">SHF_EXECINSTR</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">表示该节在进程空间中可以被执行</td>
+</tr>
+</tbody>
+</table>
+<h2 id="节链接信息sh_linksh_info">节链接信息(sh_link,sh_info)</h2>
+<p>如果节的类型是与链接相关的（无论是动态链接还是静态链接），如重定位表、符号表等，则sh_link、sh_info两个成员所包含的意义如下所示。其他类型的节，这两个成员没有意义。</p>
+<h2 id="text节">.text节</h2>
+<p>.text节是保存了程序代码指令的代码节。一段可执行程序，如果存在Phdr，则.text节就会存在于text段中。由于.text节保存了程序代码，所以节类型为SHT_PROGBITS。</p>
+<h2 id="rodata节">.rodata节</h2>
+<p>rodata节保存了只读的数据，如一行C语言代码中的字符串。由于.rodata节是只读的，所以只能存在于一个可执行文件的只读段中。因此，只能在text段（不是data段）中找到.rodata节。由于.rodata节是只读的，所以节类型为SHT_PROGBITS。</p>
+<h2 id="plt节">.plt节</h2>
+<p>过程链接表(procedure link table),其包含了动态链接器调用从共享库导入的函数所必需的相关代码。由于.plt节保存了代码，所以节类型为SHT_PROGBITS。</p>
+<h2 id="data节">.data节</h2>
+<p>.data节存在于data段中，其保存了初始化的全局变量等数据。由于.data节保存了程序的变量数据，所以节类型为SHT_PROGBITS。</p>
+<h2 id="bss节">.bss节</h2>
+<p>.bss节存在于data段中，占用空间不超过4字节，仅表示这个节本省的空间。.bss节保存了未进行初始化的全局数据。程序加载时数据被初始化为0，在程序执行期间可以进行赋值。由于.bss节未保存实际的数据，所以节类型为SHT_NOBITS。</p>
+<h2 id="gotplt节">.got.plt节</h2>
+<p>全局偏移表(global offset table),.got节和.plt节一起提供了对导入的共享库函数的访问入口，由动态链接器在运行时进行修改。由于.got.plt节与程序执行有关，所以节类型为SHT_PROGBITS。</p>
+<h2 id="dynamic">.dynamic</h2>
+<pre tabindex="0"><code>The .dynamic section contains a series of structures  that  hold relevant dynamic linking information.  The d_tag member controlsthe interpretation of d_un.
+</code></pre><h2 id="elf64_dyn">Elf64_Dyn</h2>
+<pre tabindex="0"><code>typedef struct {
+    Elf64_Sxword    d_tag;
+    union {
+        Elf64_Xword d_val;
+        Elf64_Addr  d_ptr;
+    } d_un;
+} Elf64_Dyn;
+</code></pre><p>readelf -d 读取动态节</p>
+<pre tabindex="0"><code>└─$ readelf -d /usr/bin/ls
 
-       An object file&#39;s symbol table holds information needed to locate and relocate a program&#39;s symbolic definitions and ref-
-       erences.  A symbol table index is a subscript into this array.
+Dynamic section at offset 0x22dd8 contains 27 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libselinux.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x000000000000000c (INIT)               0x4000
+ 0x000000000000000d (FINI)               0x183c0
+ 0x0000000000000019 (INIT_ARRAY)         0x23350
+ 0x000000000000001b (INIT_ARRAYSZ)       8 (bytes)
+ 0x000000000000001a (FINI_ARRAY)         0x23358
+ 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)
+ 0x000000006ffffef5 (GNU_HASH)           0x308
+ 0x0000000000000005 (STRTAB)             0xfb8
+ 0x0000000000000006 (SYMTAB)             0x3b8
+ 0x000000000000000a (STRSZ)              1477 (bytes)
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000015 (DEBUG)              0x0
+ 0x0000000000000003 (PLTGOT)             0x24000
+ 0x0000000000000002 (PLTRELSZ)           2520 (bytes)
+ 0x0000000000000014 (PLTREL)             RELA
+ 0x0000000000000017 (JMPREL)             0x2b60
+ 0x0000000000000007 (RELA)               0x1720
+ 0x0000000000000008 (RELASZ)             5184 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x000000006ffffffb (FLAGS_1)            Flags: PIE
+ 0x000000006ffffffe (VERNEED)            0x1680
+ 0x000000006fffffff (VERNEEDNUM)         2
+ 0x000000006ffffff0 (VERSYM)             0x157e
+ 0x000000006ffffff9 (RELACOUNT)          203
+ 0x0000000000000000 (NULL)               0x0
+</code></pre><h2 id="symtab节符号表">.symtab节（符号表）</h2>
+<p>.symtab节是一个ElfN_Sym的数组，保存了符号信息。节类型为SHT_SYMTAB。</p>
+<pre tabindex="0"><code>An object file&#39;s symbol table holds information needed to locate and relocate a program&#39;s symbolic definitions and ref-erences.  A symbol table index is a subscript into this array.
+typedef struct {
+    uint32_t      st_name;
+    unsigned char st_info;
+    unsigned char st_other;
+    uint16_t      st_shndx;
+    Elf64_Addr    st_value;
+    uint64_t      st_size;
+} Elf64_Sym;
+</code></pre><h2 id="strtab节字符串表">.strtab节（字符串表）</h2>
+<p>.strtab节保存的是符号字符串表，表中的内容会被.symtab的ElfN_Sym结构中的st_name引用。节类型为SHT_STRTAB。 类似于符号表，在大多数共享库和动态链接可执行文件中，也存在两个字符串表。即.dynstr和.strtab，分别对应于.dynsym和symtab。此外，还有一个.shstrtab的节头字符串表，用于保存节头表中用到的字符串，可通过sh_name进行索引。</p>
+<h2 id="dynsym节">.dynsym节</h2>
+<p>.dynsym节保存在text段中。其保存了从共享库导入的动态符号表。节类型为SHT_DYNSYM。</p>
+<h2 id="dynstr节">.dynstr节</h2>
+<p>.dynstr保存了动态链接字符串表，表中存放了一系列字符串，这些字符串代表了符号名称，以空字符作为终止符。</p>
+<h2 id="rel节重定位表">.rel.*节（重定位表）</h2>
+<p>重定位表保存了重定位相关的信息，这些信息描述了如何在链接或运行时，对ELF目标文件的某部分或者进程镜像进行补充或修改。由于重定位表保存了重定位相关的数据，所以节类型为SHT_REL。</p>
+<h2 id="ctors节和dtors节">.ctors节和.dtors节</h2>
+<p>.ctors（构造器）节和.dtors（析构器）节分别保存了指向构造函数和析构函数的函数指针，构造函数是在main函数执行之前需要执行的代码；析构函数是在main函数之后需要执行的代码。</p>
+<h2 id="symtab和dynsym区别">.symtab和.dynsym区别</h2>
+<p>节的分类中我们介绍了.dynsym节和.symtab节，两者都是符号表。</p>
+<ul>
+<li>
+<p>那么它们到底有什么区别呢？</p>
+</li>
+<li>
+<p>存在什么关系呢？(.dynsym是.symtab的子集)<br>
+符号是对某些类型的数据或代码（如全局变量或函数）的符号引用，函数名或变量名就是符号名。例如，printf()函数会在动态链接符号表.dynsym中存有一个指向该函数的符号项（以ElfN_Sym数据结构表示）。在大多数共享库和动态链接可执行文件中，存在两个符号表。即.dynsym和.symtab。
+.dynsym保存了引用来自外部文件符号的全局符号。如printf库函数。.dynsym保存的符号是.symtab所保存符合的子集，.symtab中还保存了可执行文件的本地符号。如全局变量，代码中定义的本地函数等。</p>
+</li>
+<li>
+<p>既然.dynsym是.symtab的子集，那为何要同时存在两个符号表呢？<br>
+通过readelf -S命令可以查看可执行文件的输出，一部分节标志位（sh_flags）被标记为了A（ALLOC）、WA（WRITE/ALLOC）、AX（ALLOC/EXEC）。其中，.dynsym被标记为ALLOC，而.symtab则没有标记。
+ALLOC表示有该标记的节会在运行时分配并装载进入内存，而.symtab不是在运行时必需的，因此不会被装载到内存中。.dynsym保存的符号只能在运行时被解析，因此是运行时动态链接器所需的唯一符号。.dynsym对于动态链接可执行文件的执行是必需的，而.symtab只是用来进行调试和链接的。<br>
+下图通过符号表索引字符串表：
 
-           typedef struct {
-               uint32_t      st_name;
-               Elf32_Addr    st_value;
-               uint32_t      st_size;
-               unsigned char st_info;
-               unsigned char st_other;
-               uint16_t      st_shndx;
-           } Elf32_Sym;
+        <img class="mx-auto" alt="符号表索引字符串" src="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/elf-symtab-strtab.png?x-oss-process=image/resize,w_800" />   
+    
+符号表结构体：</p>
+</li>
+</ul>
+<pre tabindex="0"><code>typedef struct {
+    //符号名。该值为该符号名在字符串表中的偏移地址。
+    uint32_t      st_name;
+    //符号类型及绑定信息
+    unsigned char st_info;
+    unsigned char st_other;
+    //符号所在的节
+    uint16_t      st_shndx;
+    //符号对应的值。存放符号的值（可能是地址或位置偏移量）。
+    Elf64_Addr    st_value;
+    //符号的大小
+    uint64_t      st_size;
+} Elf64_Sym;
+</code></pre><p>通过readelf -s读取符号:</p>
+<pre tabindex="0"><code>└─$ readelf -s /usr/bin/ls
 
-           typedef struct {
-               uint32_t      st_name;
-               unsigned char st_info;
-               unsigned char st_other;
-               uint16_t      st_shndx;
-               Elf64_Addr    st_value;
-               uint64_t      st_size;
-           } Elf64_Sym;
-
-       The 32-bit and 64-bit versions have the same members, just in a different order.
-</code></pre><pre tabindex="0"><code> [ 6] .dynsym                   SHT_DYNSYM      0x3c8    0x3c8    0x288     0x18 ALLOC  0x7  0x1      0x8
- [ 7] .dynstr                   SHT_STRTAB      0x650    0x650    0x12c      0x0 ALLOC  0x0  0x0      0x1
-</code></pre><p>.dynstr:</p>
-<pre tabindex="0"><code>gef&gt; x /32s 0x00555555554000+0x650
-0x555555554650:	&#34;&#34;
-0x555555554651:	&#34;socket&#34;
-0x555555554658:	&#34;exit&#34;
-0x55555555465d:	&#34;htonl&#34;
-0x555555554663:	&#34;htons&#34;
-0x555555554669:	&#34;strncmp&#34;
-0x555555554671:	&#34;inet_aton&#34;
-0x55555555467b:	&#34;perror&#34;
-0x555555554682:	&#34;fork&#34;
-0x555555554687:	&#34;__stack_chk_fail&#34;
-0x555555554698:	&#34;listen&#34;
-0x55555555469f:	&#34;printf&#34;
-0x5555555546a6:	&#34;strlen&#34;
-0x5555555546ad:	&#34;memset&#34;
-0x5555555546b4:	&#34;__errno_location&#34;
-0x5555555546c5:	&#34;bind&#34;
-0x5555555546ca:	&#34;read&#34;
-0x5555555546cf:	&#34;setsockopt&#34;
-0x5555555546da:	&#34;close&#34;
-0x5555555546e0:	&#34;accept&#34;
-0x5555555546e7:	&#34;__cxa_finalize&#34;
-0x5555555546f6:	&#34;strerror&#34;
-0x5555555546ff:	&#34;__libc_start_main&#34;
-0x555555554711:	&#34;write&#34;
-0x555555554717:	&#34;libc.so.6&#34;
-0x555555554721:	&#34;GLIBC_2.4&#34;
-0x55555555472b:	&#34;GLIBC_2.2.5&#34;
-0x555555554737:	&#34;_ITM_deregisterTMCloneTable&#34;
-0x555555554753:	&#34;__gmon_start__&#34;
-0x555555554762:	&#34;_ITM_registerTMCloneTable&#34;
-0x55555555477c:	&#34;&#34;
-0x55555555477d:	&#34;&#34;
+Symbol table &#39;.dynsym&#39; contains 128 entries:
+   Num:    Value          Size Type    Bind   Vis      Ndx Name
+     0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND __[...]@GLIBC_2.3 (2)
+     2: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND [...]@GLIBC_2.2.5 (3)
+     3: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND [...]@LIBSELINUX_1.0 (4)
+     4: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND [...]@GLIBC_2.2.5 (3)
+     5: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND [...]@GLIBC_2.3.4 (5)
+     6: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND raise@GLIBC_2.2.5 (3)
+     7: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND abort@GLIBC_2.2.5 (3)
+     ...
+    44: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND lseek@GLIBC_2.2.5 (3)
+     ...
+    65: 0000000000000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
+    66: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND memcpy@GLIBC_2.14 (8)
+    67: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND [...]@GLIBC_2.2.5 (3)
+    68: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND tzset@GLIBC_2.2.5 (3)
+    ...
+    89: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND error@GLIBC_2.2.5 (3)
+    ...
+    97: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND exit@GLIBC_2.2.5 (3)
+    ...
+   112: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND free@GLIBC_2.2.5 (3)
+</code></pre><h2 id="重定位表">重定位表</h2>
+<p>重定位就是将符号定义和符号引用进行连接的过程。可重定位文件需要包含描述如何修改节内容的相关信息，从而使可执行文件和共享目标文件能够保存进程的程序镜像所需要的正确信息。</p>
+<pre tabindex="0"><code>typedef struct {
+   /*
+   重定位入口的偏移
+   对于可重定位文件来说，这个值是该重定位入口所要修正的位置的第一个字节相对于节起始的偏移;
+   对于可执行文件或共享对象文件来说，这个值是该重定位入口所要修正的位置的第一个字节的虚拟地址
+   */
+    Elf64_Addr r_offset;
+    /*
+    重定位入口的类型和符号
+    因为不同处理器的指令系统不一样，所以重定位所要修正的指令地址格式也不一样。每种处理器都有自己的一套重定位入口的类型。
+    对于可执行文件和共享目标文件来说，它们的重定位入口是动态链接类型的
+    */
+    uint64_t   r_info;
+} Elf64_Rel;
 </code></pre><h2 id="引用">引用</h2>
 <ul>
 <li><a href="https://www.usenix.org/system/files/conference/usenixsecurity15/sec15-paper-di-frederico.pdf">How the ELF Ruined</a></li>
 <li><a href="https://dandylife.net/blog/archives/660">Dynamic Linking in ELF</a></li>
 <li><a href="https://hackmd.io/@u1f383/ry6czs8XI">ELF deep look</a></li>
+<li><a href="http://chuquan.me/2018/05/21/elf-introduce/">计算机那些事(4)——ELF文件结构</a></li>
 </ul>
 
         </div>
@@ -695,11 +937,11 @@ Symbol: completed
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/web_01_sqlinject/" title="web sql inject">web sql inject</a>
+        <a href="https://winsun.github.io/fightsec/post/ml_09_similarity/" title="相似度方法">相似度方法</a>
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_12_honeypot/" title="蜜罐主动防御">蜜罐主动防御</a>
+        <a href="https://winsun.github.io/fightsec/post/ml_08_matplotlib/" title="matplotlib用法">matplotlib用法</a>
     </li>
     
 </ul>
@@ -711,7 +953,7 @@ Symbol: completed
         <h3 class="widget-title"><a href='/fightsec/categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li><a href="https://winsun.github.io/fightsec/categories/AI/">AI (3)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/AI/">AI (9)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/C2/">C2 (1)</a></li>
     
@@ -749,6 +991,8 @@ Symbol: completed
     <section class="widget">
         <h3 class="widget-title"><a href='/fightsec/tags/'>标签</a></h3>
 <div class="tagcloud">
+    
+    <a href="https://winsun.github.io/fightsec/tags/AI/">AI</a>
     
     <a href="https://winsun.github.io/fightsec/tags/ATTCT/">ATT&amp;CT</a>
     
@@ -812,9 +1056,15 @@ Symbol: completed
     
     <a href="https://winsun.github.io/fightsec/tags/logger/">logger</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/matplotlib/">matplotlib</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/nat/">nat</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/numpy/">numpy</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/overflow/">overflow</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/pandas/">pandas</a>
     
     <a href="https://winsun.github.io/fightsec/tags/pets/">pets</a>
     
@@ -841,6 +1091,8 @@ Symbol: completed
     <a href="https://winsun.github.io/fightsec/tags/routine/">routine</a>
     
     <a href="https://winsun.github.io/fightsec/tags/scanner/">scanner</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/scipy/">scipy</a>
     
     <a href="https://winsun.github.io/fightsec/tags/shell/">shell</a>
     
@@ -874,11 +1126,15 @@ Symbol: completed
     
     <a href="https://winsun.github.io/fightsec/tags/%E5%A0%A1%E5%9E%92%E6%9C%BA/">堡垒机</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/">概率分布</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/">概率统计</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5/">混淆矩阵</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%BC%8F%E6%B4%9E/">漏洞</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E7%9B%B8%E4%BC%BC%E5%BA%A6/">相似度</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/">虚拟化</a>
     

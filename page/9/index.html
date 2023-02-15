@@ -76,6 +76,144 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/linux_15_gcc/" title="gcc">gcc</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年4月9日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/linux'>linux</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/linux_15_gcc/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/linux_14_filesystem/" title="vfs重要数据结构">vfs重要数据结构</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年4月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/linux'>linux</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            superblock object struct super_block { /** * 指向超级块链表的指针 */ struct list_head s_list; /* Keep this first */ /** * 设备标识符 */ dev_t s_dev; /* search index; _not_ kdev_t */ /** * 以字节为单位的块大小 */ unsigned long s_blocksize; /** * 基本块设备驱动程序中的以字节为单位的块大小。 */ unsigned long s_old_blocksize; /** * 以位为单位的块大小 */ unsigned char s_blocksize_bits; /** * 脏标志 */ unsigned char s_dirt; /** * 文件的最大长度 */ unsigned long long s_maxbytes; /* Max file size */ /** * 文件系统类型。 */ struct……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/linux_14_filesystem/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/linux_13_network/" title="网络编程">网络编程</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年3月29日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/linux'>linux</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/linux_13_network/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/linux_12_syscall/" title="system call">system call</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年3月24日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/linux'>linux</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            linux linux windows windows 引用 system call syscall under-the-hood 上下文切换……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/linux_12_syscall/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/linux_09_ASLR/" title="aslr保护机制">aslr保护机制</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年3月19日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/linux'>linux</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/linux_09_ASLR/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/linux_08_stack_canary/" title="canary保护机制">canary保护机制</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年3月14日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/linux'>linux</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/linux_08_stack_canary/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/p04_vul_03_serial/" title="java反序列化漏洞">java反序列化漏洞</a>
             </h1>
         </header>
@@ -163,145 +301,6 @@
             缓冲区溢出 一个自带缓冲区溢出bug的代码 greeting函数存在buffer overflow $ gdb -q meet warning: ~/gef/gef.py: No such file or directory warning: ~/gef/scripts/helpme.py: No such file or directory Reading symbols from meet... (gdb) list 1 // meet.c 2 #include &lt;stdio.h&gt; // needed for screen printing 3 #include &lt;string.h&gt; // needed for strcpy 4 void greeting(char *temp1,char *temp2){ // greeting function to say hello 5 char name[400]; // string variable to hold the name 6 strcpy(name, temp2); // copy argument to name with the infamous strcpy 7 printf(&#34;Hello %s %s\n&#34;, temp1, name); // print out the greeting 8 } 9 int main(int argc, char * argv[]){ // note the format for arguments……
         </div>
         <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p04_vul_01_overflow/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p04_vul_02_overflow/" title="缓冲区溢出02-shellcode">缓冲区溢出02-shellcode</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年3月9日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            weekness programe // meet.c #include &lt;stdio.h&gt; // needed for screen printing #include &lt;string.h&gt; // needed for strcpy void greeting(char *temp1,char *temp2){ // greeting function to say hello char name[400]; // string variable to hold the name strcpy(name, temp2); // copy argument to name with the infamous strcpy printf(&#34;Hello %s %s\n&#34;, temp1, name); // print out the greeting } int main(int argc, char * argv[]){ // note the format for arguments greeting(argv[1], argv[2]); // call function, pass title &amp; name printf(&#34;Bye %s %s\n&#34;, argv[1], argv[2]); // say &#34;bye&#34; } // exit program stack frame | name[400] | ebp | eip | temp1 | temp2 | disassemble greeting (gdb) disass greeting Dump of assembler code for function greeting: 0x56556201 &lt;+0&gt;: push %ebp 0x56556202 &lt;+1&gt;: mov %esp,%ebp 0x56556204 &lt;+3&gt;: push %ebx 0x56556205 &lt;+4&gt;: sub $0x190,%esp 0x5655620b &lt;+10&gt;: call 0x565560c0 &lt;__x86.get_pc_thunk.bx&gt; 0x56556210 &lt;+15&gt;: add……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p04_vul_02_overflow/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/linux_06_PIE_PIC/" title="pie&amp;pic">pie&amp;pic</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年3月4日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/linux'>linux</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/linux_06_PIE_PIC/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/linux_03_got_plt/" title="GOT&amp;PLT">GOT&amp;PLT</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年2月24日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/linux'>linux</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            gdb调试overbuffer objdump readelf string symbol table GOT PLT……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/linux_03_got_plt/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/linux_02_elf_tools/" title="linux环境和相关工具">linux环境和相关工具</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年2月19日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/linux'>linux</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            工具列表 GDB objdump objcopy strace system call trace ltrace library trace ftrace function trace readelf 有用的设备和文件 /proc/&lt;pid&gt;/maps ls /proc/1234/maps /proc/kcore /boot/System.map /proc/kallsyms /proc/iomem ECFS Extended core file snapshotECFS 环境变量 LD_PRELOAD LD_SHOW_AUXV……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/linux_02_elf_tools/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p06_pet_01_attct/" title="ATT&amp;CT">ATT&amp;CT</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年2月12日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95'>渗透测试</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            ATT&amp;CT……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p06_pet_01_attct/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p06_pet_02_c2/" title="C2">C2</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年2月12日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/C2'>C2</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            C2
-merlin ……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p06_pet_02_c2/">阅读全文</a></p>
     </article>
     
     
@@ -469,11 +468,11 @@ merlin ……
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/web_01_sqlinject/" title="web sql inject">web sql inject</a>
+        <a href="https://winsun.github.io/fightsec/post/ml_09_similarity/" title="相似度方法">相似度方法</a>
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/cyber_12_honeypot/" title="蜜罐主动防御">蜜罐主动防御</a>
+        <a href="https://winsun.github.io/fightsec/post/ml_08_matplotlib/" title="matplotlib用法">matplotlib用法</a>
     </li>
     
 </ul>
@@ -485,7 +484,7 @@ merlin ……
         <h3 class="widget-title"><a href='/fightsec/categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li><a href="https://winsun.github.io/fightsec/categories/AI/">AI (3)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/AI/">AI (9)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/C2/">C2 (1)</a></li>
     
@@ -523,6 +522,8 @@ merlin ……
     <section class="widget">
         <h3 class="widget-title"><a href='/fightsec/tags/'>标签</a></h3>
 <div class="tagcloud">
+    
+    <a href="https://winsun.github.io/fightsec/tags/AI/">AI</a>
     
     <a href="https://winsun.github.io/fightsec/tags/ATTCT/">ATT&amp;CT</a>
     
@@ -586,9 +587,15 @@ merlin ……
     
     <a href="https://winsun.github.io/fightsec/tags/logger/">logger</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/matplotlib/">matplotlib</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/nat/">nat</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/numpy/">numpy</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/overflow/">overflow</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/pandas/">pandas</a>
     
     <a href="https://winsun.github.io/fightsec/tags/pets/">pets</a>
     
@@ -615,6 +622,8 @@ merlin ……
     <a href="https://winsun.github.io/fightsec/tags/routine/">routine</a>
     
     <a href="https://winsun.github.io/fightsec/tags/scanner/">scanner</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/scipy/">scipy</a>
     
     <a href="https://winsun.github.io/fightsec/tags/shell/">shell</a>
     
@@ -648,11 +657,15 @@ merlin ……
     
     <a href="https://winsun.github.io/fightsec/tags/%E5%A0%A1%E5%9E%92%E6%9C%BA/">堡垒机</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/">概率分布</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/">概率统计</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5/">混淆矩阵</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%BC%8F%E6%B4%9E/">漏洞</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E7%9B%B8%E4%BC%BC%E5%BA%A6/">相似度</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/">虚拟化</a>
     

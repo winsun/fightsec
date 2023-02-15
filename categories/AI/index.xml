@@ -6,14 +6,68 @@
     <description>Recent content in AI on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 12 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/categories/AI/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/categories/AI/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>预期效用</title>
+      <title>相似度方法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_09_similarity/</link>
+      <pubDate>Fri, 03 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_09_similarity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>matplotlib用法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_08_matplotlib/</link>
+      <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_08_matplotlib/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scipy用法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_07_scipy/</link>
+      <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_07_scipy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pandas用法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_06_pandas/</link>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_06_pandas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>numpy用法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_05_numpy/</link>
+      <pubDate>Mon, 18 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_05_numpy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>概率分布</title>
+      <link>https://winsun.github.io/fightsec/post/ml_04_prob_dist/</link>
+      <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_04_prob_dist/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>随机变量及性质</title>
       <link>https://winsun.github.io/fightsec/post/ml_03_random_variable/</link>
       <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/ml_03_random_variable/</guid>
-      <description>概率空间 期望 预期效用 方差 协方差 马尔可夫 chebyshev chernoff murphy&amp;rsquo;s law random walk</description>
+      <description>概率空间 Probability Space == 样本空间(sample space) + 概率函数(probability function) 概率函数 $ P: S \mapsto R $, 其满足： $ P[\omega] \geq 0, \forall\omega \in S $ $ \sum_{\omega\in S} P[\omega] = 1 $ 期望 方差 协方差 马尔可夫 chebyshev chernoff murphy&amp;rsquo;s law random walk eut mvp emh 参考 最全Markdown公式 通用 LaTeX 数学公式语法手册</description>
     </item>
     
     <item>
