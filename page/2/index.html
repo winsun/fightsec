@@ -76,6 +76,75 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_04_ret2libc/" title="ret2libc">ret2libc</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2023年1月27日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ret2libc 程序开启nx保护时候，传统的shellcode在栈上不可执行，无法获取 执行shell程序，可以用ret2libc技术。 漏洞程序 #include &lt;stdio.h&gt; void vuln() { char buffer[64]; puts(&#34;Overflow me&#34;); gets(buffer); } int main() { vuln(); } gcc vuln.c -o -m32 -fno-stack-protector -no-pie vuln-32 └─$ checksec --file=./vuln-32 [*] &#39;/home/kali/exploits/ret2libc/vuln-32&#39; Arch: i386-32-little RELRO: Partial RELRO Stack: No canary found NX: NX enabled PIE: No PIE (0x8048000) 利用方案 eip直接指向system(&rsquo;/bin/……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_04_ret2libc/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/ml_09_similarity/" title="相似度方法">相似度方法</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2022年6月3日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/AI'>AI</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/ml_09_similarity/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/ml_08_matplotlib/" title="matplotlib用法">matplotlib用法</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2022年5月27日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/AI'>AI</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/ml_08_matplotlib/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/ml_07_scipy/" title="scipy用法">scipy用法</a>
             </h1>
         </header>
@@ -222,7 +291,7 @@
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2022年4月12日
+            2022年4月15日
         </date>
         
         <div class="post-meta">
@@ -236,77 +305,6 @@
             ……
         </div>
         <p class="readmore"><a href="https://winsun.github.io/fightsec/post/ml_04_prob_dist/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/ml_03_random_variable/" title="随机变量及性质">随机变量及性质</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2022年4月12日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/AI'>AI</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            概率空间 Probability Space == 样本空间(sample space) + 概率函数(probability function) 概率函数 $ P: S \mapsto R $, 其满足： $ P[\omega] \geq 0, \forall\omega \in S $ $ \sum_{\omega\in S} P[\omega] = 1 $ 期望 方差 协方差 马尔可夫 chebyshev chernoff murphy&rsquo;s law random walk eut mvp emh 参考 最全Markdown公式 通用 LaTeX 数学公式语法手册……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/ml_03_random_variable/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/cyber_10_scanner/" title="网络扫描">网络扫描</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2022年4月10日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/cybersecurity'>cybersecurity</a></span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8'>网络安全</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            nmap masscan go实现扫描器……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/cyber_10_scanner/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/ml_02_bayes/" title="贝叶斯">贝叶斯</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2022年4月9日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/AI'>AI</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            LSTM python预测基金净值 latex $\int_a^b f(x)\mathrm{d}x$……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/ml_02_bayes/">阅读全文</a></p>
     </article>
     
     
@@ -434,6 +432,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/" title="ret2dlresolve">ret2dlresolve</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_19_exp_socket/" title="socket exploitation">socket exploitation</a>
     </li>
     
@@ -462,15 +464,11 @@
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/pwn_04_ret2libc/" title="ret2libc">ret2libc</a>
+        <a href="https://winsun.github.io/fightsec/post/p04_vul_04_log4j/" title="log4j">log4j</a>
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/ml_09_similarity/" title="相似度方法">相似度方法</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/ml_08_matplotlib/" title="matplotlib用法">matplotlib用法</a>
+        <a href="https://winsun.github.io/fightsec/post/p04_vul_03_serial/" title="java反序列化漏洞">java反序列化漏洞</a>
     </li>
     
 </ul>
@@ -656,8 +654,6 @@
     <a href="https://winsun.github.io/fightsec/tags/%E5%A0%A1%E5%9E%92%E6%9C%BA/">堡垒机</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/">概率分布</a>
-    
-    <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/">概率统计</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5/">混淆矩阵</a>
     

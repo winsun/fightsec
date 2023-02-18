@@ -76,6 +76,75 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_14_unlinkexp/" title="unlink exploit">unlink exploit</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年6月17日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_14_unlinkexp/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_15_formatstr/" title="字符串漏洞: 任意读">字符串漏洞: 任意读</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年6月17日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            任意读 vuln.c #include &lt;stdio.h&gt; int main(void) { char buffer[200]; gets(buffer); printf(buffer); return 0; } 漏洞分析 编译程序 gcc -m32 -no-pie -fno-stack-protector -z execstack vuln.c -o vuln 分析程序 程序保护 └─$ checksec --file=./vuln [*] &#39;/home/kali/exploits/str_arb_read/vuln&#39; Arch: i386-32-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x8048000) RWX: Has RWX segments r2 debug vuln └─$ r2 -d -A ./vuln glibc.fc_offset = 0x00148 experimental analysis. [0xf7fe4450]&gt; s main;pdf ; DATA XREFS from entry0 @ 0x8049086, 0x804908c ┌ 83: int main (char **argv); │ ; var int32_t var_d0h @ ebp-0xd0 │ ; var int32_t var_8h @ ebp-0x8 │ ; arg char **argv @ esp+0xf4 │ 0x08049172 8d4c2404 sub esp, 0xc │ 0x080491a7 8d8530ffffff lea eax, [var_d0h] │ 0x080491ad 50 push eax │ 0x080491ae……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_15_formatstr/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_13_doublefree/" title="double free">double free</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年6月14日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_13_doublefree/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_12_uaf/" title="ret2csu">ret2csu</a>
             </h1>
         </header>
@@ -191,29 +260,6 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/" title="ret2dlresolve">ret2dlresolve</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年5月14日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            概要 利用ret2dlresolve，攻击者可以诱导二进制程序解析一个所选择的函数(比如system)为plt。 动态链接的ELF对象在第一次使用PLT和GOT调用时导入libc函数。在重定位runtime symbol，RIP将跳转到PLT并尝试解析该符号。在这个过程中，一个&quo……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_05_ret2plt/" title="ret2plt">ret2plt</a>
             </h1>
         </header>
@@ -255,52 +301,6 @@
             漏洞程序 // gcc source.c -o vuln -no-pie -fno-stack-protector -z execstack -m32 #include &lt;stdio.h&gt; void vuln() { char buffer[20]; puts(&#34;Give me the input&#34;); gets(buffer); } int main() { vuln(); return 0; }……
         </div>
         <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_03_got_overwrite/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_01_pwntools/" title="pwntools基本用法">pwntools基本用法</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年4月19日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            elf process remote rop 参考 pwntools github pwntools doc Writing Exploits with pwntools……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_01_pwntools/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/linux_16_shell/" title="linux shell and makefile">linux shell and makefile</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年4月14日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/linux'>linux</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            shell Bash脚本编程 makefile learn makefiles……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/linux_16_shell/">阅读全文</a></p>
     </article>
     
     
@@ -449,6 +449,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/" title="ret2dlresolve">ret2dlresolve</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_19_exp_socket/" title="socket exploitation">socket exploitation</a>
     </li>
     
@@ -477,15 +481,11 @@
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/pwn_04_ret2libc/" title="ret2libc">ret2libc</a>
+        <a href="https://winsun.github.io/fightsec/post/p04_vul_04_log4j/" title="log4j">log4j</a>
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/ml_09_similarity/" title="相似度方法">相似度方法</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/ml_08_matplotlib/" title="matplotlib用法">matplotlib用法</a>
+        <a href="https://winsun.github.io/fightsec/post/p04_vul_03_serial/" title="java反序列化漏洞">java反序列化漏洞</a>
     </li>
     
 </ul>
@@ -671,8 +671,6 @@
     <a href="https://winsun.github.io/fightsec/tags/%E5%A0%A1%E5%9E%92%E6%9C%BA/">堡垒机</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/">概率分布</a>
-    
-    <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/">概率统计</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5/">混淆矩阵</a>
     

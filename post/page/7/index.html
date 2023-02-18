@@ -78,6 +78,81 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/arm_08_shellcode/" title="arm shellcode编写">arm shellcode编写</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年7月10日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/arm'>arm</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/arm_08_shellcode/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/arm_06_condition_branch/" title="arm 条件执行和分支指令">arm 条件执行和分支指令</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年7月7日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/arm'>arm</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/arm_06_condition_branch/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/arm_05_load_store/" title="arm 多次加载和存储">arm 多次加载和存储</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年7月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/arm'>arm</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/arm_05_load_store/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/arm_04_mem_ins/" title="arm 加载和存储指令">arm 加载和存储指令</a>
             </h1>
         </header>
@@ -203,36 +278,11 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_16_wformatstr/" title="字符串漏洞：任意写">字符串漏洞：任意写</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年6月18日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            vuln.c #include &lt;stdio.h&gt; int auth = 0; int main() { char password[100]; puts(&#34;Password: &#34;); fgets(password, sizeof password, stdin); printf(password); printf(&#34;Auth is %i\n&#34;, auth); if(auth == 10) { puts(&#34;Authenticated!&#34;); } } 程序分析 程序保护 gcc -m32 -no-pie -fno-stack-protector -z execstack vuln.c -o vuln $ checksec --file=./vuln [*] &#39;/home/kali/exploits/str_arb_write/vuln&#39; Arch: i386-32-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x8048000) RWX: Has RWX segments 栈布局 $ ./vuln Password: %p %p %p %p %p %p %p %p %p %p %p 0x64 0xf7e1d620 0x804918d 0xf7ffdbac 0x1 0xf7fc17c0 0x25207025 0x70252070 0x20702520 0x25207025 0x70252070 Auth is 0 ascii hex % 0x25 &quot; &quot; 0x20 p 0x70 第7个dword存放格式化字符串 3. 构建利用栈 栈偏移 栈内容……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_16_wformatstr/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_17_stack_canary/" title="stack canary泄露方法">stack canary泄露方法</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年6月18日
+            2021年6月19日
         </date>
         
         <div class="post-meta">
@@ -253,11 +303,11 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_15_formatstr/" title="字符串漏洞: 任意读">字符串漏洞: 任意读</a>
+                <a href="https://winsun.github.io/fightsec/post/pwn_16_wformatstr/" title="字符串漏洞：任意写">字符串漏洞：任意写</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年6月17日
+            2021年6月18日
         </date>
         
         <div class="post-meta">
@@ -268,59 +318,9 @@
         </div>
         
         <div class="post-content">
-            任意读 vuln.c #include &lt;stdio.h&gt; int main(void) { char buffer[200]; gets(buffer); printf(buffer); return 0; } 漏洞分析 编译程序 gcc -m32 -no-pie -fno-stack-protector -z execstack vuln.c -o vuln 分析程序 程序保护 └─$ checksec --file=./vuln [*] &#39;/home/kali/exploits/str_arb_read/vuln&#39; Arch: i386-32-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x8048000) RWX: Has RWX segments r2 debug vuln └─$ r2 -d -A ./vuln glibc.fc_offset = 0x00148 experimental analysis. [0xf7fe4450]&gt; s main;pdf ; DATA XREFS from entry0 @ 0x8049086, 0x804908c ┌ 83: int main (char **argv); │ ; var int32_t var_d0h @ ebp-0xd0 │ ; var int32_t var_8h @ ebp-0x8 │ ; arg char **argv @ esp+0xf4 │ 0x08049172 8d4c2404 sub esp, 0xc │ 0x080491a7 8d8530ffffff lea eax, [var_d0h] │ 0x080491ad 50 push eax │ 0x080491ae……
+            vuln.c #include &lt;stdio.h&gt; int auth = 0; int main() { char password[100]; puts(&#34;Password: &#34;); fgets(password, sizeof password, stdin); printf(password); printf(&#34;Auth is %i\n&#34;, auth); if(auth == 10) { puts(&#34;Authenticated!&#34;); } } 程序分析 程序保护 gcc -m32 -no-pie -fno-stack-protector -z execstack vuln.c -o vuln $ checksec --file=./vuln [*] &#39;/home/kali/exploits/str_arb_write/vuln&#39; Arch: i386-32-little RELRO: Partial RELRO Stack: No canary found NX: NX disabled PIE: No PIE (0x8048000) RWX: Has RWX segments 栈布局 $ ./vuln Password: %p %p %p %p %p %p %p %p %p %p %p 0x64 0xf7e1d620 0x804918d 0xf7ffdbac 0x1 0xf7fc17c0 0x25207025 0x70252070 0x20702520 0x25207025 0x70252070 Auth is 0 ascii hex % 0x25 &quot; &quot; 0x20 p 0x70 第7个dword存放格式化字符串 3. 构建利用栈 栈偏移 栈内容……
         </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_15_formatstr/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_14_unlinkexp/" title="unlink exploit">unlink exploit</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年6月17日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_14_unlinkexp/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/pwn_13_doublefree/" title="double free">double free</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年6月14日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_13_doublefree/">阅读全文</a></p>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_16_wformatstr/">阅读全文</a></p>
     </article>
     
     
@@ -470,6 +470,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/" title="ret2dlresolve">ret2dlresolve</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_19_exp_socket/" title="socket exploitation">socket exploitation</a>
     </li>
     
@@ -498,15 +502,11 @@
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/pwn_04_ret2libc/" title="ret2libc">ret2libc</a>
+        <a href="https://winsun.github.io/fightsec/post/p04_vul_04_log4j/" title="log4j">log4j</a>
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/ml_09_similarity/" title="相似度方法">相似度方法</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/ml_08_matplotlib/" title="matplotlib用法">matplotlib用法</a>
+        <a href="https://winsun.github.io/fightsec/post/p04_vul_03_serial/" title="java反序列化漏洞">java反序列化漏洞</a>
     </li>
     
 </ul>
@@ -692,8 +692,6 @@
     <a href="https://winsun.github.io/fightsec/tags/%E5%A0%A1%E5%9E%92%E6%9C%BA/">堡垒机</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/">概率分布</a>
-    
-    <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/">概率统计</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5/">混淆矩阵</a>
     

@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 14 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ret2dlresolve</title>
+      <link>https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/</link>
+      <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/</guid>
+      <description>概要 利用ret2dlresolve，攻击者可以诱导二进制程序解析一个所选择的函数(比如system)为plt。 动态链接的ELF对象在第一次使用PLT和GOT调用时导入libc函数。在重定位runtime symbol，RIP将跳转到PLT并尝试解析该符号。在这个过程中，一个&amp;quo</description>
+    </item>
+    
     <item>
       <title>socket exploitation</title>
       <link>https://winsun.github.io/fightsec/post/pwn_19_exp_socket/</link>
@@ -68,6 +77,24 @@
       
       <guid>https://winsun.github.io/fightsec/post/knl_01_process/</guid>
       <description>task_struct task_struct &amp;amp; thread_info process state zombie fork &amp;amp; exec process</description>
+    </item>
+    
+    <item>
+      <title>log4j</title>
+      <link>https://winsun.github.io/fightsec/post/p04_vul_04_log4j/</link>
+      <pubDate>Thu, 02 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/p04_vul_04_log4j/</guid>
+      <description>引用 checking log4j dep</description>
+    </item>
+    
+    <item>
+      <title>java反序列化漏洞</title>
+      <link>https://winsun.github.io/fightsec/post/p04_vul_03_serial/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/p04_vul_03_serial/</guid>
+      <description>引用 从0开始学习java反序列化漏洞</description>
     </item>
     
     <item>
@@ -154,7 +181,7 @@
     <item>
       <title>概率分布</title>
       <link>https://winsun.github.io/fightsec/post/ml_04_prob_dist/</link>
-      <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/ml_04_prob_dist/</guid>
       <description></description>
@@ -595,7 +622,7 @@
     <item>
       <title>stack canary泄露方法</title>
       <link>https://winsun.github.io/fightsec/post/pwn_17_stack_canary/</link>
-      <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 19 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/pwn_17_stack_canary/</guid>
       <description>什么是canary security cookies，Assume that at the beginning of a function call (e.g. during its prologue) we are saving a value in the function’s stack frame, we would expect (! if everything went well !) to read the same value just before the function exits or namely at its epilogue. If the value has changed, then the execution of the program will be terminated and an error message will be displayed. [1] Obviously, this protection mechanism is added by the compiler during the compilation process. For the GNU Compiler Collection (gcc), it is implemented via the StackGuard extension which was added to gcc 2.7.2.2 [1] Bypass stack canary 漏洞程</description>
@@ -680,15 +707,6 @@
       
       <guid>https://winsun.github.io/fightsec/post/pwn_08_ret2reg/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>ret2dlresolve</title>
-      <link>https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/</link>
-      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/</guid>
-      <description>概要 利用ret2dlresolve，攻击者可以诱导二进制程序解析一个所选择的函数(比如system)为plt。 动态链接的ELF对象在第一次使用PLT和GOT调用时导入libc函数。在重定位runtime symbol，RIP将跳转到PLT并尝试解析该符号。在这个过程中，一个&amp;quo</description>
     </item>
     
     <item>
@@ -779,24 +797,6 @@
       
       <guid>https://winsun.github.io/fightsec/post/linux_08_stack_canary/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>java反序列化漏洞</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_03_serial/</link>
-      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_03_serial/</guid>
-      <description>引用 从0开始学习java反序列化漏洞</description>
-    </item>
-    
-    <item>
-      <title>log4j</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_04_log4j/</link>
-      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_04_log4j/</guid>
-      <description>引用 checking log4j dep</description>
     </item>
     
     <item>

