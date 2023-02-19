@@ -3,27 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://winsun.github.io/fightsec/categories/</loc>
-    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/exploit/</loc>
-    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/</loc>
-    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/pwn/</loc>
-    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/categories/pwn/</loc>
-    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/</loc>
-    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+    <loc>https://winsun.github.io/fightsec/post/pwn_09_ret2csu/</loc>
+    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/</loc>
-    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/</loc>
+    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/</loc>
     <lastmod>2023-02-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/socket/</loc>
@@ -76,6 +79,12 @@
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/pwn_04_ret2libc/</loc>
     <lastmod>2023-01-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/tags/gdb/</loc>
+    <lastmod>2022-12-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/post/pwn_20_gdb/</loc>
+    <lastmod>2022-12-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/AI/</loc>
     <lastmod>2022-06-03T00:00:00+00:00</lastmod>
@@ -422,9 +431,6 @@
     <loc>https://winsun.github.io/fightsec/tags/x86/</loc>
     <lastmod>2021-05-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/pwn_09_ret2csu/</loc>
-    <lastmod>2021-05-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://winsun.github.io/fightsec/post/pwn_08_ret2reg/</loc>
     <lastmod>2021-05-19T00:00:00+00:00</lastmod>
   </url><url>
@@ -619,8 +625,6 @@
     <loc>https://winsun.github.io/fightsec/post/p06_pet_05_webshell/</loc>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/p08_security_project/</loc>
-  </url><url>
-    <loc>https://winsun.github.io/fightsec/tags/gdb/</loc>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/linux_05_gdb/</loc>
   </url><url>

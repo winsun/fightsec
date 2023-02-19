@@ -76,6 +76,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/p04_vul_01_overflow/" title="缓冲区溢出01-溢出漏洞">缓冲区溢出01-溢出漏洞</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年3月9日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            缓冲区溢出 一个自带缓冲区溢出bug的代码 greeting函数存在buffer overflow $ gdb -q meet warning: ~/gef/gef.py: No such file or directory warning: ~/gef/scripts/helpme.py: No such file or directory Reading symbols from meet... (gdb) list 1 // meet.c 2 #include &lt;stdio.h&gt; // needed for screen printing 3 #include &lt;string.h&gt; // needed for strcpy 4 void greeting(char *temp1,char *temp2){ // greeting function to say hello 5 char name[400]; // string variable to hold the name 6 strcpy(name, temp2); // copy argument to name with the infamous strcpy 7 printf(&#34;Hello %s %s\n&#34;, temp1, name); // print out the greeting 8 } 9 int main(int argc, char * argv[]){ // note the format for arguments……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p04_vul_01_overflow/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/p04_vul_02_overflow/" title="缓冲区溢出02-shellcode">缓冲区溢出02-shellcode</a>
             </h1>
         </header>
@@ -281,29 +304,6 @@ merlin ……
         <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p02_pwn_06_fuzz/">阅读全文</a></p>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p02_re_01_ghidra/" title="Ghidra">Ghidra</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年2月12日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/reverse'>reverse</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            ghidrz……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p02_re_01_ghidra/">阅读全文</a></p>
-    </article>
-    
     
 
 
@@ -362,6 +362,13 @@ merlin ……
         
         <li >
             <a href="https://winsun.github.io/fightsec/page/11/">11</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://winsun.github.io/fightsec/page/12/">12</a>
         </li>
         
     
@@ -430,6 +437,10 @@ merlin ……
 <ul class="widget-list">
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_09_ret2csu/" title="ret2csu">ret2csu</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/" title="ret2dlresolve">ret2dlresolve</a>
     </li>
     
@@ -465,10 +476,6 @@ merlin ……
         <a href="https://winsun.github.io/fightsec/post/p04_vul_04_log4j/" title="log4j">log4j</a>
     </li>
     
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/p04_vul_03_serial/" title="java反序列化漏洞">java反序列化漏洞</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -496,7 +503,7 @@ merlin ……
     
     <li><a href="https://winsun.github.io/fightsec/categories/linux/">linux (15)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (23)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (24)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/reverse/">reverse (2)</a></li>
     
