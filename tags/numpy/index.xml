@@ -13,7 +13,7 @@
       <pubDate>Mon, 18 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/ml_05_numpy/</guid>
-      <description></description>
+      <description>import numpy as ap numpy主要用来创建vectors和matrics,solve linear operations and generate random entries. 创建数组</description>
     </item>
     
   </channel>

@@ -177,6 +177,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_11_heap_chunk_bins/">heap: chunks and bins</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2023年2月9日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='/fightsec/categories/pwn'>pwn</a>
+            
+        </div>
+        
+        <div class="post-content">
+            chunks 在x86_64上chunk多加16字节的metadata，x86上多加8字节的meatadata metadata := prev size + size + flags(A,M,P) prev size: 前面相邻chunk被free，则代表前chunk大小 size：代表chunk大小 P(0x01): Previous in Use ,表示前面的chunk是否已分配在使用,P == 0,该chunk之前的chun……
+            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_11_heap_chunk_bins/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_04_ret2libc/">ret2libc</a>
             </h1>
         </header>
@@ -289,29 +312,6 @@
         </div>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/arm_17_glibc_heap_free/">arm glibc heap free</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年9月3日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='/fightsec/categories/arm'>arm</a>
-            
-        </div>
-        
-        <div class="post-content">
-            ……
-            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/arm_17_glibc_heap_free/">阅读全文</a></p>
-        </div>
-    </article>
-    
 
     
 
@@ -419,6 +419,10 @@
     </li>
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_11_heap_chunk_bins/" title="heap: chunks and bins">heap: chunks and bins</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/p04_vul_06_springshell/" title="springshell">springshell</a>
     </li>
     
@@ -432,10 +436,6 @@
     
     <li>
         <a href="https://winsun.github.io/fightsec/post/knl_01_process/" title="linux kernel : process">linux kernel : process</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/p04_vul_04_log4j/" title="log4j">log4j</a>
     </li>
     
 </ul>

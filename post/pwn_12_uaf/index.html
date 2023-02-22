@@ -9,17 +9,17 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>ret2csu | 诚安</title>
-    <meta property="og:title" content="ret2csu - 诚安">
+    <title>use after free | 诚安</title>
+    <meta property="og:title" content="use after free - 诚安">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2021-06-09T00:00:00&#43;08:00'>
+    <meta property="article:published_time" content='2021-06-04T00:00:00&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2021-06-09T00:00:00&#43;08:00'>
+    <meta property="article:modified_time" content='2021-06-04T00:00:00&#43;08:00'>
         
     <meta name="Keywords" content="信息安全、主机安全、网络安全、二进制、数据安全">
-    <meta name="description" content="ret2csu">
+    <meta name="description" content="use after free">
         
     <meta name="author" content="winsun">
     <meta property="og:url" content="https://winsun.github.io/fightsec/post/pwn_12_uaf/">
@@ -176,10 +176,10 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title">ret2csu</h1>
+            <h1 class="post-title">use after free</h1>
         </header>
         <date class="post-meta meta-date">
-            2021年6月9日
+            2021年6月4日
         </date>
         
         <div class="post-meta">
@@ -203,7 +203,74 @@
         </div>
         
         <div class="post-content">
-            
+            <h1 id="配置docker环境">配置docker环境</h1>
+<pre tabindex="0"><code>### pull ubuntu 16.04 image
+sudo docker pull ubuntu:16.04
+
+### 进入终端 
+sudo docker run -ti --rm ubuntu:16.04  /bin/bash
+
+### 安装gcc
+apt update &amp;&amp; apt install gcc
+
+### gcc 版本
+root@687e398bdbdb:/# gcc --version
+gcc (Ubuntu 5.4.0-6ubuntu1~16.04.12) 5.4.0 20160609
+Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+### 安装 radare2
+apt install radare2
+</code></pre><h1 id="漏洞程序">漏洞程序</h1>
+<pre tabindex="0"><code>#include &lt;err.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+
+struct data {
+  char name[64];
+};
+
+struct fp {
+  void (*fp)();
+  char __pad[64 - sizeof(unsigned long)];
+};
+
+void winner() {
+  printf(&#34;Congratulations, you have passed this level\n&#34;);
+}
+
+void nowinner() {
+  printf(
+      &#34;level has not been passed - function pointer has not been &#34;
+      &#34;overwritten\n&#34;);
+}
+
+int main(int argc, char **argv) {
+  struct data *d;
+  struct fp *f;
+
+  if (argc &lt; 2) {
+    printf(&#34;Please specify an argument to copy :-)\n&#34;);
+    exit(1);
+  }
+
+  d = malloc(sizeof(struct data));
+  f = malloc(sizeof(struct fp));
+  f-&gt;fp = nowinner;
+
+  strcpy(d-&gt;name, argv[1]);
+
+  printf(&#34;data is at %p, fp is at %p, will be calling %p\n&#34;, d, f, f-&gt;fp);
+  fflush(stdout);
+
+  f-&gt;fp();
+
+  return 0;
+}
+</code></pre>
         </div>
 
         
@@ -224,8 +291,6 @@
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/fightsec/post/pwn_11_heap_overflow/">use after free</a></li>
-        
         <li><a href="/fightsec/post/pwn_10_stack_pivoiting/">stack pivoiting</a></li>
         
         <li><a href="/fightsec/post/pwn_08_ret2reg/">ret2reg</a></li>
@@ -233,6 +298,8 @@
         <li><a href="/fightsec/post/pwn_05_ret2plt/">ret2plt</a></li>
         
         <li><a href="/fightsec/post/pwn_03_got_overwrite/">利用got覆盖执行shellcode</a></li>
+        
+        <li><a href="/fightsec/post/p04_vul_01_overflow/">缓冲区溢出01-溢出漏洞</a></li>
         
     </ul>
 </div>
@@ -244,7 +311,7 @@
                 
                 <li><a href='/fightsec/tags/pwn'>pwn</a></li>
                 
-                <li><a href='/fightsec/tags/exploit'>exploit</a></li>
+                <li><a href='/fightsec/tags/heap'>heap</a></li>
                 
             </ul>
             
@@ -389,6 +456,10 @@
     </li>
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_11_heap_chunk_bins/" title="heap: chunks and bins">heap: chunks and bins</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/p04_vul_06_springshell/" title="springshell">springshell</a>
     </li>
     
@@ -402,10 +473,6 @@
     
     <li>
         <a href="https://winsun.github.io/fightsec/post/knl_01_process/" title="linux kernel : process">linux kernel : process</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/p04_vul_04_log4j/" title="log4j">log4j</a>
     </li>
     
 </ul>

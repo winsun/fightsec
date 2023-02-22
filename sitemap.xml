@@ -47,6 +47,12 @@
     <loc>https://winsun.github.io/fightsec/post/pwn_02_rop/</loc>
     <lastmod>2023-02-10T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://winsun.github.io/fightsec/tags/heap/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/post/pwn_11_heap_chunk_bins/</loc>
+    <lastmod>2023-02-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://winsun.github.io/fightsec/post/p04_vul_06_springshell/</loc>
     <lastmod>2023-02-04T00:00:00+00:00</lastmod>
   </url><url>
@@ -329,9 +335,6 @@
     <loc>https://winsun.github.io/fightsec/categories/arm/</loc>
     <lastmod>2021-09-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/tags/heap/</loc>
-    <lastmod>2021-09-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://winsun.github.io/fightsec/post/arm_20_grooming_ios_kernel_heap/</loc>
     <lastmod>2021-09-24T00:00:00+00:00</lastmod>
   </url><url>
@@ -420,9 +423,6 @@
     <lastmod>2021-06-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/pwn_12_uaf/</loc>
-    <lastmod>2021-06-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://winsun.github.io/fightsec/post/pwn_11_heap_overflow/</loc>
     <lastmod>2021-06-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/pwn_10_stack_pivoiting/</loc>
