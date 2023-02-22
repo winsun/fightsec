@@ -49,7 +49,7 @@
       <pubDate>Mon, 18 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/ml_05_numpy/</guid>
-      <description>import numpy as ap numpy主要用来创建vectors和matrics,solve linear operations and generate random entries. 创建数组</description>
+      <description>import numpy as ap numpy主要用来创建vectors和matrics,solve linear operations and generate random entries. 创建数组 列表[]构建数组 &amp;gt;&amp;gt;&amp;gt; a = np.array([1,2,3,4]) &amp;gt;&amp;gt;&amp;gt; a.size 4 # 4个元素 &amp;gt;&amp;gt;&amp;gt; a.shape (4,) # 4行1列 &amp;gt;&amp;gt;&amp;gt; print(a) [1 2 3 4] 数组a 1 2 3 4 行列向量转换 &amp;gt;&amp;gt;&amp;gt; a.shape=(1,4) &amp;gt;&amp;gt;&amp;gt; print(a) [[1 2 3 4]] c1 c2 c3 c4 1 2 3 4 &amp;gt;&amp;gt;&amp;gt; a.reshape(2,2) array([[1, 2], [3, 4]]) c1 c2 1 2 3 4 取元素 &amp;gt;&amp;gt;&amp;gt; b = a.reshape(2,2) &amp;gt;&amp;gt;&amp;gt; print(b) [[1 2] [3 4]] &amp;gt;&amp;gt;&amp;gt; b[0,:] # 取第1</description>
     </item>
     
     <item>
