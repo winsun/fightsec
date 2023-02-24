@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>edr: 进程信息采集</title>
+      <link>https://winsun.github.io/fightsec/post/edr_01_process/</link>
+      <pubDate>Wed, 22 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/edr_01_process/</guid>
+      <description>process 1 定义要采集的进程信息 //所要采集的进程信息 type Process struct { Pid int32 `json:&amp;#34;Pid&amp;#34;` Name string `json:&amp;#34;Name&amp;#34;` Cmdline string `json:&amp;#34;Cmdline&amp;#34;` Cwd string `json:&amp;#34;Cwd&amp;#34;` Exe string `json:&amp;#34;Exe&amp;#34;` } 2 编写采集过程 import process //调用Processes方法 procs, _ := process.Processes() var procInfo []common.Process for i := 0; i &amp;lt;= len(procs)-1; i++ { var proc common.Process proc.Name, _ = procs[i].Name() proc.Pid = procs[i].Pid proc.Cmdline, _ = procs[i].Cmdline() proc.Cwd, _ = procs[i].Cwd() proc.Exe, _ = procs[i].Exe() procInfo = append(procInfo, proc) } 3 Processes分析 进程相关信息的包来自 github.com/shirou/gopsutil/v3 3.1 Process type Process struct { Pid</description>
+    </item>
+    
     <item>
       <title>ret2csu</title>
       <link>https://winsun.github.io/fightsec/post/pwn_09_ret2csu/</link>
@@ -63,19 +72,19 @@
     
     <item>
       <title>springshell</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_06_springshell/</link>
+      <link>https://winsun.github.io/fightsec/post/vul_04_springshell/</link>
       <pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_06_springshell/</guid>
+      <guid>https://winsun.github.io/fightsec/post/vul_04_springshell/</guid>
       <description>引用 CVE-2022-22965</description>
     </item>
     
     <item>
       <title>heartbleed</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_05_heartblood/</link>
+      <link>https://winsun.github.io/fightsec/post/vul_03_heartblood/</link>
       <pubDate>Fri, 03 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_05_heartblood/</guid>
+      <guid>https://winsun.github.io/fightsec/post/vul_03_heartblood/</guid>
       <description>引用 The Heartbleed Bug, explained</description>
     </item>
     
@@ -99,19 +108,19 @@
     
     <item>
       <title>log4j</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_04_log4j/</link>
+      <link>https://winsun.github.io/fightsec/post/vul_02_log4j/</link>
       <pubDate>Thu, 02 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_04_log4j/</guid>
+      <guid>https://winsun.github.io/fightsec/post/vul_02_log4j/</guid>
       <description>引用 checking log4j dep</description>
     </item>
     
     <item>
       <title>java反序列化漏洞</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_03_serial/</link>
+      <link>https://winsun.github.io/fightsec/post/vul_01_serial/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_03_serial/</guid>
+      <guid>https://winsun.github.io/fightsec/post/vul_01_serial/</guid>
       <description>引用 从0开始学习java反序列化漏洞</description>
     </item>
     
@@ -819,19 +828,19 @@
     
     <item>
       <title>缓冲区溢出01-溢出漏洞</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_01_overflow/</link>
+      <link>https://winsun.github.io/fightsec/post/pwn_21_overflow01/</link>
       <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_01_overflow/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pwn_21_overflow01/</guid>
       <description>缓冲区溢出 一个自带缓冲区溢出bug的代码 greeting函数存在buffer overflow $ gdb -q meet warning: ~/gef/gef.py: No such file or directory warning: ~/gef/scripts/helpme.py: No such file or directory Reading symbols from meet... (gdb) list 1 // meet.c 2 #include &amp;lt;stdio.h&amp;gt; // needed for screen printing 3 #include &amp;lt;string.h&amp;gt; // needed for strcpy 4 void greeting(char *temp1,char *temp2){ // greeting function to say hello 5 char name[400]; // string variable to hold the name 6 strcpy(name, temp2); // copy argument to name with the infamous strcpy 7 printf(&amp;#34;Hello %s %s\n&amp;#34;, temp1, name); // print out the greeting 8 } 9 int main(int argc, char * argv[]){ // note the format for arguments</description>
     </item>
     
     <item>
       <title>缓冲区溢出02-shellcode</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_02_overflow/</link>
+      <link>https://winsun.github.io/fightsec/post/pwn_22_overflow02/</link>
       <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_02_overflow/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pwn_22_overflow02/</guid>
       <description>weekness programe // meet.c #include &amp;lt;stdio.h&amp;gt; // needed for screen printing #include &amp;lt;string.h&amp;gt; // needed for strcpy void greeting(char *temp1,char *temp2){ // greeting function to say hello char name[400]; // string variable to hold the name strcpy(name, temp2); // copy argument to name with the infamous strcpy printf(&amp;#34;Hello %s %s\n&amp;#34;, temp1, name); // print out the greeting } int main(int argc, char * argv[]){ // note the format for arguments greeting(argv[1], argv[2]); // call function, pass title &amp;amp; name printf(&amp;#34;Bye %s %s\n&amp;#34;, argv[1], argv[2]); // say &amp;#34;bye&amp;#34; } // exit program stack frame | name[400] | ebp | eip | temp1 | temp2 | disassemble greeting (gdb) disass greeting Dump of assembler code for function greeting: 0x56556201 &amp;lt;+0&amp;gt;: push %ebp 0x56556202 &amp;lt;+1&amp;gt;: mov %esp,%ebp 0x56556204 &amp;lt;+3&amp;gt;: push %ebx 0x56556205 &amp;lt;+4&amp;gt;: sub $0x190,%esp 0x5655620b &amp;lt;+10&amp;gt;: call 0x565560c0 &amp;lt;__x86.get_pc_thunk.bx&amp;gt; 0x56556210 &amp;lt;+15&amp;gt;: add</description>
     </item>
     
@@ -864,29 +873,29 @@
     
     <item>
       <title>ATT&amp;CT</title>
-      <link>https://winsun.github.io/fightsec/post/p06_pet_01_attct/</link>
+      <link>https://winsun.github.io/fightsec/post/pet_01_attct/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p06_pet_01_attct/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pet_01_attct/</guid>
       <description>ATT&amp;amp;CT</description>
     </item>
     
     <item>
       <title>C2</title>
-      <link>https://winsun.github.io/fightsec/post/p06_pet_02_c2/</link>
+      <link>https://winsun.github.io/fightsec/post/pet_02_c2/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p06_pet_02_c2/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pet_02_c2/</guid>
       <description>C2
 merlin </description>
     </item>
     
     <item>
       <title>decrypt fireware by binwalk</title>
-      <link>https://winsun.github.io/fightsec/post/p02_re_04_binwalk/</link>
+      <link>https://winsun.github.io/fightsec/post/re_04_binwalk/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p02_re_04_binwalk/</guid>
+      <guid>https://winsun.github.io/fightsec/post/re_04_binwalk/</guid>
       <description>binwalk binwalk 提取固件 $ binwalk -Me DAP-1320_FIRMWARE_1.11B10.zip Scan Time: 2022-03-26 03:08:51 Target File: /home/kali/DAP-1320_FIRMWARE_1.11B10.zip MD5 Checksum: ebd3a01c9e2079de403cf336741e1870 Signatures: 411 ... Scan Time: 2022-03-26 03:08:55 Target File: /home/kali/_DAP-1320_FIRMWARE_1.11B10.zip.extracted/_DAP1320_fw_1_11b10.bin.extracted/40 MD5 Checksum: a741e8176a2f160957382396824e2620 Signatures: 411 DECIMAL HEXADECIMAL DESCRIPTION -------------------------------------------------------------------------------- 78808 0x133D8 Certificate in DER format (x509 v3), header length: 4, sequence length: 30 79160 0x13538 Certificate in DER format (x509 v3), header length: 4, sequence length: 30 79604 0x136F4 Certificate in DER format (x509 v3), header length: 4, sequence length: 30 1769504 0x1B0020 Linux kernel version 2.6.31 1790640 0x1B52B0 CRC32 polynomial table, little endian 2009280 0x1EA8C0 Neighborly text, &amp;#34;NeighborSolicitstunnel6 init(): can&amp;#39;t add protocol&amp;#34; 2009300 0x1EA8D4 Neighborly text, &amp;#34;NeighborAdvertisementst add protocol&amp;#34; 2011043 0x1EAFA3 Neighborly text, &amp;#34;neighbor %.2x%.2x.%.2x:%.2x:%.2x:%.2x:%.2x:%.2x lost on port %d(%s)(%s)&amp;#34; fireware</description>
     </item>
     
@@ -901,100 +910,100 @@ merlin </description>
     
     <item>
       <title>fuzz</title>
-      <link>https://winsun.github.io/fightsec/post/p02_pwn_06_fuzz/</link>
+      <link>https://winsun.github.io/fightsec/post/vul_05_fuzz_afl/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p02_pwn_06_fuzz/</guid>
+      <guid>https://winsun.github.io/fightsec/post/vul_05_fuzz_afl/</guid>
       <description> fuzz security AFL using </description>
     </item>
     
     <item>
       <title>Ghidra</title>
-      <link>https://winsun.github.io/fightsec/post/p02_re_01_ghidra/</link>
+      <link>https://winsun.github.io/fightsec/post/re_01_ghidra/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p02_re_01_ghidra/</guid>
+      <guid>https://winsun.github.io/fightsec/post/re_01_ghidra/</guid>
       <description>ghidrz</description>
     </item>
     
     <item>
       <title>Linux Kernel Exploitation Technique: Overwriting: modprobe_path</title>
-      <link>https://winsun.github.io/fightsec/post/p02_pwn_04_exp_kernel/</link>
+      <link>https://winsun.github.io/fightsec/post/pwn_23_exp_kernel/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p02_pwn_04_exp_kernel/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pwn_23_exp_kernel/</guid>
       <description>引用 Overwriting modprobe_path Linux Kernel Exploitation</description>
     </item>
     
     <item>
       <title>morden encrypt algorithm</title>
-      <link>https://winsun.github.io/fightsec/post/p02_crack_01.algorithm/</link>
+      <link>https://winsun.github.io/fightsec/post/crypt_01_algorithm/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p02_crack_01.algorithm/</guid>
-      <description>random hash aes des rsa pki </description>
+      <guid>https://winsun.github.io/fightsec/post/crypt_01_algorithm/</guid>
+      <description>random hash aes des rsa pki 参考 自签名证书</description>
     </item>
     
     <item>
       <title>PETS框架</title>
-      <link>https://winsun.github.io/fightsec/post/p06_pet_03_pets/</link>
+      <link>https://winsun.github.io/fightsec/post/pet_03_pets/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p06_pet_03_pets/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pet_03_pets/</guid>
       <description>PETS</description>
     </item>
     
     <item>
       <title>randomize</title>
-      <link>https://winsun.github.io/fightsec/post/p02_re_02_idapro/</link>
+      <link>https://winsun.github.io/fightsec/post/re_02_idapro/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p02_re_02_idapro/</guid>
+      <guid>https://winsun.github.io/fightsec/post/re_02_idapro/</guid>
       <description></description>
     </item>
     
     <item>
       <title>webgoat靶机配置</title>
-      <link>https://winsun.github.io/fightsec/post/p06_pet_06_webgoat/</link>
+      <link>https://winsun.github.io/fightsec/post/pet_06_webgoat/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p06_pet_06_webgoat/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pet_06_webgoat/</guid>
       <description>基本配置 ubuntu winsun@ubuntu:~/webgoat$ uname -a Linux ubuntu 5.13.0-30-generic #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux jdk winsun@ubuntu:~/webgoat$ pwd /home/winsun/webgoat winsun@ubuntu:~/webgoat$ ls -al total 432648 drwxrwxr-x 3 winsun winsun 4096 Apr 6 22:02 . drwxr-xr-x 25 winsun winsun 4096 Apr 6 22:09 .. drwxrwxr-x 2 winsun winsun 4096 Apr 6 20:28 __MACOSX -rwxr--r-- 1 winsun winsun 156374894 Apr 6 22:02 jdk-18_linux-x64_bin.deb -rwxr--r-- 1 winsun winsun 96411569 Apr 6 20:22 webgoat-server-8.2.2.jar -rwxr--r-- 1 winsun winsun 53814896 Apr 6 20:22 webwolf-8.2.2.jar sudo vim /etc/profile.d/jdk.sh source /etc/profile.d/jdk.sh jdk.sh: winsun@ubuntu:~/webgoat$ cat /etc/profile.d/jdk.sh export JAVA_HOME=/usr/lib/jvm/jdk-18/ export PATH=$PATH:$JAVA_HOME/bin webgoat 下载webgoat Download the latest WebGoat and WebWolf release from https://github.com/WebGoat/WebGoat/releases 启动webgoat java -jar webgoat-server-8.1.0.jar [&amp;ndash;server.port=8080] [&amp;ndash;server.address=localhost] java -jar webwolf-8.1.0.jar [&amp;ndash;server.port=9090] [&amp;ndash;server.address=localhost] and browse to</description>
     </item>
     
     <item>
       <title>虚拟化研究框架</title>
-      <link>https://winsun.github.io/fightsec/post/p02_pwn_05_hypervisor/</link>
+      <link>https://winsun.github.io/fightsec/post/pwn_24_hypervisor/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p02_pwn_05_hypervisor/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pwn_24_hypervisor/</guid>
       <description>kali install kvm kali install kvm</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://winsun.github.io/fightsec/post/p06_pet_04_honeypot/</link>
+      <link>https://winsun.github.io/fightsec/post/pet_04_honeypot/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p06_pet_04_honeypot/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pet_04_honeypot/</guid>
       <description>shodan搜索 ICS:industry controll system port:502,102,20000,1911,4911,47808,448,18,18245,18246,5094,1962,5006,5007,9600,789,2455,2404,20547 -ssh -http -html -ident https://www.shodan.io/search?query=port%3A502%2C102%2C20000%2C1911%2C4911%2C47808%2C448%2C18%2C18245%2C18246%2C5094%2C1962%2C5006%2C5007%2C9600%2C789%2C2455%2C2404%2C20547++-ssh+-http+-html+country%3A%22CN%22 └─$ shodan honeyscore 106.14.13.128 Not a honeypot Score: 0.3 引用 aliyun在线蜜罐 Shodan新手入坑指南 Shodan api shoran 用法</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://winsun.github.io/fightsec/post/p06_pet_05_webshell/</link>
+      <link>https://winsun.github.io/fightsec/post/pet_05_webshell/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p06_pet_05_webshell/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pet_05_webshell/</guid>
       <description>引用 webshell owasp top 10</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://winsun.github.io/fightsec/post/p08_security_project/</link>
+      <link>https://winsun.github.io/fightsec/post/security_project/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p08_security_project/</guid>
+      <guid>https://winsun.github.io/fightsec/post/security_project/</guid>
       <description>Attack vul&amp;rsquo;s db fuzz project zero AFL AFL EXP01 hongfuzz symbolic execute KLEE KLEE EXP01 pwn pwntools []
 fireware binwalk defense packer llvm vmp FW WAF NIDS HIDS EDR UEBA VPN Bastion host soc seim soar pki pet </description>
     </item>

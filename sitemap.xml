@@ -3,12 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://winsun.github.io/fightsec/categories/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/tags/exploit/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+    <loc>https://winsun.github.io/fightsec/categories/edr/</loc>
+    <lastmod>2023-02-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/post/edr_01_process/</loc>
+    <lastmod>2023-02-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/tags/golang/</loc>
+    <lastmod>2023-02-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/</loc>
+    <lastmod>2023-02-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/tags/process/</loc>
+    <lastmod>2023-02-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/tags/</loc>
+    <lastmod>2023-02-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/</loc>
+    <lastmod>2023-02-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/tags/exploit/</loc>
     <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/pwn/</loc>
@@ -18,12 +36,6 @@
     <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/pwn_09_ret2csu/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://winsun.github.io/fightsec/tags/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://winsun.github.io/fightsec/</loc>
     <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/</loc>
@@ -53,7 +65,7 @@
     <loc>https://winsun.github.io/fightsec/post/pwn_11_heap_chunk_bins/</loc>
     <lastmod>2023-02-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p04_vul_06_springshell/</loc>
+    <loc>https://winsun.github.io/fightsec/post/vul_04_springshell/</loc>
     <lastmod>2023-02-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/%E6%BC%8F%E6%B4%9E/</loc>
@@ -62,7 +74,7 @@
     <loc>https://winsun.github.io/fightsec/categories/%E6%BC%8F%E6%B4%9E/</loc>
     <lastmod>2023-02-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p04_vul_05_heartblood/</loc>
+    <loc>https://winsun.github.io/fightsec/post/vul_03_heartblood/</loc>
     <lastmod>2023-02-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/kernel/</loc>
@@ -77,10 +89,10 @@
     <loc>https://winsun.github.io/fightsec/post/knl_01_process/</loc>
     <lastmod>2023-02-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p04_vul_04_log4j/</loc>
+    <loc>https://winsun.github.io/fightsec/post/vul_02_log4j/</loc>
     <lastmod>2023-02-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p04_vul_03_serial/</loc>
+    <loc>https://winsun.github.io/fightsec/post/vul_01_serial/</loc>
     <lastmod>2023-02-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/pwn_04_ret2libc/</loc>
@@ -509,10 +521,10 @@
     <loc>https://winsun.github.io/fightsec/categories/%E5%8A%A0%E5%9B%BA/</loc>
     <lastmod>2021-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p04_vul_01_overflow/</loc>
+    <loc>https://winsun.github.io/fightsec/post/pwn_21_overflow01/</loc>
     <lastmod>2021-03-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p04_vul_02_overflow/</loc>
+    <loc>https://winsun.github.io/fightsec/post/pwn_22_overflow02/</loc>
     <lastmod>2021-03-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/linux_06_PIE_PIC/</loc>
@@ -536,7 +548,7 @@
     <loc>https://winsun.github.io/fightsec/tags/ATTCT/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p06_pet_01_attct/</loc>
+    <loc>https://winsun.github.io/fightsec/post/pet_01_attct/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/binwalk/</loc>
@@ -548,10 +560,10 @@
     <loc>https://winsun.github.io/fightsec/categories/C2/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p06_pet_02_c2/</loc>
+    <loc>https://winsun.github.io/fightsec/post/pet_02_c2/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p02_re_04_binwalk/</loc>
+    <loc>https://winsun.github.io/fightsec/post/re_04_binwalk/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/linux_01_elf/</loc>
@@ -569,13 +581,13 @@
     <loc>https://winsun.github.io/fightsec/categories/fuzz/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p02_pwn_06_fuzz/</loc>
+    <loc>https://winsun.github.io/fightsec/post/vul_05_fuzz_afl/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/ghidra/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p02_re_01_ghidra/</loc>
+    <loc>https://winsun.github.io/fightsec/post/re_01_ghidra/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/ida/</loc>
@@ -584,19 +596,19 @@
     <loc>https://winsun.github.io/fightsec/categories/iot/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p02_pwn_04_exp_kernel/</loc>
+    <loc>https://winsun.github.io/fightsec/post/pwn_23_exp_kernel/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p02_crack_01.algorithm/</loc>
+    <loc>https://winsun.github.io/fightsec/post/crypt_01_algorithm/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/pets/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p06_pet_03_pets/</loc>
+    <loc>https://winsun.github.io/fightsec/post/pet_03_pets/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p02_re_02_idapro/</loc>
+    <loc>https://winsun.github.io/fightsec/post/re_02_idapro/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/reverse/</loc>
@@ -605,7 +617,7 @@
     <loc>https://winsun.github.io/fightsec/categories/reverse/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p06_pet_06_webgoat/</loc>
+    <loc>https://winsun.github.io/fightsec/post/pet_06_webgoat/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</loc>
@@ -614,17 +626,17 @@
     <loc>https://winsun.github.io/fightsec/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p02_pwn_05_hypervisor/</loc>
+    <loc>https://winsun.github.io/fightsec/post/pwn_24_hypervisor/</loc>
     <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/about/</loc>
     <lastmod>2011-03-10T00:13:27+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p06_pet_04_honeypot/</loc>
+    <loc>https://winsun.github.io/fightsec/post/pet_04_honeypot/</loc>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p06_pet_05_webshell/</loc>
+    <loc>https://winsun.github.io/fightsec/post/pet_05_webshell/</loc>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/p08_security_project/</loc>
+    <loc>https://winsun.github.io/fightsec/post/security_project/</loc>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/linux_05_gdb/</loc>
   </url><url>

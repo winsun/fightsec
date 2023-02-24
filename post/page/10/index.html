@@ -78,7 +78,32 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p04_vul_01_overflow/" title="缓冲区溢出01-溢出漏洞">缓冲区溢出01-溢出漏洞</a>
+                <a href="https://winsun.github.io/fightsec/post/pwn_22_overflow02/" title="缓冲区溢出02-shellcode">缓冲区溢出02-shellcode</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年3月9日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            weekness programe // meet.c #include &lt;stdio.h&gt; // needed for screen printing #include &lt;string.h&gt; // needed for strcpy void greeting(char *temp1,char *temp2){ // greeting function to say hello char name[400]; // string variable to hold the name strcpy(name, temp2); // copy argument to name with the infamous strcpy printf(&#34;Hello %s %s\n&#34;, temp1, name); // print out the greeting } int main(int argc, char * argv[]){ // note the format for arguments greeting(argv[1], argv[2]); // call function, pass title &amp; name printf(&#34;Bye %s %s\n&#34;, argv[1], argv[2]); // say &#34;bye&#34; } // exit program stack frame | name[400] | ebp | eip | temp1 | temp2 | disassemble greeting (gdb) disass greeting Dump of assembler code for function greeting: 0x56556201 &lt;+0&gt;: push %ebp 0x56556202 &lt;+1&gt;: mov %esp,%ebp 0x56556204 &lt;+3&gt;: push %ebx 0x56556205 &lt;+4&gt;: sub $0x190,%esp 0x5655620b &lt;+10&gt;: call 0x565560c0 &lt;__x86.get_pc_thunk.bx&gt; 0x56556210 &lt;+15&gt;: add……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_22_overflow02/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_21_overflow01/" title="缓冲区溢出01-溢出漏洞">缓冲区溢出01-溢出漏洞</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -95,7 +120,7 @@
         <div class="post-content">
             缓冲区溢出 一个自带缓冲区溢出bug的代码 greeting函数存在buffer overflow $ gdb -q meet warning: ~/gef/gef.py: No such file or directory warning: ~/gef/scripts/helpme.py: No such file or directory Reading symbols from meet... (gdb) list 1 // meet.c 2 #include &lt;stdio.h&gt; // needed for screen printing 3 #include &lt;string.h&gt; // needed for strcpy 4 void greeting(char *temp1,char *temp2){ // greeting function to say hello 5 char name[400]; // string variable to hold the name 6 strcpy(name, temp2); // copy argument to name with the infamous strcpy 7 printf(&#34;Hello %s %s\n&#34;, temp1, name); // print out the greeting 8 } 9 int main(int argc, char * argv[]){ // note the format for arguments……
         </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p04_vul_01_overflow/">阅读全文</a></p>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_21_overflow01/">阅读全文</a></p>
     </article>
     
     
@@ -203,7 +228,7 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p02_pwn_05_hypervisor/" title="虚拟化研究框架">虚拟化研究框架</a>
+                <a href="https://winsun.github.io/fightsec/post/pwn_24_hypervisor/" title="虚拟化研究框架">虚拟化研究框架</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -220,7 +245,7 @@
         <div class="post-content">
             kali install kvm kali install kvm……
         </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p02_pwn_05_hypervisor/">阅读全文</a></p>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_24_hypervisor/">阅读全文</a></p>
     </article>
     
     
@@ -228,7 +253,7 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p06_pet_06_webgoat/" title="webgoat靶机配置">webgoat靶机配置</a>
+                <a href="https://winsun.github.io/fightsec/post/pet_06_webgoat/" title="webgoat靶机配置">webgoat靶机配置</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -245,7 +270,7 @@
         <div class="post-content">
             基本配置 ubuntu winsun@ubuntu:~/webgoat$ uname -a Linux ubuntu 5.13.0-30-generic #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux jdk winsun@ubuntu:~/webgoat$ pwd /home/winsun/webgoat winsun@ubuntu:~/webgoat$ ls -al total 432648 drwxrwxr-x 3 winsun winsun 4096 Apr 6 22:02 . drwxr-xr-x 25 winsun winsun 4096 Apr 6 22:09 .. drwxrwxr-x 2 winsun winsun 4096 Apr 6 20:28 __MACOSX -rwxr--r-- 1 winsun winsun 156374894 Apr 6 22:02 jdk-18_linux-x64_bin.deb -rwxr--r-- 1 winsun winsun 96411569 Apr 6 20:22 webgoat-server-8.2.2.jar -rwxr--r-- 1 winsun winsun 53814896 Apr 6 20:22 webwolf-8.2.2.jar sudo vim /etc/profile.d/jdk.sh source /etc/profile.d/jdk.sh jdk.sh: winsun@ubuntu:~/webgoat$ cat /etc/profile.d/jdk.sh export JAVA_HOME=/usr/lib/jvm/jdk-18/ export PATH=$PATH:$JAVA_HOME/bin webgoat 下载webgoat Download the latest WebGoat and WebWolf release from https://github.com/WebGoat/WebGoat/releases 启动webgoat java -jar webgoat-server-8.1.0.jar [&ndash;server.port=8080] [&ndash;server.address=localhost] java -jar webwolf-8.1.0.jar [&ndash;server.port=9090] [&ndash;server.address=localhost] and browse to……
         </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p06_pet_06_webgoat/">阅读全文</a></p>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pet_06_webgoat/">阅读全文</a></p>
     </article>
     
     
@@ -253,7 +278,7 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p02_re_02_idapro/" title="randomize">randomize</a>
+                <a href="https://winsun.github.io/fightsec/post/re_02_idapro/" title="randomize">randomize</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -270,7 +295,7 @@
         <div class="post-content">
             ……
         </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p02_re_02_idapro/">阅读全文</a></p>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/re_02_idapro/">阅读全文</a></p>
     </article>
     
     
@@ -278,7 +303,7 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p06_pet_03_pets/" title="PETS框架">PETS框架</a>
+                <a href="https://winsun.github.io/fightsec/post/pet_03_pets/" title="PETS框架">PETS框架</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -295,32 +320,7 @@
         <div class="post-content">
             PETS……
         </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p06_pet_03_pets/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p02_crack_01.algorithm/" title="morden encrypt algorithm">morden encrypt algorithm</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年2月12日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/encrypt'>encrypt</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            random hash aes des rsa pki ……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p02_crack_01.algorithm/">阅读全文</a></p>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pet_03_pets/">阅读全文</a></p>
     </article>
     
     
@@ -457,6 +457,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/edr_01_process/" title="edr: 进程信息采集">edr: 进程信息采集</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_09_ret2csu/" title="ret2csu">ret2csu</a>
     </li>
     
@@ -481,19 +485,15 @@
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/p04_vul_06_springshell/" title="springshell">springshell</a>
+        <a href="https://winsun.github.io/fightsec/post/vul_04_springshell/" title="springshell">springshell</a>
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/p04_vul_05_heartblood/" title="heartbleed">heartbleed</a>
+        <a href="https://winsun.github.io/fightsec/post/vul_03_heartblood/" title="heartbleed">heartbleed</a>
     </li>
     
     <li>
         <a href="https://winsun.github.io/fightsec/post/knl_02_syscall/" title="linux kernel : system call">linux kernel : system call</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/knl_01_process/" title="linux kernel : process">linux kernel : process</a>
     </li>
     
 </ul>
@@ -512,6 +512,8 @@
     <li><a href="https://winsun.github.io/fightsec/categories/arm/">arm (20)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/cybersecurity/">cybersecurity (12)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/edr/">edr (1)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/encrypt/">encrypt (1)</a></li>
     
@@ -592,6 +594,8 @@
     
     <a href="https://winsun.github.io/fightsec/tags/ghidra/">ghidra</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/golang/">golang</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/gorm/">gorm</a>
     
     <a href="https://winsun.github.io/fightsec/tags/got/">got</a>
@@ -623,6 +627,8 @@
     <a href="https://winsun.github.io/fightsec/tags/pie/">pie</a>
     
     <a href="https://winsun.github.io/fightsec/tags/plt/">plt</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/process/">process</a>
     
     <a href="https://winsun.github.io/fightsec/tags/proxy/">proxy</a>
     

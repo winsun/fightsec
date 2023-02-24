@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 12 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/fuzz/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>fuzz</title>
-      <link>https://winsun.github.io/fightsec/post/p02_pwn_06_fuzz/</link>
+      <link>https://winsun.github.io/fightsec/post/vul_05_fuzz_afl/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p02_pwn_06_fuzz/</guid>
+      <guid>https://winsun.github.io/fightsec/post/vul_05_fuzz_afl/</guid>
       <description> fuzz security AFL using </description>
     </item>
     

@@ -9,10 +9,10 @@
     <lastBuildDate>Fri, 12 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>虚拟化研究框架</title>
-      <link>https://winsun.github.io/fightsec/post/p02_pwn_05_hypervisor/</link>
+      <link>https://winsun.github.io/fightsec/post/pwn_24_hypervisor/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p02_pwn_05_hypervisor/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pwn_24_hypervisor/</guid>
       <description>kali install kvm kali install kvm</description>
     </item>
     

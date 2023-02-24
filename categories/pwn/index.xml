@@ -189,37 +189,37 @@
     
     <item>
       <title>缓冲区溢出01-溢出漏洞</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_01_overflow/</link>
+      <link>https://winsun.github.io/fightsec/post/pwn_21_overflow01/</link>
       <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_01_overflow/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pwn_21_overflow01/</guid>
       <description>缓冲区溢出 一个自带缓冲区溢出bug的代码 greeting函数存在buffer overflow $ gdb -q meet warning: ~/gef/gef.py: No such file or directory warning: ~/gef/scripts/helpme.py: No such file or directory Reading symbols from meet... (gdb) list 1 // meet.c 2 #include &amp;lt;stdio.h&amp;gt; // needed for screen printing 3 #include &amp;lt;string.h&amp;gt; // needed for strcpy 4 void greeting(char *temp1,char *temp2){ // greeting function to say hello 5 char name[400]; // string variable to hold the name 6 strcpy(name, temp2); // copy argument to name with the infamous strcpy 7 printf(&amp;#34;Hello %s %s\n&amp;#34;, temp1, name); // print out the greeting 8 } 9 int main(int argc, char * argv[]){ // note the format for arguments</description>
     </item>
     
     <item>
       <title>缓冲区溢出02-shellcode</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_02_overflow/</link>
+      <link>https://winsun.github.io/fightsec/post/pwn_22_overflow02/</link>
       <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_02_overflow/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pwn_22_overflow02/</guid>
       <description>weekness programe // meet.c #include &amp;lt;stdio.h&amp;gt; // needed for screen printing #include &amp;lt;string.h&amp;gt; // needed for strcpy void greeting(char *temp1,char *temp2){ // greeting function to say hello char name[400]; // string variable to hold the name strcpy(name, temp2); // copy argument to name with the infamous strcpy printf(&amp;#34;Hello %s %s\n&amp;#34;, temp1, name); // print out the greeting } int main(int argc, char * argv[]){ // note the format for arguments greeting(argv[1], argv[2]); // call function, pass title &amp;amp; name printf(&amp;#34;Bye %s %s\n&amp;#34;, argv[1], argv[2]); // say &amp;#34;bye&amp;#34; } // exit program stack frame | name[400] | ebp | eip | temp1 | temp2 | disassemble greeting (gdb) disass greeting Dump of assembler code for function greeting: 0x56556201 &amp;lt;+0&amp;gt;: push %ebp 0x56556202 &amp;lt;+1&amp;gt;: mov %esp,%ebp 0x56556204 &amp;lt;+3&amp;gt;: push %ebx 0x56556205 &amp;lt;+4&amp;gt;: sub $0x190,%esp 0x5655620b &amp;lt;+10&amp;gt;: call 0x565560c0 &amp;lt;__x86.get_pc_thunk.bx&amp;gt; 0x56556210 &amp;lt;+15&amp;gt;: add</description>
     </item>
     
     <item>
       <title>Linux Kernel Exploitation Technique: Overwriting: modprobe_path</title>
-      <link>https://winsun.github.io/fightsec/post/p02_pwn_04_exp_kernel/</link>
+      <link>https://winsun.github.io/fightsec/post/pwn_23_exp_kernel/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p02_pwn_04_exp_kernel/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pwn_23_exp_kernel/</guid>
       <description>引用 Overwriting modprobe_path Linux Kernel Exploitation</description>
     </item>
     
     <item>
       <title>虚拟化研究框架</title>
-      <link>https://winsun.github.io/fightsec/post/p02_pwn_05_hypervisor/</link>
+      <link>https://winsun.github.io/fightsec/post/pwn_24_hypervisor/</link>
       <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p02_pwn_05_hypervisor/</guid>
+      <guid>https://winsun.github.io/fightsec/post/pwn_24_hypervisor/</guid>
       <description>kali install kvm kali install kvm</description>
     </item>
     

@@ -67,13 +67,16 @@
     content: "\e60d";
 }
 body {
-    background-color:#FFF;
+    /*background-color:#FFF;*/
+    background-color: #001e2b;
     color:#444;
+    /*color: #F0F0F0;*/
     font-size: 15px;
     /**
     font-family:"TIBch", "Classic Grotesque W01", "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
     **/
     font-family: "Iowan Old Style", "Ovo", "Hoefler Text", Georgia, "Times New Roman", "TIBch", "Source Han Sans", "PingFangSC-Regular", "Hiragino Sans GB", "STHeiti", "Microsoft Yahei", "Droid Sans Fallback", "WenQuanYi Micro Hei", sans-serif;
+    /*font-family: "Akzidenz Grotesk",Helvetica,Arial,sans-serif !important;*/
     /**-webkit-font-smoothing: antialiased;**/
     -moz-osx-font-smoothing: grayscale;
 }
@@ -277,6 +280,7 @@ textarea {
 }
 .post {
     padding:25px 0 15px;
+    color: #f9fbfa;
 }
 .post-title {
     margin:0;
@@ -358,7 +362,8 @@ textarea {
 .post-content {
     font-size: 1em;
     line-height: 1.7;
-    color:#444;
+    /*color:#444;*/
+    color: #f9fbfa;
     padding-top:27px;
 }
 .post-content h2,.post-content h3,.post-content h4,.post-content h5,.post-content h6 {
@@ -1020,7 +1025,8 @@ table {
     background: transparent;
     border-collapse: collapse;
     border-spacing: 0;
-    text-align: left; 
+    text-align: left;
+    color: #0366d6;
 }
 tbody {
     border: 0;

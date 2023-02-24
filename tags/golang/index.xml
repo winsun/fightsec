@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on 诚安</title>
+    <link>https://winsun.github.io/fightsec/tags/golang/</link>
+    <description>Recent content in golang on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 22 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>edr: 进程信息采集</title>
+      <link>https://winsun.github.io/fightsec/post/edr_01_process/</link>
+      <pubDate>Wed, 22 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/edr_01_process/</guid>
+      <description>process 1 定义要采集的进程信息 //所要采集的进程信息 type Process struct { Pid int32 `json:&amp;#34;Pid&amp;#34;` Name string `json:&amp;#34;Name&amp;#34;` Cmdline string `json:&amp;#34;Cmdline&amp;#34;` Cwd string `json:&amp;#34;Cwd&amp;#34;` Exe string `json:&amp;#34;Exe&amp;#34;` } 2 编写采集过程 import process //调用Processes方法 procs, _ := process.Processes() var procInfo []common.Process for i := 0; i &amp;lt;= len(procs)-1; i++ { var proc common.Process proc.Name, _ = procs[i].Name() proc.Pid = procs[i].Pid proc.Cmdline, _ = procs[i].Cmdline() proc.Cwd, _ = procs[i].Cwd() proc.Exe, _ = procs[i].Exe() procInfo = append(procInfo, proc) } 3 Processes分析 进程相关信息的包来自 github.com/shirou/gopsutil/v3 3.1 Process type Process struct { Pid</description>
+    </item>
+    
+  </channel>
+</rss>

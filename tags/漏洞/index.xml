@@ -9,37 +9,37 @@
     <lastBuildDate>Sat, 04 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/%E6%BC%8F%E6%B4%9E/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>springshell</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_06_springshell/</link>
+      <link>https://winsun.github.io/fightsec/post/vul_04_springshell/</link>
       <pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_06_springshell/</guid>
+      <guid>https://winsun.github.io/fightsec/post/vul_04_springshell/</guid>
       <description>引用 CVE-2022-22965</description>
     </item>
     
     <item>
       <title>heartbleed</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_05_heartblood/</link>
+      <link>https://winsun.github.io/fightsec/post/vul_03_heartblood/</link>
       <pubDate>Fri, 03 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_05_heartblood/</guid>
+      <guid>https://winsun.github.io/fightsec/post/vul_03_heartblood/</guid>
       <description>引用 The Heartbleed Bug, explained</description>
     </item>
     
     <item>
       <title>log4j</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_04_log4j/</link>
+      <link>https://winsun.github.io/fightsec/post/vul_02_log4j/</link>
       <pubDate>Thu, 02 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_04_log4j/</guid>
+      <guid>https://winsun.github.io/fightsec/post/vul_02_log4j/</guid>
       <description>引用 checking log4j dep</description>
     </item>
     
     <item>
       <title>java反序列化漏洞</title>
-      <link>https://winsun.github.io/fightsec/post/p04_vul_03_serial/</link>
+      <link>https://winsun.github.io/fightsec/post/vul_01_serial/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/p04_vul_03_serial/</guid>
+      <guid>https://winsun.github.io/fightsec/post/vul_01_serial/</guid>
       <description>引用 从0开始学习java反序列化漏洞</description>
     </item>
     

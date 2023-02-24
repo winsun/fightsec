@@ -85,7 +85,7 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p04_vul_01_overflow/">缓冲区溢出01-溢出漏洞</a>
+                <a href="https://winsun.github.io/fightsec/post/pwn_21_overflow01/">缓冲区溢出01-溢出漏洞</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -101,14 +101,14 @@
         
         <div class="post-content">
             缓冲区溢出 一个自带缓冲区溢出bug的代码 greeting函数存在buffer overflow $ gdb -q meet warning: ~/gef/gef.py: No such file or directory warning: ~/gef/scripts/helpme.py: No such file or directory Reading symbols from meet... (gdb) list 1 // meet.c 2 #include &lt;stdio.h&gt; // needed for screen printing 3 #include &lt;string.h&gt; // needed for strcpy 4 void greeting(char *temp1,char *temp2){ // greeting function to say hello 5 char name[400]; // string variable to hold the name 6 strcpy(name, temp2); // copy argument to name with the infamous strcpy 7 printf(&#34;Hello %s %s\n&#34;, temp1, name); // print out the greeting 8 } 9 int main(int argc, char * argv[]){ // note the format for arguments……
-            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p04_vul_01_overflow/">阅读全文</a></p>
+            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_21_overflow01/">阅读全文</a></p>
         </div>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/p04_vul_02_overflow/">缓冲区溢出02-shellcode</a>
+                <a href="https://winsun.github.io/fightsec/post/pwn_22_overflow02/">缓冲区溢出02-shellcode</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -124,7 +124,7 @@
         
         <div class="post-content">
             weekness programe // meet.c #include &lt;stdio.h&gt; // needed for screen printing #include &lt;string.h&gt; // needed for strcpy void greeting(char *temp1,char *temp2){ // greeting function to say hello char name[400]; // string variable to hold the name strcpy(name, temp2); // copy argument to name with the infamous strcpy printf(&#34;Hello %s %s\n&#34;, temp1, name); // print out the greeting } int main(int argc, char * argv[]){ // note the format for arguments greeting(argv[1], argv[2]); // call function, pass title &amp; name printf(&#34;Bye %s %s\n&#34;, argv[1], argv[2]); // say &#34;bye&#34; } // exit program stack frame | name[400] | ebp | eip | temp1 | temp2 | disassemble greeting (gdb) disass greeting Dump of assembler code for function greeting: 0x56556201 &lt;+0&gt;: push %ebp 0x56556202 &lt;+1&gt;: mov %esp,%ebp 0x56556204 &lt;+3&gt;: push %ebx 0x56556205 &lt;+4&gt;: sub $0x190,%esp 0x5655620b &lt;+10&gt;: call 0x565560c0 &lt;__x86.get_pc_thunk.bx&gt; 0x56556210 &lt;+15&gt;: add……
-            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/p04_vul_02_overflow/">阅读全文</a></p>
+            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_22_overflow02/">阅读全文</a></p>
         </div>
     </article>
     
@@ -187,6 +187,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/edr_01_process/" title="edr: 进程信息采集">edr: 进程信息采集</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_09_ret2csu/" title="ret2csu">ret2csu</a>
     </li>
     
@@ -211,19 +215,15 @@
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/p04_vul_06_springshell/" title="springshell">springshell</a>
+        <a href="https://winsun.github.io/fightsec/post/vul_04_springshell/" title="springshell">springshell</a>
     </li>
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/p04_vul_05_heartblood/" title="heartbleed">heartbleed</a>
+        <a href="https://winsun.github.io/fightsec/post/vul_03_heartblood/" title="heartbleed">heartbleed</a>
     </li>
     
     <li>
         <a href="https://winsun.github.io/fightsec/post/knl_02_syscall/" title="linux kernel : system call">linux kernel : system call</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/knl_01_process/" title="linux kernel : process">linux kernel : process</a>
     </li>
     
 </ul>
@@ -242,6 +242,8 @@
     <li><a href="https://winsun.github.io/fightsec/categories/arm/">arm (20)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/cybersecurity/">cybersecurity (12)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/edr/">edr (1)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/encrypt/">encrypt (1)</a></li>
     
@@ -322,6 +324,8 @@
     
     <a href="https://winsun.github.io/fightsec/tags/ghidra/">ghidra</a>
     
+    <a href="https://winsun.github.io/fightsec/tags/golang/">golang</a>
+    
     <a href="https://winsun.github.io/fightsec/tags/gorm/">gorm</a>
     
     <a href="https://winsun.github.io/fightsec/tags/got/">got</a>
@@ -353,6 +357,8 @@
     <a href="https://winsun.github.io/fightsec/tags/pie/">pie</a>
     
     <a href="https://winsun.github.io/fightsec/tags/plt/">plt</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/process/">process</a>
     
     <a href="https://winsun.github.io/fightsec/tags/proxy/">proxy</a>
     
