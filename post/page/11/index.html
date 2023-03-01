@@ -78,31 +78,6 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/crypt_01_algorithm/" title="morden encrypt algorithm">morden encrypt algorithm</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年2月12日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/encrypt'>encrypt</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            random hash aes des rsa pki 参考 自签名证书……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/crypt_01_algorithm/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_23_exp_kernel/" title="Linux Kernel Exploitation Technique: Overwriting: modprobe_path">Linux Kernel Exploitation Technique: Overwriting: modprobe_path</a>
             </h1>
         </header>
@@ -279,6 +254,56 @@ merlin ……
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/edr_02_assets/" title="edr: dns域名采集">edr: dns域名采集</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年9月2日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/edr'>edr</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            dns采集信息 type DnsInfo struct { //请求的域名 Qname string `json:&#34;qname&#34;` Cname []string `json:&#34;cname&#34;` Ipv4 []string `json:&#34;ipv4&#34;` Ipv6 []string `json:&#34;ipv6&#34;` Md5 string `json:&#34;md5&#34;` } 恶意软件一般通过使用DGA算法与C2服务器建立通信，因此， 在本地机器上采集dns请求信息可以检测是否存在恶意软件，因而 推测出主机是否已经失陷。 Tcpdump winsun@ubuntu:~$ sudo tcpdump -i ens33 -nt -s 500 port domain listening on ens33, link-type EN10MB (Ethernet), capture size 500 bytes IP 192.168.121.137.33266 &gt; 192.168.121.2.53: 42909+ A? www.baidu.com. (31) IP 192.168.121.137.46547 &gt; 192.168.121.2.53: 11678+ AAAA?……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/edr_02_assets/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/edr_01_process/" title="edr: 进程信息采集">edr: 进程信息采集</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年9月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/edr'>edr</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            process 1 定义要采集的进程信息 //所要采集的进程信息 type Process struct { Pid int32 `json:&#34;Pid&#34;` Name string `json:&#34;Name&#34;` Cmdline string `json:&#34;Cmdline&#34;` Cwd string `json:&#34;Cwd&#34;` Exe string `json:&#34;Exe&#34;` ProcHash string `json:&#34;ProcHash&#34;` } 2 编写采集过程 import process //调用Processes方法 procs, _ := process.Processes() var procInfo []common.Process for i := 0; i &lt;= len(procs)-1; i++ { var proc common.Process proc.Name, _ = procs[i].Name() proc.Pid = procs[i].Pid proc.Cmdline, _ = procs[i].Cmdline() proc.Cwd, _ = procs[i].Cwd() proc.Exe, _ = procs[i].Exe() procInfo = append(procInfo, proc) } 3 Processes分析 进程相关信息的包来自 github.com/shirou/gopsutil/v3 3.1 Process type Process……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/edr_01_process/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/linux_05_gdb/" title="GDB及扩展">GDB及扩展</a>
             </h1>
         </header>
@@ -297,25 +322,6 @@ merlin ……
             gdb gdbinit配置 可以从网上或自己编写 .gdbinit 配置文件, 从网上找到一份配置 config one 地址 https://github.com/gdbinit/Gdbinit 安装: git clone git@github.com:gdbinit/Gdbinit.git cp Gdbinit/gdbinit ~/.gdbinit config two wget https://raw.githubusercontent.com/gdbinit/Gdbinit/master/gdbinit cp gdbinit ~/.gdbinit gef gef A few of GEF features include: 1、One single GDB script Entirely OS Agnostic, NO dependencies: GEF is battery-included and is installable instantly Fast limiting the number of dependencies and optimizing code to make the commands as fast as possible 2、Provides a great variety of commands to drastically change your experience in GDB. Easily extensible to create other commands by providing more comprehensible layout to GDB Python API. 3、……
         </div>
         <p class="readmore"><a href="https://winsun.github.io/fightsec/post/linux_05_gdb/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/security_project/" title=""></a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            1年1月1日
-        </date>
-        
-        <div class="post-content">
-            Attack vul&rsquo;s db fuzz project zero AFL AFL EXP01 hongfuzz symbolic execute KLEE KLEE EXP01 pwn pwntools []
-fireware binwalk defense packer llvm vmp FW WAF NIDS HIDS EDR UEBA VPN Bastion host soc seim soar pki pet ……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/security_project/">阅读全文</a></p>
     </article>
     
     
@@ -445,10 +451,6 @@ fireware binwalk defense packer llvm vmp FW WAF NIDS HIDS EDR UEBA VPN Bastion h
 <ul class="widget-list">
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/edr_01_process/" title="edr: 进程信息采集">edr: 进程信息采集</a>
-    </li>
-    
-    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_09_ret2csu/" title="ret2csu">ret2csu</a>
     </li>
     
@@ -484,6 +486,10 @@ fireware binwalk defense packer llvm vmp FW WAF NIDS HIDS EDR UEBA VPN Bastion h
         <a href="https://winsun.github.io/fightsec/post/knl_02_syscall/" title="linux kernel : system call">linux kernel : system call</a>
     </li>
     
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/knl_01_process/" title="linux kernel : process">linux kernel : process</a>
+    </li>
+    
 </ul>
     </section>
 
@@ -501,7 +507,7 @@ fireware binwalk defense packer llvm vmp FW WAF NIDS HIDS EDR UEBA VPN Bastion h
     
     <li><a href="https://winsun.github.io/fightsec/categories/cybersecurity/">cybersecurity (12)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/edr/">edr (1)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/edr/">edr (2)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/encrypt/">encrypt (1)</a></li>
     

@@ -13,10 +13,10 @@
     <meta property="og:title" content="edr: 进程信息采集 - 诚安">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2023-02-22T00:00:00&#43;08:00'>
+    <meta property="article:published_time" content='2020-09-01T00:00:00&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2023-02-22T00:00:00&#43;08:00'>
+    <meta property="article:modified_time" content='2020-09-01T00:00:00&#43;08:00'>
         
     <meta name="Keywords" content="信息安全、主机安全、网络安全、二进制、数据安全">
     <meta name="description" content="edr: 进程信息采集">
@@ -146,6 +146,10 @@
   <ul>
     <li><a href="#process">process</a></li>
   </ul>
+
+  <ul>
+    <li><a href="#参考">参考</a></li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -185,7 +189,7 @@
             <h1 class="post-title">edr: 进程信息采集</h1>
         </header>
         <date class="post-meta meta-date">
-            2023年2月22日
+            2020年9月1日
         </date>
         
         <div class="post-meta">
@@ -222,6 +226,7 @@ type Process struct {
 	Cmdline string `json:&#34;Cmdline&#34;`
 	Cwd     string `json:&#34;Cwd&#34;`
 	Exe     string `json:&#34;Exe&#34;`
+	ProcHash   string `json:&#34;ProcHash&#34;`  
 }
 </code></pre><ul>
 <li>
@@ -293,7 +298,11 @@ func ProcessesWithContext(ctx context.Context) ([]*Process, error) {
 
 	return out, nil
 }
-</code></pre>
+</code></pre><h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://linux-kernel-labs.github.io/refs/heads/master/lectures/processes.html#">os 2:process</a></li>
+</ul>
+
         </div>
 
         
@@ -314,15 +323,15 @@ func ProcessesWithContext(ctx context.Context) ([]*Process, error) {
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/fightsec/post/pwn_09_ret2csu/">ret2csu</a></li>
+        <li><a href="/fightsec/about/">关于我</a></li>
         
-        <li><a href="/fightsec/post/pwn_07_ret2dlresolve/">ret2dlresolve</a></li>
+        <li><a href="/fightsec/post/security_project/"></a></li>
         
-        <li><a href="/fightsec/post/pwn_19_exp_socket/">socket exploitation</a></li>
+        <li><a href="/fightsec/post/pet_04_honeypot/"></a></li>
         
-        <li><a href="/fightsec/post/pwn_06_srop/">SROP</a></li>
+        <li><a href="/fightsec/post/pet_05_webshell/"></a></li>
         
-        <li><a href="/fightsec/post/pwn_02_rop/">ROP</a></li>
+        <li><a href="/fightsec/post/linux_05_gdb/">GDB及扩展</a></li>
         
     </ul>
 </div>
@@ -459,10 +468,6 @@ func ProcessesWithContext(ctx context.Context) ([]*Process, error) {
 <ul class="widget-list">
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/edr_01_process/" title="edr: 进程信息采集">edr: 进程信息采集</a>
-    </li>
-    
-    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_09_ret2csu/" title="ret2csu">ret2csu</a>
     </li>
     
@@ -498,6 +503,10 @@ func ProcessesWithContext(ctx context.Context) ([]*Process, error) {
         <a href="https://winsun.github.io/fightsec/post/knl_02_syscall/" title="linux kernel : system call">linux kernel : system call</a>
     </li>
     
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/knl_01_process/" title="linux kernel : process">linux kernel : process</a>
+    </li>
+    
 </ul>
     </section>
 
@@ -515,7 +524,7 @@ func ProcessesWithContext(ctx context.Context) ([]*Process, error) {
     
     <li><a href="https://winsun.github.io/fightsec/categories/cybersecurity/">cybersecurity (12)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/edr/">edr (1)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/edr/">edr (2)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/encrypt/">encrypt (1)</a></li>
     

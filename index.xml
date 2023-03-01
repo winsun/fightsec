@@ -6,16 +6,7 @@
     <description>Recent content on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 22 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>edr: 进程信息采集</title>
-      <link>https://winsun.github.io/fightsec/post/edr_01_process/</link>
-      <pubDate>Wed, 22 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://winsun.github.io/fightsec/post/edr_01_process/</guid>
-      <description>process 1 定义要采集的进程信息 //所要采集的进程信息 type Process struct { Pid int32 `json:&amp;#34;Pid&amp;#34;` Name string `json:&amp;#34;Name&amp;#34;` Cmdline string `json:&amp;#34;Cmdline&amp;#34;` Cwd string `json:&amp;#34;Cwd&amp;#34;` Exe string `json:&amp;#34;Exe&amp;#34;` } 2 编写采集过程 import process //调用Processes方法 procs, _ := process.Processes() var procInfo []common.Process for i := 0; i &amp;lt;= len(procs)-1; i++ { var proc common.Process proc.Name, _ = procs[i].Name() proc.Pid = procs[i].Pid proc.Cmdline, _ = procs[i].Cmdline() proc.Cwd, _ = procs[i].Cwd() proc.Exe, _ = procs[i].Exe() procInfo = append(procInfo, proc) } 3 Processes分析 进程相关信息的包来自 github.com/shirou/gopsutil/v3 3.1 Process type Process struct { Pid</description>
-    </item>
-    
+    <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ret2csu</title>
       <link>https://winsun.github.io/fightsec/post/pwn_09_ret2csu/</link>
@@ -987,6 +978,24 @@ merlin </description>
       
       <guid>https://winsun.github.io/fightsec/post/pwn_24_hypervisor/</guid>
       <description>kali install kvm kali install kvm</description>
+    </item>
+    
+    <item>
+      <title>edr: dns域名采集</title>
+      <link>https://winsun.github.io/fightsec/post/edr_02_assets/</link>
+      <pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/edr_02_assets/</guid>
+      <description>dns采集信息 type DnsInfo struct { //请求的域名 Qname string `json:&amp;#34;qname&amp;#34;` Cname []string `json:&amp;#34;cname&amp;#34;` Ipv4 []string `json:&amp;#34;ipv4&amp;#34;` Ipv6 []string `json:&amp;#34;ipv6&amp;#34;` Md5 string `json:&amp;#34;md5&amp;#34;` } 恶意软件一般通过使用DGA算法与C2服务器建立通信，因此， 在本地机器上采集dns请求信息可以检测是否存在恶意软件，因而 推测出主机是否已经失陷。 Tcpdump winsun@ubuntu:~$ sudo tcpdump -i ens33 -nt -s 500 port domain listening on ens33, link-type EN10MB (Ethernet), capture size 500 bytes IP 192.168.121.137.33266 &amp;gt; 192.168.121.2.53: 42909+ A? www.baidu.com. (31) IP 192.168.121.137.46547 &amp;gt; 192.168.121.2.53: 11678+ AAAA?</description>
+    </item>
+    
+    <item>
+      <title>edr: 进程信息采集</title>
+      <link>https://winsun.github.io/fightsec/post/edr_01_process/</link>
+      <pubDate>Tue, 01 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/edr_01_process/</guid>
+      <description>process 1 定义要采集的进程信息 //所要采集的进程信息 type Process struct { Pid int32 `json:&amp;#34;Pid&amp;#34;` Name string `json:&amp;#34;Name&amp;#34;` Cmdline string `json:&amp;#34;Cmdline&amp;#34;` Cwd string `json:&amp;#34;Cwd&amp;#34;` Exe string `json:&amp;#34;Exe&amp;#34;` ProcHash string `json:&amp;#34;ProcHash&amp;#34;` } 2 编写采集过程 import process //调用Processes方法 procs, _ := process.Processes() var procInfo []common.Process for i := 0; i &amp;lt;= len(procs)-1; i++ { var proc common.Process proc.Name, _ = procs[i].Name() proc.Pid = procs[i].Pid proc.Cmdline, _ = procs[i].Cmdline() proc.Cwd, _ = procs[i].Cwd() proc.Exe, _ = procs[i].Exe() procInfo = append(procInfo, proc) } 3 Processes分析 进程相关信息的包来自 github.com/shirou/gopsutil/v3 3.1 Process type Process</description>
     </item>
     
     <item>

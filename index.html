@@ -76,29 +76,6 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/edr_01_process/" title="edr: 进程信息采集">edr: 进程信息采集</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2023年2月22日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/edr'>edr</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            process 1 定义要采集的进程信息 //所要采集的进程信息 type Process struct { Pid int32 `json:&#34;Pid&#34;` Name string `json:&#34;Name&#34;` Cmdline string `json:&#34;Cmdline&#34;` Cwd string `json:&#34;Cwd&#34;` Exe string `json:&#34;Exe&#34;` } 2 编写采集过程 import process //调用Processes方法 procs, _ := process.Processes() var procInfo []common.Process for i := 0; i &lt;= len(procs)-1; i++ { var proc common.Process proc.Name, _ = procs[i].Name() proc.Pid = procs[i].Pid proc.Cmdline, _ = procs[i].Cmdline() proc.Cwd, _ = procs[i].Cwd() proc.Exe, _ = procs[i].Exe() procInfo = append(procInfo, proc) } 3 Processes分析 进程相关信息的包来自 github.com/shirou/gopsutil/v3 3.1 Process type Process struct { Pid……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/edr_01_process/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_09_ret2csu/" title="ret2csu">ret2csu</a>
             </h1>
         </header>
@@ -303,6 +280,29 @@
         <p class="readmore"><a href="https://winsun.github.io/fightsec/post/knl_02_syscall/">阅读全文</a></p>
     </article>
     
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/knl_01_process/" title="linux kernel : process">linux kernel : process</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2023年2月2日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/linux'>linux</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            task_struct task_struct &amp; thread_info process state zombie fork &amp; exec process……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/knl_01_process/">阅读全文</a></p>
+    </article>
+    
     
 
 
@@ -417,10 +417,6 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/edr_01_process/" title="edr: 进程信息采集">edr: 进程信息采集</a>
-    </li>
-    
-    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_09_ret2csu/" title="ret2csu">ret2csu</a>
     </li>
     
@@ -456,6 +452,10 @@
         <a href="https://winsun.github.io/fightsec/post/knl_02_syscall/" title="linux kernel : system call">linux kernel : system call</a>
     </li>
     
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/knl_01_process/" title="linux kernel : process">linux kernel : process</a>
+    </li>
+    
 </ul>
     </section>
 
@@ -473,7 +473,7 @@
     
     <li><a href="https://winsun.github.io/fightsec/categories/cybersecurity/">cybersecurity (12)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/edr/">edr (1)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/edr/">edr (2)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/encrypt/">encrypt (1)</a></li>
     
