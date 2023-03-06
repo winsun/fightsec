@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on 诚安</title>
+    <link>https://winsun.github.io/fightsec/tags/AI/</link>
+    <description>Recent content in AI on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 03 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/AI/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>相似度方法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_09_similarity/</link>
+      <pubDate>Fri, 03 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_09_similarity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>matplotlib用法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_08_matplotlib/</link>
+      <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_08_matplotlib/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>scipy用法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_07_scipy/</link>
+      <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_07_scipy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pandas用法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_06_pandas/</link>
+      <pubDate>Wed, 18 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_06_pandas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>numpy用法</title>
+      <link>https://winsun.github.io/fightsec/post/ml_05_numpy/</link>
+      <pubDate>Mon, 18 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_05_numpy/</guid>
+      <description>import numpy as ap numpy主要用来创建vectors和matrics,solve linear operations and generate random entries. 创建数组 列表[]构建数组 &amp;gt;&amp;gt;&amp;gt; a = np.array([1,2,3,4]) &amp;gt;&amp;gt;&amp;gt; a.size 4 # 4个元素 &amp;gt;&amp;gt;&amp;gt; a.shape (4,) # 4行1列 &amp;gt;&amp;gt;&amp;gt; print(a) [1 2 3 4] 数组a 1 2 3 4 行列向量转换 &amp;gt;&amp;gt;&amp;gt; a.shape=(1,4) &amp;gt;&amp;gt;&amp;gt; print(a) [[1 2 3 4]] c1 c2 c3 c4 1 2 3 4 &amp;gt;&amp;gt;&amp;gt; a.reshape(2,2) array([[1, 2], [3, 4]]) c1 c2 1 2 3 4 取元素 &amp;gt;&amp;gt;&amp;gt; b = a.reshape(2,2) &amp;gt;&amp;gt;&amp;gt; print(b) [[1 2] [3 4]] &amp;gt;&amp;gt;&amp;gt; b[0,:] # 取第1</description>
+    </item>
+    
+    <item>
+      <title>概率分布</title>
+      <link>https://winsun.github.io/fightsec/post/ml_04_prob_dist/</link>
+      <pubDate>Fri, 15 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_04_prob_dist/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>随机变量及性质</title>
+      <link>https://winsun.github.io/fightsec/post/ml_03_random_variable/</link>
+      <pubDate>Tue, 12 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_03_random_variable/</guid>
+      <description>概率空间 Probability Space == 样本空间(sample space) + 概率函数(probability function) 概率函数 $ P: S \mapsto R $, 其满足： $ P[\omega] \geq 0, \forall\omega \in S $ $ \sum_{\omega\in S} P[\omega] = 1 $ 期望 方差 协方差 马尔可夫 chebyshev chernoff murphy&amp;rsquo;s law random walk eut mvp emh 参考 最全Markdown公式 通用 LaTeX 数学公式语法手册</description>
+    </item>
+    
+    <item>
+      <title>贝叶斯</title>
+      <link>https://winsun.github.io/fightsec/post/ml_02_bayes/</link>
+      <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_02_bayes/</guid>
+      <description>LSTM python预测基金净值 latex $\int_a^b f(x)\mathrm{d}x$</description>
+    </item>
+    
+    <item>
+      <title>confuse matrix</title>
+      <link>https://winsun.github.io/fightsec/post/ml_01_confuse_matrix/</link>
+      <pubDate>Wed, 09 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/ml_01_confuse_matrix/</guid>
+      <description>matrix</description>
+    </item>
+    
+  </channel>
+</rss>

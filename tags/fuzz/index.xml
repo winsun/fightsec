@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fuzz on 诚安</title>
+    <link>https://winsun.github.io/fightsec/tags/fuzz/</link>
+    <description>Recent content in fuzz on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 12 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/fuzz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>fuzz</title>
+      <link>https://winsun.github.io/fightsec/post/vul_05_fuzz_afl/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/vul_05_fuzz_afl/</guid>
+      <description> fuzz security AFL using  </description>
+    </item>
+    
+  </channel>
+</rss>

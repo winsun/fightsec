@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shellcode on 诚安</title>
+    <link>https://winsun.github.io/fightsec/tags/shellcode/</link>
+    <description>Recent content in shellcode on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 29 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/shellcode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>利用got覆盖执行shellcode</title>
+      <link>https://winsun.github.io/fightsec/post/pwn_03_got_overwrite/</link>
+      <pubDate>Thu, 29 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/pwn_03_got_overwrite/</guid>
+      <description>漏洞程序 // gcc source.c -o vuln -no-pie -fno-stack-protector -z execstack -m32 #include &amp;lt;stdio.h&amp;gt; void vuln() { char buffer[20]; puts(&amp;quot;Give me the input&amp;quot;); gets(buffer); } int main() { vuln(); return 0; }</description>
+    </item>
+    
+  </channel>
+</rss>

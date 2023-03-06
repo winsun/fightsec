@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rop on 诚安</title>
+    <link>https://winsun.github.io/fightsec/tags/rop/</link>
+    <description>Recent content in rop on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 10 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/rop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ROP</title>
+      <link>https://winsun.github.io/fightsec/post/pwn_02_rop/</link>
+      <pubDate>Fri, 10 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/pwn_02_rop/</guid>
+      <description>ROP Returned-oriented Program,defeats the W⊕X protections recently deployed by Microsoft,Intel, and AMD;in this context, it can be seen as a generalization of traditional return-into-libc attacks. But the threat is more general . gadget what gadget Each gadget is an arrangement of words on the stack, both pointers to instruction sequences and immediate data words, that when invoked accomplishes some well-defined task “W⊕X,” ensures that no memory location in a process image is marked both writable (“W”) and executable (“X”) gadget feature One gadget might: perform a load operation another an xor and another a conditional branch 案例程序 from pwn import * context.arch = &#39;amd64&#39; context.os = &#39;linux&#39; elf = ELF.from_assembly( &#39;&#39;&#39; mov rdi, 0; mov rsi, rsp; sub rsi, 8; mov rdx,</description>
+    </item>
+    
+  </channel>
+</rss>

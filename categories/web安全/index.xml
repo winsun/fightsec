@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web安全 on 诚安</title>
+    <link>https://winsun.github.io/fightsec/categories/web%E5%AE%89%E5%85%A8/</link>
+    <description>Recent content in web安全 on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 25 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/categories/web%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>web sql inject</title>
+      <link>https://winsun.github.io/fightsec/post/web_01_sqlinject/</link>
+      <pubDate>Mon, 25 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/web_01_sqlinject/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

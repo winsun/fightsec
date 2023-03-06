@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>基础 on 诚安</title>
+    <link>https://winsun.github.io/fightsec/tags/%E5%9F%BA%E7%A1%80/</link>
+    <description>Recent content in 基础 on 诚安</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 26 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>go基础</title>
+      <link>https://winsun.github.io/fightsec/post/go_00_install_config/</link>
+      <pubDate>Sun, 26 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/go_00_install_config/</guid>
+      <description>install download go: https://go.dev/dl/ ubuntu install go: https://www.digitalocean.com/community/tutorials/how-to-install-go-on-ubuntu-20-04 $ tar -C /usr/local -xvf goxxxx $ vim ~/.profile 行末尾添加 : export PATH=$PATH:/usr/local/go/bin $ source ~/.profile $ go version</description>
+    </item>
+    
+  </channel>
+</rss>
