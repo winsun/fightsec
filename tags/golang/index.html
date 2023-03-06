@@ -85,7 +85,7 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/edr_02_assets/">edr: dns域名采集</a>
+                <a href="https://winsun.github.io/fightsec/post/edr_02_dns/">edr: dns域名采集</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -101,7 +101,7 @@
         
         <div class="post-content">
             dns采集信息 type DnsInfo struct { //请求的域名 Qname string `json:&quot;qname&quot;` Cname []string `json:&quot;cname&quot;` Ipv4 []string `json:&quot;ipv4&quot;` Ipv6 []string `json:&quot;ipv6&quot;` Md5 string `json:&quot;md5&quot;` } 恶意软件一般通过使用DGA算法与C2服务器建立通信，因此， 在本地机器上采集dns请求信息可以检测是否存在恶意软件，因而 推测出主机是否已经失陷。 Tcpdump winsun@ubuntu:~$ sudo tcpdump -i ens33 -nt -s 500 port domain listening on ens33, link-type EN10MB (Ethernet), capture size 500 bytes IP 192.168.121.137.33266 &gt; 192.168.121.2.53: 42909+ A? www.baidu.com. (31) IP 192.168.121.137.46547 &gt; 192.168.121.2.53: 11678+ AAAA?……
-            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/edr_02_assets/">阅读全文</a></p>
+            <p class="readmore"><a href="https://winsun.github.io/fightsec/post/edr_02_dns/">阅读全文</a></p>
         </div>
     </article>
     
