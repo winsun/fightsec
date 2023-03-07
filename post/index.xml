@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>go有效设计模式</title>
+      <link>https://winsun.github.io/fightsec/post/go_13_design_pattern/</link>
+      <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/go_13_design_pattern/</guid>
+      <description>worker pool 定义job及channel type WorkerJob struct { from int size int isConcept bool } jobCh := make(chan WorkerJob,100) 定义生产者 生成者负责创建job，并把job投入job channel func producer(jobs chan WorkerJob){ job := WorkerJob{from:1,size:10} jobs &amp;lt;- job } 创建worker pool func worker(jobs chan WorkerJob,results chan WorkerResult ,wg *sync.WaitGroup){ for job := range jobs{ out := WorkerResult{jobId:job.id, message: cosumer(job.from,job.size,job.isConcept)} results &amp;lt;- out } wg.Done() } func createWorkPool(numOfWorkers int,jobs chan WorkerJob,results chan WorkerResult){ var wg sync.WaitGroup for i := 0; i &amp;lt; numOfWorkers ; i++{ wg.Add(1) go worker(jobs,results,&amp;amp;wg) } wg.Wait() close(results) } 定义消费者 func cosumer(from,size int,isConcept bool)string{ //to do... return &amp;#34;success&amp;#34;</description>
+    </item>
+    
     <item>
       <title>ret2csu</title>
       <link>https://winsun.github.io/fightsec/post/pwn_09_ret2csu/</link>
@@ -329,15 +338,6 @@
       
       <guid>https://winsun.github.io/fightsec/post/cyber_01_router_switch/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>go 设计模式</title>
-      <link>https://winsun.github.io/fightsec/post/go_13_design_pattern/</link>
-      <pubDate>Thu, 25 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://winsun.github.io/fightsec/post/go_13_design_pattern/</guid>
-      <description>装饰器模式</description>
     </item>
     
     <item>
@@ -973,10 +973,10 @@ merlin </description>
     
     <item>
       <title>edr: dns域名采集</title>
-      <link>https://winsun.github.io/fightsec/post/edr_02_assets/</link>
+      <link>https://winsun.github.io/fightsec/post/edr_02_dns/</link>
       <pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/edr_02_assets/</guid>
+      <guid>https://winsun.github.io/fightsec/post/edr_02_dns/</guid>
       <description>dns采集信息 type DnsInfo struct { //请求的域名 Qname string `json:&amp;#34;qname&amp;#34;` Cname []string `json:&amp;#34;cname&amp;#34;` Ipv4 []string `json:&amp;#34;ipv4&amp;#34;` Ipv6 []string `json:&amp;#34;ipv6&amp;#34;` Md5 string `json:&amp;#34;md5&amp;#34;` } 恶意软件一般通过使用DGA算法与C2服务器建立通信，因此， 在本地机器上采集dns请求信息可以检测是否存在恶意软件，因而 推测出主机是否已经失陷。 Tcpdump winsun@ubuntu:~$ sudo tcpdump -i ens33 -nt -s 500 port domain listening on ens33, link-type EN10MB (Ethernet), capture size 500 bytes IP 192.168.121.137.33266 &amp;gt; 192.168.121.2.53: 42909+ A? www.baidu.com. (31) IP 192.168.121.137.46547 &amp;gt; 192.168.121.2.53: 11678+ AAAA?</description>
     </item>
     

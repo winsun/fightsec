@@ -6,14 +6,14 @@
     <description>Recent content in golang on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 25 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/categories/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>go 设计模式</title>
+      <title>go有效设计模式</title>
       <link>https://winsun.github.io/fightsec/post/go_13_design_pattern/</link>
-      <pubDate>Thu, 25 Nov 2021 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://winsun.github.io/fightsec/post/go_13_design_pattern/</guid>
-      <description>装饰器模式</description>
+      <description>worker pool 定义job及channel type WorkerJob struct { from int size int isConcept bool } jobCh := make(chan WorkerJob,100) 定义生产者 生成者负责创建job，并把job投入job channel func producer(jobs chan WorkerJob){ job := WorkerJob{from:1,size:10} jobs &amp;lt;- job } 创建worker pool func worker(jobs chan WorkerJob,results chan WorkerResult ,wg *sync.WaitGroup){ for job := range jobs{ out := WorkerResult{jobId:job.id, message: cosumer(job.from,job.size,job.isConcept)} results &amp;lt;- out } wg.Done() } func createWorkPool(numOfWorkers int,jobs chan WorkerJob,results chan WorkerResult){ var wg sync.WaitGroup for i := 0; i &amp;lt; numOfWorkers ; i++{ wg.Add(1) go worker(jobs,results,&amp;amp;wg) } wg.Wait() close(results) } 定义消费者 func cosumer(from,size int,isConcept bool)string{ //to do... return &amp;#34;success&amp;#34;</description>
     </item>
     
     <item>

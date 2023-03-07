@@ -78,6 +78,31 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/go_13_design_pattern/" title="go有效设计模式">go有效设计模式</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2023年3月7日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            worker pool 定义job及channel type WorkerJob struct { from int size int isConcept bool } jobCh := make(chan WorkerJob,100) 定义生产者 生成者负责创建job，并把job投入job channel func producer(jobs chan WorkerJob){ job := WorkerJob{from:1,size:10} jobs &lt;- job } 创建worker pool func worker(jobs chan WorkerJob,results chan WorkerResult ,wg *sync.WaitGroup){ for job := range jobs{ out := WorkerResult{jobId:job.id, message: cosumer(job.from,job.size,job.isConcept)} results &lt;- out } wg.Done() } func createWorkPool(numOfWorkers int,jobs chan WorkerJob,results chan WorkerResult){ var wg sync.WaitGroup for i := 0; i &lt; numOfWorkers ; i++{ wg.Add(1) go worker(jobs,results,&amp;wg) } wg.Wait() close(results) } 定义消费者 func cosumer(from,size int,isConcept bool)string{ //to do... return &#34;success&#34;……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/go_13_design_pattern/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_09_ret2csu/" title="ret2csu">ret2csu</a>
             </h1>
         </header>
@@ -300,31 +325,6 @@
     
     
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/vul_02_log4j/" title="log4j">log4j</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2023年2月2日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/%E6%BC%8F%E6%B4%9E'>漏洞</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            引用 checking log4j dep……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/vul_02_log4j/">阅读全文</a></p>
-    </article>
-    
-    
-    
 
 
 
@@ -438,6 +438,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://winsun.github.io/fightsec/post/go_13_design_pattern/" title="go有效设计模式">go有效设计模式</a>
+    </li>
+    
+    <li>
         <a href="https://winsun.github.io/fightsec/post/pwn_09_ret2csu/" title="ret2csu">ret2csu</a>
     </li>
     
@@ -471,10 +475,6 @@
     
     <li>
         <a href="https://winsun.github.io/fightsec/post/knl_02_syscall/" title="linux kernel : system call">linux kernel : system call</a>
-    </li>
-    
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/knl_01_process/" title="linux kernel : process">linux kernel : process</a>
     </li>
     
 </ul>

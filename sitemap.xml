@@ -3,12 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://winsun.github.io/fightsec/categories/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/tags/exploit/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+    <loc>https://winsun.github.io/fightsec/categories/golang/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/post/go_13_design_pattern/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/tags/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/</loc>
+    <lastmod>2023-03-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://winsun.github.io/fightsec/tags/exploit/</loc>
     <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/pwn/</loc>
@@ -18,12 +33,6 @@
     <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/pwn_09_ret2csu/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://winsun.github.io/fightsec/tags/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://winsun.github.io/fightsec/</loc>
     <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/pwn_07_ret2dlresolve/</loc>
@@ -244,15 +253,6 @@
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/cyber_01_router_switch/</loc>
     <lastmod>2022-02-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://winsun.github.io/fightsec/post/go_13_design_pattern/</loc>
-    <lastmod>2021-11-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://winsun.github.io/fightsec/categories/golang/</loc>
-    <lastmod>2021-11-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://winsun.github.io/fightsec/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2021-11-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/post/go_12_system_program/</loc>
     <lastmod>2021-11-18T00:00:00+00:00</lastmod>
@@ -620,7 +620,7 @@
     <loc>https://winsun.github.io/fightsec/categories/edr/</loc>
     <lastmod>2020-09-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://winsun.github.io/fightsec/post/edr_02_assets/</loc>
+    <loc>https://winsun.github.io/fightsec/post/edr_02_dns/</loc>
     <lastmod>2020-09-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://winsun.github.io/fightsec/tags/golang/</loc>
