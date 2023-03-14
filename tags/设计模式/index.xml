@@ -6,13 +6,22 @@
     <description>Recent content in 设计模式 on 诚安</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 07 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 14 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://winsun.github.io/fightsec/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>go有效设计模式</title>
-      <link>https://winsun.github.io/fightsec/post/go_13_design_pattern/</link>
+      <title>go client-server模式: grpc</title>
+      <link>https://winsun.github.io/fightsec/post/go_14_clientserver_pattern/</link>
+      <pubDate>Tue, 14 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://winsun.github.io/fightsec/post/go_14_clientserver_pattern/</guid>
+      <description>什么是grpc？ grpc是google开发的一个Remote Procedure Call (RPC) framework。 生成TLS Certificate 生成ca(Certificate Authority)私钥和自签名证书 openssl req -x509 -newkey rsa:4096 -nodes -days 3650 -keyout ca-key.pem -out ca-cert.pem -subj &amp;#34;/C=TR/ST=ASIA/L=ISTANBUL/O=DEV/OU=TUTORIAL/CN=*.hack.com/emailAddress=hack@foxmail.com&amp;#34; 脚本返回结果： winsun@unbuntu64:~/test/grpc-tls-go/cert$ ./generator.sh [1] 删除所有pem文件 [2] 生成ca私钥和自签名证书 ....+.....+....+..+.+...+..+.............+......... ................................................... ----- winsun@unbuntu64:~/test/grpc-tls-go/cert$ ll total 20 drwxrwxr-x 2 winsun winsun</description>
+    </item>
+    
+    <item>
+      <title>go worker pool模式</title>
+      <link>https://winsun.github.io/fightsec/post/go_13_workerpool_pattern/</link>
       <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://winsun.github.io/fightsec/post/go_13_design_pattern/</guid>
+      <guid>https://winsun.github.io/fightsec/post/go_13_workerpool_pattern/</guid>
       <description>worker pool 定义job及channel type WorkerJob struct { from int size int isConcept bool } jobCh := make(chan WorkerJob,100) 定义生产者 生成者负责创建job，并把job投入job channel func producer(jobs chan WorkerJob){ job := WorkerJob{from:1,size:10} jobs &amp;lt;- job } 创建worker pool func worker(jobs chan WorkerJob,results chan WorkerResult ,wg *sync.WaitGroup){ for job := range jobs{ out := WorkerResult{jobId:job.id, message: cosumer(job.from,job.size,job.isConcept)} results &amp;lt;- out } wg.Done() } func createWorkPool(numOfWorkers int,jobs chan WorkerJob,results chan WorkerResult){ var wg sync.WaitGroup for i := 0; i &amp;lt; numOfWorkers ; i++{ wg.Add(1) go worker(jobs,results,&amp;amp;wg) } wg.Wait() close(results) } 定义消费者 func cosumer(from,size int,isConcept bool)string{ //to do... return &amp;#34;success&amp;#34;</description>
     </item>
     

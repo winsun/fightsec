@@ -76,7 +76,30 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/go_13_design_pattern/" title="go有效设计模式">go有效设计模式</a>
+                <a href="https://winsun.github.io/fightsec/post/go_14_clientserver_pattern/" title="go client-server模式: grpc">go client-server模式: grpc</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2023年3月14日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            什么是grpc？ grpc是google开发的一个Remote Procedure Call (RPC) framework。 生成TLS Certificate 生成ca(Certificate Authority)私钥和自签名证书 openssl req -x509 -newkey rsa:4096 -nodes -days 3650 -keyout ca-key.pem -out ca-cert.pem -subj &#34;/C=TR/ST=ASIA/L=ISTANBUL/O=DEV/OU=TUTORIAL/CN=*.hack.com/emailAddress=hack@foxmail.com&#34; 脚本返回结果： winsun@unbuntu64:~/test/grpc-tls-go/cert$ ./generator.sh [1] 删除所有pem文件 [2] 生成ca私钥和自签名证书 ....+.....+....+..+.+...+..+.............+......... ................................................... ----- winsun@unbuntu64:~/test/grpc-tls-go/cert$ ll total 20 drwxrwxr-x 2 winsun winsun……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/go_14_clientserver_pattern/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/go_13_workerpool_pattern/" title="go worker pool模式">go worker pool模式</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -93,7 +116,7 @@
         <div class="post-content">
             worker pool 定义job及channel type WorkerJob struct { from int size int isConcept bool } jobCh := make(chan WorkerJob,100) 定义生产者 生成者负责创建job，并把job投入job channel func producer(jobs chan WorkerJob){ job := WorkerJob{from:1,size:10} jobs &lt;- job } 创建worker pool func worker(jobs chan WorkerJob,results chan WorkerResult ,wg *sync.WaitGroup){ for job := range jobs{ out := WorkerResult{jobId:job.id, message: cosumer(job.from,job.size,job.isConcept)} results &lt;- out } wg.Done() } func createWorkPool(numOfWorkers int,jobs chan WorkerJob,results chan WorkerResult){ var wg sync.WaitGroup for i := 0; i &lt; numOfWorkers ; i++{ wg.Add(1) go worker(jobs,results,&amp;wg) } wg.Wait() close(results) } 定义消费者 func cosumer(from,size int,isConcept bool)string{ //to do... return &#34;success&#34;……
         </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/go_13_design_pattern/">阅读全文</a></p>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/go_13_workerpool_pattern/">阅读全文</a></p>
     </article>
     
     <article class="post">
@@ -280,29 +303,6 @@
         <p class="readmore"><a href="https://winsun.github.io/fightsec/post/vul_03_heartblood/">阅读全文</a></p>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/knl_02_syscall/" title="linux kernel : system call">linux kernel : system call</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2023年2月3日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/linux'>linux</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/knl_02_syscall/">阅读全文</a></p>
-    </article>
-    
     
 
 
@@ -417,7 +417,11 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/go_13_design_pattern/" title="go有效设计模式">go有效设计模式</a>
+        <a href="https://winsun.github.io/fightsec/post/go_14_clientserver_pattern/" title="go client-server模式: grpc">go client-server模式: grpc</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/go_13_workerpool_pattern/" title="go worker pool模式">go worker pool模式</a>
     </li>
     
     <li>
@@ -452,10 +456,6 @@
         <a href="https://winsun.github.io/fightsec/post/vul_03_heartblood/" title="heartbleed">heartbleed</a>
     </li>
     
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/knl_02_syscall/" title="linux kernel : system call">linux kernel : system call</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -479,7 +479,7 @@
     
     <li><a href="https://winsun.github.io/fightsec/categories/fuzz/">fuzz (1)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/golang/">golang (14)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/golang/">golang (15)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/iot/">iot (1)</a></li>
     

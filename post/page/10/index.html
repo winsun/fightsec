@@ -78,6 +78,31 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://winsun.github.io/fightsec/post/pwn_22_overflow02/" title="缓冲区溢出02-shellcode">缓冲区溢出02-shellcode</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年3月9日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/fightsec/categories/pwn'>pwn</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            weekness programe // meet.c #include &lt;stdio.h&gt; // needed for screen printing #include &lt;string.h&gt; // needed for strcpy void greeting(char *temp1,char *temp2){ // greeting function to say hello char name[400]; // string variable to hold the name strcpy(name, temp2); // copy argument to name with the infamous strcpy printf(&#34;Hello %s %s\n&#34;, temp1, name); // print out the greeting } int main(int argc, char * argv[]){ // note the format for arguments greeting(argv[1], argv[2]); // call function, pass title &amp; name printf(&#34;Bye %s %s\n&#34;, argv[1], argv[2]); // say &#34;bye&#34; } // exit program stack frame | name[400] | ebp | eip | temp1 | temp2 | disassemble greeting (gdb) disass greeting Dump of assembler code for function greeting: 0x56556201 &lt;+0&gt;: push %ebp 0x56556202 &lt;+1&gt;: mov %esp,%ebp 0x56556204 &lt;+3&gt;: push %ebx 0x56556205 &lt;+4&gt;: sub $0x190,%esp 0x5655620b &lt;+10&gt;: call 0x565560c0 &lt;__x86.get_pc_thunk.bx&gt; 0x56556210 &lt;+15&gt;: add……
+        </div>
+        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/pwn_22_overflow02/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://winsun.github.io/fightsec/post/pwn_21_overflow01/" title="缓冲区溢出01-溢出漏洞">缓冲区溢出01-溢出漏洞</a>
             </h1>
         </header>
@@ -300,31 +325,6 @@
     
     
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://winsun.github.io/fightsec/post/crypt_01_algorithm/" title="morden encrypt algorithm">morden encrypt algorithm</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年2月12日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/fightsec/categories/encrypt'>encrypt</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            random hash aes des rsa pki 参考 自签名证书……
-        </div>
-        <p class="readmore"><a href="https://winsun.github.io/fightsec/post/crypt_01_algorithm/">阅读全文</a></p>
-    </article>
-    
-    
-    
 
 
 
@@ -457,7 +457,11 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://winsun.github.io/fightsec/post/go_13_design_pattern/" title="go有效设计模式">go有效设计模式</a>
+        <a href="https://winsun.github.io/fightsec/post/go_14_clientserver_pattern/" title="go client-server模式: grpc">go client-server模式: grpc</a>
+    </li>
+    
+    <li>
+        <a href="https://winsun.github.io/fightsec/post/go_13_workerpool_pattern/" title="go worker pool模式">go worker pool模式</a>
     </li>
     
     <li>
@@ -492,10 +496,6 @@
         <a href="https://winsun.github.io/fightsec/post/vul_03_heartblood/" title="heartbleed">heartbleed</a>
     </li>
     
-    <li>
-        <a href="https://winsun.github.io/fightsec/post/knl_02_syscall/" title="linux kernel : system call">linux kernel : system call</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -519,7 +519,7 @@
     
     <li><a href="https://winsun.github.io/fightsec/categories/fuzz/">fuzz (1)</a></li>
     
-    <li><a href="https://winsun.github.io/fightsec/categories/golang/">golang (14)</a></li>
+    <li><a href="https://winsun.github.io/fightsec/categories/golang/">golang (15)</a></li>
     
     <li><a href="https://winsun.github.io/fightsec/categories/iot/">iot (1)</a></li>
     
